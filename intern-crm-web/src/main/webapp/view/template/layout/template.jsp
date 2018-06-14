@@ -6,8 +6,8 @@
       To change this template use File | Settings | File Templates.
     --%>
         <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-            <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-        !DOCTYPE html>
+        <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+        <!DOCTYPE html>
         <html lang="en">
 
         <head>
@@ -28,16 +28,20 @@
 
         <body>
         <%--header here--%>
-
+        <tiles:insertAttribute name="header"/>
         <div class="container-fluid p-0">
 
             <div class="row no-gutters">
                  <div class="col-3 col-lg-2">
         <%--menubar here--%>
+        <tiles:insertAttribute name="menu"/>
                 </div>
                 <div class="col-9 col-lg-10 relative">
         <%--body here--%>
+        <tiles:insertAttribute name="body"/>
+
         <%--footer here--%>
+        <tiles:insertAttribute name="footer"/>
                 </div>
             </div>
         </div>

@@ -12,11 +12,13 @@
     </definition>
 
     <definition name="home" extends="definition">
-        <put-attribute name="title" value="Home Page" />
+
         <put-attribute name="body" value="/view/home.jsp" />
     </definition>
-    <definition name="login" extends="definition">
-        <put-attribute name="title" value="Home Page" />
+    <definition name="login" template="/view/template/layout/template.jsp">
+        <put-attribute name="header" value="" />
+        <put-attribute name="menu" value="" />
+        <put-attribute name="footer" value="" />
         <put-attribute name="body" value="/view/login.jsp" />
     </definition>
 
