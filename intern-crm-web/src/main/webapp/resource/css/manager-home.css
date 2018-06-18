@@ -1,0 +1,77 @@
+.relative {
+    background-color: #ecf0f1;
+}
+
+.container {
+    margin-top: 30px;
+}
+
+.form-inline {
+    text-align: center;
+}
+
+.form-group label {
+    margin-right: 15px;
+}
+
+.form-group {
+    display: inline-block;
+    margin: 0 auto;
+    /*margin-right: 40px;*/
+}
+
+.form-control {
+    min-width: 100px;
+}
+
+.square-service-block {
+    max-width: 250px;
+    max-height: 250px;
+}
+
+.container .row {
+    margin-top: 15px;
+}
+
+a:hover, a:focus {
+    color: #2a6496;
+    text-decoration: none;
+}
+.square-service-block{
+    position:relative;
+    overflow:hidden;
+    margin:15px auto;
+}
+.square-service-block a {
+    background-color: #e74c3c;
+    border-radius: 5px;
+    display: block;
+    padding: 60px 20px;
+    text-align: center;
+    width: 100%;
+}
+.square-service-block a:hover{
+    background-color: rgba(231, 76, 60, 0.8);
+    border-radius: 5px;
+}
+
+.ssb-icon {
+    color: #fff;
+    display: inline-block;
+    font-size: 28px;
+    margin: 0 0 20px;
+}
+
+h2.ssb-title {
+    color: #fff;
+    font-size: 20px;
+    font-weight: 200;
+    margin:0;
+    padding:0;
+    text-transform: uppercase;
+}
+
+.customer-info .number-customer {
+    color: #2a6496;
+    text-align: center;
+}

@@ -28,10 +28,10 @@
         <!--</property>-->
     <!--</bean>   -->
 
-	 <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-        <property name="prefix" value="/view/" />
-        <property name="suffix" value=".jsp" />
-    </bean>
+	 <!--<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">-->
+        <!--<property name="prefix" value="/view/" />-->
+        <!--<property name="suffix" value=".jsp" />-->
+    <!--</bean>-->
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.UrlBasedViewResolver">
         <property name="viewClass">
@@ -40,6 +40,7 @@
             </value>
         </property>
     </bean>
+
     <bean id="tilesConfigurer"
           class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
         <property name="definitions">
