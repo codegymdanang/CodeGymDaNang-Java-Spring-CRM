@@ -2,6 +2,7 @@
 
 echo
 *.class
+*.properties
 target
 /target
 **/target
