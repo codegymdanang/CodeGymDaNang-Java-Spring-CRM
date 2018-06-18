@@ -1,8 +1,8 @@
 #CodeGymDaNang-Spring-Controller-Tiles
 
-
+echo
 *.class
-/target
+/intern-crm-web/target
 */target
 /.settings
 */.settings

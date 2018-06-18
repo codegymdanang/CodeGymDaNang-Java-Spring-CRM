@@ -1,4 +1,4 @@
-<!DOCTYPE tiles-definitions PUBLIC
+ <!DOCTYPE tiles-definitions PUBLIC
         "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
         "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 <tiles-definitions>
@@ -12,13 +12,16 @@
     </definition>
 
     <definition name="home" extends="definition">
-
         <put-attribute name="body" value="/view/home.jsp" />
     </definition>
     <definition name="seller-manager" extends="definition">
         <put-attribute name="body" value="/view/seller-manager.jsp"/>
     </definition>
     <definition name="login" template="/view/login.jsp">
+    </definition>
+
+    <definition name="home-manager" extends="definition">
+        <put-attribute name="body" value="/view/manager-home.jsp"/>
     </definition>
 
 </tiles-definitions>
