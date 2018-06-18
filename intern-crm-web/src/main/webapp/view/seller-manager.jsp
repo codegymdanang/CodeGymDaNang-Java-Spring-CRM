@@ -1,24 +1,14 @@
-
-
 <div>
     <!-- Body Seller Manager -->
     <div class="title">
-        <h2 class="text-muted text-center mt-2 h1 font-weight-light">Seller Manager</h2>
+        <h2 class="text-muted text-center my-5 h1 font-weight-light">Seller Manager</h2>
     </div>
 
-    <!-- Add and Search -->
-    <div class="parent">
-        <button class="btn btn-success m-5" data-toggle="modal" data-target="#createAccountModal">
-            <i class="fa fa-plus-circle"></i> ADD</button>
 
-        <form class="form-inline d-inline form-search m-5 float-right ">
-            <input class="form-control" type="text" placeholder="Search">
-            <button class="btn btn-success " type="submit">Search</button>
-        </form>
-    </div>
     <!-- Filter -->
-    <div class="row mb-5 mx-5">
+    <div class="row  mx-5 mb-3">
         <div class="col-3">
+            <h4 class="text-muted">Filter</h4>
         </div>
         <div class="col-3">
             <div class="input-group">
@@ -60,7 +50,19 @@
             </div>
         </div>
     </div>
+
+    <!-- Add and Search -->
+    <div class="parent">
+        <button class="btn btn-success mx-5 my-3 " data-toggle="modal" data-target="#createAccountModal">
+            <i class="fa fa-plus-circle"></i> Create Seller</button>
+
+        <form class="form-inline d-inline form-search mx-5 my-3 float-right ">
+            <input class="form-control" type="text" placeholder="Search">
+            <button class="btn btn-success " type="submit">Search</button>
+        </form>
+    </div>
     <!-- Table list seller -->
+
     <div class="table-seller mx-5">
         <table class="table table-striped">
             <thead>
@@ -187,7 +189,4 @@
             </div>
         </div>
     </div>
-
-
 </div>
-
