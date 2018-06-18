@@ -9,7 +9,7 @@
     <div class="sidebar bg-menu">
     <ul class="list-unstyled my-0">
     <li class="p-3 active ">
-    <a href="#" class="text-white lead ">Seller Manager</a>
+    <a href="/manage-seller" class="text-white lead ">Seller Manager</a>
     </li>
     <li class="p-3">
     <a href="#" class="text-white lead">Customer Manager</a>

@@ -17,9 +17,5 @@ public class HomePageController {
 	public String home(){
 		return "home";
 	}
-
-	@RequestMapping(value = "home-manager", method = RequestMethod.GET)
-	public String homeManager() {
-		return "home-manager";
-	}
 }
+

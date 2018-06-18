@@ -14,7 +14,9 @@
     <definition name="home" extends="definition">
         <put-attribute name="body" value="/view/home.jsp" />
     </definition>
-
+    <definition name="seller-manager" extends="definition">
+        <put-attribute name="body" value="/view/seller-manager.jsp"/>
+    </definition>
     <definition name="login" template="/view/login.jsp">
     </definition>
 
