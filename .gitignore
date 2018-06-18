@@ -2,8 +2,9 @@
 
 echo
 *.class
-/intern-crm-web/target
-*/target
+target
+/target
+**/target
 /.settings
 */.settings
 */.externalToolBuilders
