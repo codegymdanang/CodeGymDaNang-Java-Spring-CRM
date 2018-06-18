@@ -15,4 +15,9 @@ public class HomePageController {
 	public String home(){
 		return "home";
 	}
+
+	@RequestMapping(value="/manage-seller",method = RequestMethod.GET)
+	public String manageSeller (){
+		return "seller-manager";
+	}
 }

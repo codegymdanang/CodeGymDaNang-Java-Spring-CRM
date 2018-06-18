@@ -1,3 +1,6 @@
+.parent{
+  overflow: hidden;
+}
 .bg-main {
   background: linear-gradient(90deg, #003d61, #009966);
 }
@@ -37,4 +40,5 @@ footer {
   width: 24rem;
   background: rgba(255, 255, 255, 0.3);
 }
+
 /*# sourceMappingURL=style.css.map */
