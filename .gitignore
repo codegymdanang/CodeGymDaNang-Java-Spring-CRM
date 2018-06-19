@@ -4,6 +4,7 @@ echo
 *.class
 *.properties
 target
+target/
 /target
 **/target
 /.settings
