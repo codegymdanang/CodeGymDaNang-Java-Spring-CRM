@@ -8,6 +8,7 @@
   <version>1.0.0-SNAPSHOT</version>
   <modules>
 		<module>intern-crm-web</module>
+	  	<module>crm_model</module>
   </modules>
   <properties>
 		<junit.version>4.12</junit.version>
