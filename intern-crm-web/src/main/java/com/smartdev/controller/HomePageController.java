@@ -27,5 +27,9 @@ public class HomePageController {
 	public String listCustomSeller(){
 		return "list-custom-seller";
 	}
+	@RequestMapping(value="/homeSeller", method = RequestMethod.GET)
+	public String homeSeller(){
+		return "homeSeller";
+	}
 }
 
