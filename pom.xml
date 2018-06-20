@@ -9,6 +9,8 @@
   <modules>
 		<module>intern-crm-web</module>
 	  	<module>crm_model</module>
+	  <module>crm-dao</module>
+	  <module>crm-services</module>
   </modules>
   <properties>
 		<junit.version>4.12</junit.version>
