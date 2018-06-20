@@ -42,7 +42,7 @@
                 <th>Name</th>
                 <th>Work Place</th>
                 <th>Phone</th>
-                <th>Seller Name</th>
+
                 <td></td>
                 <td></td>
             </tr>
@@ -52,7 +52,7 @@
                 <td>John</td>
                 <td>Gia Lai</td>
                 <td>123456</td>
-                <td>Trinh</td>
+
                 <td>
                     <button class="btn btn-info">EDIT</button>
                 </td>
@@ -64,7 +64,7 @@
                 <td>Marri</td>
                 <td>Gia Lai</td>
                 <td>123456</td>
-                <td>Teo</td>
+
                 <td>
                     <button class="btn btn-info">EDIT</button>
                 </td>

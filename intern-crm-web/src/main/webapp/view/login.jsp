@@ -39,7 +39,7 @@
                 <input type="password" class="form-control" id="password" placeholder="Password">
             </div>
 
-            <a class="btn btn-primary btn-block" href="/home">ENTER</a>
+            <a class="btn btn-primary btn-block" href="/manager_crm/home">ENTER</a>
         </form>
     </div>
 </div>
