@@ -23,6 +23,11 @@ public class HomePageController {
 		return "list-custom-manage";
 	}
 
+	@RequestMapping(value = "home-manager")
+	public String homeManager() {
+		return "home-manager";
+	}
+
 	@RequestMapping(value = "/list-custom-seller", method = RequestMethod.GET)
 	public String listCustomSeller(){
 		return "list-custom-seller";

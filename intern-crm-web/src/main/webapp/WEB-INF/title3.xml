@@ -32,8 +32,10 @@
         <put-attribute name="body" value="/view/list-custom-seller.jsp"/>
     </definition>
     <definition name="homeSeller" extends="definition">
-        <put-attribute name="title" value="Home Page" />
+
         <put-attribute name="body" value="/view/homeSeller.jsp" />
     </definition>
-
+    <definition name="addcustomer" extends="definition">
+            <put-attribute name="body" value="/view/addcustomer.jsp"/>
+    </definition>
 </tiles-definitions>
