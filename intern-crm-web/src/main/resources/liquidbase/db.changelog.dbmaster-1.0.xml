@@ -73,5 +73,13 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 		<addForeignKeyConstraint constraintName="fk_history_status" referencedTableName="status"
 								 baseColumnNames="status_id" baseTableName="history_advisory" referencedColumnNames="id"/>
 	</changeSet>
+	<changeSet id="004" author="HaNguyen">
+		<addColumn tableName="user">
+			<column name="isDelete" type="int(1)"></column>
+		</addColumn>
+		<addColumn tableName="customer">
+			<column name="isDelete" type="int(1)"></column>
+		</addColumn>
+	</changeSet>
 
 </databaseChangeLog>
