@@ -33,8 +33,9 @@
                 <th>Work Place</th>
                 <th>Phone</th>
                 <th>Seller Name</th>
-                <td></td>
-                <td></td>
+                <th>Status</th>
+                <th>Product</th>
+                <th>Company</th>
             </tr>
             </thead>
             <tbody>
@@ -44,11 +45,12 @@
                 <td>123456</td>
                 <td>Trinh</td>
                 <td>
-                    <button class="btn btn-info">EDIT</button>
+                   Lead
                 </td>
                 <td>
-                    <button class="btn btn-danger">DELETE</button>
+                    ODC
                 </td>
+                <td>framgia</td>
             </tr>
             <tr>
                 <td>Marri</td>
@@ -56,11 +58,12 @@
                 <td>123456</td>
                 <td>Teo</td>
                 <td>
-                    <button class="btn btn-info">EDIT</button>
+                    Prospect
                 </td>
                 <td>
-                    <button class="btn btn-danger">DELETE</button>
+                    Outsource
                 </td>
+                <td>freelancer</td>
             </tr>
             </tbody>
         </table>
