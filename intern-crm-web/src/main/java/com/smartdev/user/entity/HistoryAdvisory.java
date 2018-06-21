@@ -2,14 +2,11 @@ package com.smartdev.user.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
-import java.util.Objects;
 
 @Entity
 @Table(name = "history_advisory", schema = "crm_db", catalog = "")
 public class HistoryAdvisory {
-    private int id;
-    private Integer customerId;
-    private Integer statusId;
+    private Integer id;
     private Timestamp date;
     private String comment;
     private Customer customerByCustomerId;
@@ -17,32 +14,12 @@ public class HistoryAdvisory {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "customer_id")
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    @Basic
-    @Column(name = "status_id")
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
     }
 
     @Basic
@@ -69,18 +46,22 @@ public class HistoryAdvisory {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         HistoryAdvisory that = (HistoryAdvisory) o;
-        return id == that.id &&
-                Objects.equals(customerId, that.customerId) &&
-                Objects.equals(statusId, that.statusId) &&
-                Objects.equals(date, that.date) &&
-                Objects.equals(comment, that.comment);
+
+        if (id != null ? !id.equals(that.id) : that.id != null) return false;
+        if (date != null ? !date.equals(that.date) : that.date != null) return false;
+        if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, customerId, statusId, date, comment);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (date != null ? date.hashCode() : 0);
+        result = 31 * result + (comment != null ? comment.hashCode() : 0);
+        return result;
     }
 
     @ManyToOne

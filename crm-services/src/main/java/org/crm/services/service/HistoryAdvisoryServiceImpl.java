@@ -1,6 +1,6 @@
 package org.crm.services.service;
 
-//import com.smartdev.user.dao.repository.HistoryAdvisoryRepository;
+import com.smartdev.user.dao.repository.HistoryAdvisoryRepository;
 import com.smartdev.user.model.StatusCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +10,11 @@ import java.util.List;
 @Service
 public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
 
-    public static final String PROSPECT = "prospect";
-    public static final String LEAD = "lead";
-    public static final String POTENTIAL_LEAD = "potential lead";
-    public static final String ACTIVE_LEAD = "active lead";
-
+//    public static final String PROSPECT = "prospect";
+//    public static final String LEAD = "lead";
+//    public static final String POTENTIAL_LEAD = "potential lead";
+//    public static final String ACTIVE_LEAD = "active lead";
+//
 //    @Autowired
 //    private HistoryAdvisoryRepository historyAdvisoryRepository;
 //

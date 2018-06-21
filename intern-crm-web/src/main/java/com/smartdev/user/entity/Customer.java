@@ -2,20 +2,17 @@ package com.smartdev.user.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.Objects;
 
 @Entity
 public class Customer {
-    private int id;
+    private Integer id;
     private String name;
     private Integer age;
     private Integer phone;
     private String mail;
     private String facebook;
-    private Integer statusId;
     private Integer productType;
     private String company;
-    private String seller;
     private Integer isDelete;
     private Status statusByStatusId;
     private User userBySeller;
@@ -23,11 +20,11 @@ public class Customer {
 
     @Id
     @Column(name = "id")
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -82,16 +79,6 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "status_id")
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
-    }
-
-    @Basic
     @Column(name = "product_type")
     public Integer getProductType() {
         return productType;
@@ -112,16 +99,6 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "seller")
-    public String getSeller() {
-        return seller;
-    }
-
-    public void setSeller(String seller) {
-        this.seller = seller;
-    }
-
-    @Basic
     @Column(name = "isDelete")
     public Integer getIsDelete() {
         return isDelete;
@@ -135,24 +112,35 @@ public class Customer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+
         Customer customer = (Customer) o;
-        return id == customer.id &&
-                Objects.equals(name, customer.name) &&
-                Objects.equals(age, customer.age) &&
-                Objects.equals(phone, customer.phone) &&
-                Objects.equals(mail, customer.mail) &&
-                Objects.equals(facebook, customer.facebook) &&
-                Objects.equals(statusId, customer.statusId) &&
-                Objects.equals(productType, customer.productType) &&
-                Objects.equals(company, customer.company) &&
-                Objects.equals(seller, customer.seller) &&
-                Objects.equals(isDelete, customer.isDelete);
+
+        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
+        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
+        if (age != null ? !age.equals(customer.age) : customer.age != null) return false;
+        if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
+        if (mail != null ? !mail.equals(customer.mail) : customer.mail != null) return false;
+        if (facebook != null ? !facebook.equals(customer.facebook) : customer.facebook != null) return false;
+        if (productType != null ? !productType.equals(customer.productType) : customer.productType != null)
+            return false;
+        if (company != null ? !company.equals(customer.company) : customer.company != null) return false;
+        if (isDelete != null ? !isDelete.equals(customer.isDelete) : customer.isDelete != null) return false;
+
+        return true;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(id, name, age, phone, mail, facebook, statusId, productType, company, seller, isDelete);
+        int result = id != null ? id.hashCode() : 0;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (age != null ? age.hashCode() : 0);
+        result = 31 * result + (phone != null ? phone.hashCode() : 0);
+        result = 31 * result + (mail != null ? mail.hashCode() : 0);
+        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
+        result = 31 * result + (productType != null ? productType.hashCode() : 0);
+        result = 31 * result + (company != null ? company.hashCode() : 0);
+        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
+        return result;
     }
 
     @ManyToOne
