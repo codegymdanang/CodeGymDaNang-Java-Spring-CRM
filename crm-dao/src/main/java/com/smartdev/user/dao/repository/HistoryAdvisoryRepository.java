@@ -1,13 +1,12 @@
 package com.smartdev.user.dao.repository;
 
+import com.smartdev.user.entity.HistoryAdvisory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
 @Repository
-public interface HistoryAdvisoryRepository {
-//    extends
-//} JpaRepository<HistoryAdvisory, Integer> {
-//    List<HistoryAdvisory> findAll();
+public interface HistoryAdvisoryRepository extends JpaRepository<HistoryAdvisory, Integer> {
+    List<HistoryAdvisory> findAll();
 }
