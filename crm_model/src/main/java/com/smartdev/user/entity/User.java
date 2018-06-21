@@ -8,8 +8,9 @@ public class User {
     private String userName;
     private String passWord;
     private Integer role;
+    private Integer isDelete;
     private Collection<Customer> customersByUserName;
-    private Collection<SellerDetail> sellerDetailsByUserName;
+    private SellerDetail sellerDetailsByUserName;
 
     @Id
     @Column(name = "user_name")
@@ -41,6 +42,16 @@ public class User {
         this.role = role;
     }
 
+    @Basic
+    @Column(name = "isDelete")
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -51,6 +62,7 @@ public class User {
         if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
         if (passWord != null ? !passWord.equals(user.passWord) : user.passWord != null) return false;
         if (role != null ? !role.equals(user.role) : user.role != null) return false;
+        if (isDelete != null ? !isDelete.equals(user.isDelete) : user.isDelete != null) return false;
 
         return true;
     }
@@ -60,6 +72,7 @@ public class User {
         int result = userName != null ? userName.hashCode() : 0;
         result = 31 * result + (passWord != null ? passWord.hashCode() : 0);
         result = 31 * result + (role != null ? role.hashCode() : 0);
+        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
         return result;
     }
 
@@ -72,12 +85,12 @@ public class User {
         this.customersByUserName = customersByUserName;
     }
 
-    @OneToMany(mappedBy = "userByUserName")
-    public Collection<SellerDetail> getSellerDetailsByUserName() {
+    @OneToOne(mappedBy = "userByUserName")
+    public SellerDetail getSellerDetailsByUserName() {
         return sellerDetailsByUserName;
     }
 
-    public void setSellerDetailsByUserName(Collection<SellerDetail> sellerDetailsByUserName) {
+    public void setSellerDetailsByUserName(SellerDetail sellerDetailsByUserName) {
         this.sellerDetailsByUserName = sellerDetailsByUserName;
     }
 }

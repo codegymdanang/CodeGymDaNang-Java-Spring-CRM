@@ -101,7 +101,7 @@ public class SellerDetail {
         return result;
     }
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_name", referencedColumnName = "user_name", nullable = false)
     public User getUserByUserName() {
         return userByUserName;

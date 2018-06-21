@@ -15,6 +15,7 @@ public class Customer {
     private Integer productType;
     private String company;
     private String seller;
+    private Integer isDelete;
     private Status statusByStatusId;
     private User userBySeller;
     private Collection<HistoryAdvisory> historyAdvisoriesById;
@@ -119,6 +120,16 @@ public class Customer {
         this.seller = seller;
     }
 
+    @Basic
+    @Column(name = "isDelete")
+    public Integer getIsDelete() {
+        return isDelete;
+    }
+
+    public void setIsDelete(Integer isDelete) {
+        this.isDelete = isDelete;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -137,6 +148,7 @@ public class Customer {
             return false;
         if (company != null ? !company.equals(customer.company) : customer.company != null) return false;
         if (seller != null ? !seller.equals(customer.seller) : customer.seller != null) return false;
+        if (isDelete != null ? !isDelete.equals(customer.isDelete) : customer.isDelete != null) return false;
 
         return true;
     }
@@ -153,6 +165,7 @@ public class Customer {
         result = 31 * result + (productType != null ? productType.hashCode() : 0);
         result = 31 * result + (company != null ? company.hashCode() : 0);
         result = 31 * result + (seller != null ? seller.hashCode() : 0);
+        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
         return result;
     }
 

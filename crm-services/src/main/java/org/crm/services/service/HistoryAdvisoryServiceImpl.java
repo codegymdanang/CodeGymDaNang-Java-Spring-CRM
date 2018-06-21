@@ -1,7 +1,6 @@
 package org.crm.services.service;
 
 import com.smartdev.user.dao.repository.HistoryAdvisoryRepository;
-import com.smartdev.user.entity.HistoryAdvisory;
 import com.smartdev.user.model.StatusCount;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
