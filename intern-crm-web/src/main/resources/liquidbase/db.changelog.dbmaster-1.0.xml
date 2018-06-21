@@ -81,5 +81,8 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 			<column name="isDelete" type="int(1)"></column>
 		</addColumn>
 	</changeSet>
+    <changeSet id="005" author="HaNguyen">
+        <addPrimaryKey tableName="seller_detail" columnNames="user_name"></addPrimaryKey>
+    </changeSet>
 
 </databaseChangeLog>
