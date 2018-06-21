@@ -1,4 +1,4 @@
-package com.smartdev.user.model;
+package com.smartdev.user.entity;
 
 import javax.persistence.*;
 import java.sql.Timestamp;

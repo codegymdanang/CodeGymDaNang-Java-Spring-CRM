@@ -36,7 +36,7 @@
         </property>
         <property name="packagesToScan">
         	<list>
-        		<value>com.smartdev.user.model</value>        		
+        		<value>com.smartdev.user.entity</value>
         	</list>
         </property>
     </bean>	
