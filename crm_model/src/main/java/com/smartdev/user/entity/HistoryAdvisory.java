@@ -7,8 +7,6 @@ import java.sql.Timestamp;
 @Table(name = "history_advisory", schema = "crm_db", catalog = "")
 public class HistoryAdvisory {
     private Integer id;
-    private Integer customerId;
-    private Integer statusId;
     private Timestamp date;
     private String comment;
     private Customer customerByCustomerId;
@@ -22,26 +20,6 @@ public class HistoryAdvisory {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    @Basic
-    @Column(name = "customer_id")
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    @Basic
-    @Column(name = "status_id")
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
     }
 
     @Basic
@@ -72,8 +50,6 @@ public class HistoryAdvisory {
         HistoryAdvisory that = (HistoryAdvisory) o;
 
         if (id != null ? !id.equals(that.id) : that.id != null) return false;
-        if (customerId != null ? !customerId.equals(that.customerId) : that.customerId != null) return false;
-        if (statusId != null ? !statusId.equals(that.statusId) : that.statusId != null) return false;
         if (date != null ? !date.equals(that.date) : that.date != null) return false;
         if (comment != null ? !comment.equals(that.comment) : that.comment != null) return false;
 
@@ -83,8 +59,6 @@ public class HistoryAdvisory {
     @Override
     public int hashCode() {
         int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (customerId != null ? customerId.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (date != null ? date.hashCode() : 0);
         result = 31 * result + (comment != null ? comment.hashCode() : 0);
         return result;
