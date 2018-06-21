@@ -1,5 +1,6 @@
 package com.smartdev.user.dao.repository;
 
+import com.smartdev.user.entity.HistoryAdvisory;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

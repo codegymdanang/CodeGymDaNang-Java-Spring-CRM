@@ -11,10 +11,8 @@ public class Customer {
     private Integer phone;
     private String mail;
     private String facebook;
-    private Integer statusId;
     private Integer productType;
     private String company;
-    private String seller;
     private Integer isDelete;
     private Status statusByStatusId;
     private User userBySeller;
@@ -81,16 +79,6 @@ public class Customer {
     }
 
     @Basic
-    @Column(name = "status_id")
-    public Integer getStatusId() {
-        return statusId;
-    }
-
-    public void setStatusId(Integer statusId) {
-        this.statusId = statusId;
-    }
-
-    @Basic
     @Column(name = "product_type")
     public Integer getProductType() {
         return productType;
@@ -108,16 +96,6 @@ public class Customer {
 
     public void setCompany(String company) {
         this.company = company;
-    }
-
-    @Basic
-    @Column(name = "seller")
-    public String getSeller() {
-        return seller;
-    }
-
-    public void setSeller(String seller) {
-        this.seller = seller;
     }
 
     @Basic
@@ -143,11 +121,9 @@ public class Customer {
         if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
         if (mail != null ? !mail.equals(customer.mail) : customer.mail != null) return false;
         if (facebook != null ? !facebook.equals(customer.facebook) : customer.facebook != null) return false;
-        if (statusId != null ? !statusId.equals(customer.statusId) : customer.statusId != null) return false;
         if (productType != null ? !productType.equals(customer.productType) : customer.productType != null)
             return false;
         if (company != null ? !company.equals(customer.company) : customer.company != null) return false;
-        if (seller != null ? !seller.equals(customer.seller) : customer.seller != null) return false;
         if (isDelete != null ? !isDelete.equals(customer.isDelete) : customer.isDelete != null) return false;
 
         return true;
@@ -161,10 +137,8 @@ public class Customer {
         result = 31 * result + (phone != null ? phone.hashCode() : 0);
         result = 31 * result + (mail != null ? mail.hashCode() : 0);
         result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
         result = 31 * result + (productType != null ? productType.hashCode() : 0);
         result = 31 * result + (company != null ? company.hashCode() : 0);
-        result = 31 * result + (seller != null ? seller.hashCode() : 0);
         result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
         return result;
     }
