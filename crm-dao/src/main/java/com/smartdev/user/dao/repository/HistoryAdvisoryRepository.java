@@ -6,6 +6,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface HistoryAdvisoryRepository extends JpaRepository<HistoryAdvisory, Integer> {
-    List<HistoryAdvisory> findAll();
+public interface HistoryAdvisoryRepository {
+//    extends
+//} JpaRepository<HistoryAdvisory, Integer> {
+//    List<HistoryAdvisory> findAll();
 }

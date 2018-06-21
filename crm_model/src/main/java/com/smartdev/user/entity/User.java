@@ -10,7 +10,7 @@ public class User {
     private Integer role;
     private Integer isDelete;
     private Collection<Customer> customersByUserName;
-    private SellerDetail sellerDetailsByUserName;
+    private SellerDetail sellerDetailByUserName;
 
     @Id
     @Column(name = "user_name")
@@ -86,11 +86,11 @@ public class User {
     }
 
     @OneToOne(mappedBy = "userByUserName")
-    public SellerDetail getSellerDetailsByUserName() {
-        return sellerDetailsByUserName;
+    public SellerDetail getSellerDetailByUserName() {
+        return sellerDetailByUserName;
     }
 
-    public void setSellerDetailsByUserName(SellerDetail sellerDetailsByUserName) {
-        this.sellerDetailsByUserName = sellerDetailsByUserName;
+    public void setSellerDetailByUserName(SellerDetail sellerDetailByUserName) {
+        this.sellerDetailByUserName = sellerDetailByUserName;
     }
 }

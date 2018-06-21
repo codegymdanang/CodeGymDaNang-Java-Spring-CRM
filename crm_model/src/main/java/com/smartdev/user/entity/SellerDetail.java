@@ -13,7 +13,7 @@ public class SellerDetail {
     private String avatar;
     private User userByUserName;
 
-    @Basic
+    @Id
     @Column(name = "user_name")
     public String getUserName() {
         return userName;
