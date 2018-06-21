@@ -2,10 +2,11 @@ package com.smartdev.user.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Customer {
-    private Integer id;
+    private int id;
     private String name;
     private Integer age;
     private Integer phone;
@@ -22,11 +23,11 @@ public class Customer {
 
     @Id
     @Column(name = "id")
-    public Integer getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Integer id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -134,39 +135,24 @@ public class Customer {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-
         Customer customer = (Customer) o;
-
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
-        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
-        if (age != null ? !age.equals(customer.age) : customer.age != null) return false;
-        if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
-        if (mail != null ? !mail.equals(customer.mail) : customer.mail != null) return false;
-        if (facebook != null ? !facebook.equals(customer.facebook) : customer.facebook != null) return false;
-        if (statusId != null ? !statusId.equals(customer.statusId) : customer.statusId != null) return false;
-        if (productType != null ? !productType.equals(customer.productType) : customer.productType != null)
-            return false;
-        if (company != null ? !company.equals(customer.company) : customer.company != null) return false;
-        if (seller != null ? !seller.equals(customer.seller) : customer.seller != null) return false;
-        if (isDelete != null ? !isDelete.equals(customer.isDelete) : customer.isDelete != null) return false;
-
-        return true;
+        return id == customer.id &&
+                Objects.equals(name, customer.name) &&
+                Objects.equals(age, customer.age) &&
+                Objects.equals(phone, customer.phone) &&
+                Objects.equals(mail, customer.mail) &&
+                Objects.equals(facebook, customer.facebook) &&
+                Objects.equals(statusId, customer.statusId) &&
+                Objects.equals(productType, customer.productType) &&
+                Objects.equals(company, customer.company) &&
+                Objects.equals(seller, customer.seller) &&
+                Objects.equals(isDelete, customer.isDelete);
     }
 
     @Override
     public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (age != null ? age.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (mail != null ? mail.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (statusId != null ? statusId.hashCode() : 0);
-        result = 31 * result + (productType != null ? productType.hashCode() : 0);
-        result = 31 * result + (company != null ? company.hashCode() : 0);
-        result = 31 * result + (seller != null ? seller.hashCode() : 0);
-        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
-        return result;
+
+        return Objects.hash(id, name, age, phone, mail, facebook, statusId, productType, company, seller, isDelete);
     }
 
     @ManyToOne
