@@ -12,4 +12,6 @@ public class ManageCustomerController {
     public String listCustom(){
         return "list-custom-manage";
     }
+    @RequestMapping(value = "addcustomer",method = RequestMethod.GET)
+    public String addCustomer(){ return "addcustomer";}
 }
