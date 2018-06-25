@@ -52,9 +52,8 @@
                 <td>John</td>
                 <td>Gia Lai</td>
                 <td>123456</td>
-
                 <td>
-                    <button class="btn btn-info">EDIT</button>
+                   <button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button>
                 </td>
                 <td>
                     <button class="btn btn-danger">DELETE</button>
@@ -66,7 +65,7 @@
                 <td>123456</td>
 
                 <td>
-                    <button class="btn btn-info">EDIT</button>
+                    <button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button>
                 </td>
                 <td>
                     <button class="btn btn-danger">DELETE</button>
@@ -75,5 +74,42 @@
             </tbody>
         </table>
 
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">EDIT CUSTOMER</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label for="formGroupExampleInput">Name</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="name" value="">
+                    <label for="formGroupExampleInput2">Age</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="age" value="">
+                    <label for="formGroupExampleInput2">Phone</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="phone" value="">
+                    <label for="formGroupExampleInput2">Company</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="company" value="">
+                    <label for="formGroupExampleInput2">Facebook</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="facebook" value="">
+                    <label for="formGroupExampleInput2">Email</label>
+                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email" value="">
+                    <label class="mr-sm-2" for="inlineFormCustomSelect">Product type</label>
+                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
+                        <option selected>Choose...</option>
+                        <option value="1">offsource</option>
+                        <option value="2">odc</option>
+                    </select>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
