@@ -2,9 +2,11 @@ package com.smartdev.controller.seller;
 
 import com.smartdev.user.entity.Customer;
 import org.crm.services.service.CustomerService;
+import org.crm.services.service.ListCustomManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,17 +14,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 @RequestMapping("/seller")
 public class ListCustomerController {
+
+    @Autowired
+    ListCustomManageService listCustomManageService;
 
 
     @Qualifier("CustomerServiceImpl")
     CustomerService customerService;
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
-    public String listCustom(){
+    public String listCustom(Model model){
+        List<Customer> customerList = listCustomManageService.listAllCustomer();
+        model.addAttribute("list",customerList);
         return "list-custom";
     }
 
