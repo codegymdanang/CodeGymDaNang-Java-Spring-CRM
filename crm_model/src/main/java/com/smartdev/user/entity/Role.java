@@ -7,15 +7,12 @@ import java.util.Objects;
 import java.util.Set;
 
 @Entity
+@Table(name = "role")
 public class Role {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String name;
-
-    @ManyToMany(mappedBy = "roles")
-    private Set<User> users;
-
-    @Id
-    @Column(name = "id")
     public int getId() {
         return id;
     }
@@ -24,8 +21,6 @@ public class Role {
         this.id = id;
     }
 
-    @Basic
-    @Column(name = "name")
     public String getName() {
         return name;
     }
@@ -34,11 +29,14 @@ public class Role {
         this.name = name;
     }
 
-    public Set<User> getUsers() {
+    @ManyToMany(mappedBy = "roles")
+    private Collection<User> users;
+
+    public Collection<User> getUsers() {
         return users;
     }
 
-    public void setUsers(Set<User> users) {
+    public void setUsers(Collection<User> users) {
         this.users = users;
     }
 
