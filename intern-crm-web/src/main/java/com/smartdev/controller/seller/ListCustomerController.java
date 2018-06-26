@@ -24,6 +24,6 @@ public class ListCustomerController {
         model.addAttribute("list",customerList);
         return "list-custom";
     }
-    @RequestMapping(value = "addcustomer",method = RequestMethod.GET)
+        @RequestMapping(value = "addcustomer",method = RequestMethod.GET)
     public String addCustomer(){ return "addcustomer";}
 }

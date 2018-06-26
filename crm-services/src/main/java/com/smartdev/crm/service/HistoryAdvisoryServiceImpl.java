@@ -1,11 +1,6 @@
-package org.crm.services.service;
+package com.smartdev.crm.service;
 
-import com.smartdev.user.dao.repository.HistoryAdvisoryRepository;
-import com.smartdev.user.model.StatusCount;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.List;
 
 @Service
 public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
