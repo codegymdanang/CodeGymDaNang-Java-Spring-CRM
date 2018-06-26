@@ -1,7 +1,10 @@
 package com.smartdev.user.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
@@ -10,7 +13,6 @@ public class User {
     private Integer isDelete;
     private Collection<Customer> customersByUserName;
     private SellerDetail sellerDetailByUserName;
-    private Collection<UserRole> userRolesByUserName;
 
     @Id
     @Column(name = "user_name")
@@ -42,28 +44,6 @@ public class User {
         this.isDelete = isDelete;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
-        if (passWord != null ? !passWord.equals(user.passWord) : user.passWord != null) return false;
-        if (isDelete != null ? !isDelete.equals(user.isDelete) : user.isDelete != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userName != null ? userName.hashCode() : 0;
-        result = 31 * result + (passWord != null ? passWord.hashCode() : 0);
-        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
-        return result;
-    }
-
     @OneToMany(mappedBy = "userBySeller")
     public Collection<Customer> getCustomersByUserName() {
         return customersByUserName;
@@ -82,12 +62,18 @@ public class User {
         this.sellerDetailByUserName = sellerDetailByUserName;
     }
 
-    @OneToMany(mappedBy = "userByUserName")
-    public Collection<UserRole> getUserRolesByUserName() {
-        return userRolesByUserName;
+    @ManyToMany
+    @JoinTable(name="user_role",
+            joinColumns = @JoinColumn(name = "user_name"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
     }
 
-    public void setUserRolesByUserName(Collection<UserRole> userRolesByUserName) {
-        this.userRolesByUserName = userRolesByUserName;
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
     }
+
 }

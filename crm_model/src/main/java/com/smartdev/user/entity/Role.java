@@ -2,13 +2,17 @@ package com.smartdev.user.entity;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 public class Role {
     private int id;
     private String name;
-    private Collection<UserRole> userRolesById;
+
+    @ManyToMany(mappedBy = "roles")
+    private Set<User> users;
 
     @Id
     @Column(name = "id")
@@ -30,27 +34,12 @@ public class Role {
         this.name = name;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Role role = (Role) o;
-        return id == role.id &&
-                Objects.equals(name, role.name);
+    public Set<User> getUsers() {
+        return users;
     }
 
-    @Override
-    public int hashCode() {
-
-        return Objects.hash(id, name);
+    public void setUsers(Set<User> users) {
+        this.users = users;
     }
 
-    @OneToMany(mappedBy = "roleByRoleId")
-    public Collection<UserRole> getUserRolesById() {
-        return userRolesById;
-    }
-
-    public void setUserRolesById(Collection<UserRole> userRolesById) {
-        this.userRolesById = userRolesById;
-    }
 }
