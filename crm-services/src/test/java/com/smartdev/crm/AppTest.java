@@ -1,4 +1,4 @@
-package org.crm.services;
+package com.smartdev.crm;
 
 import junit.framework.Test;
 import junit.framework.TestCase;

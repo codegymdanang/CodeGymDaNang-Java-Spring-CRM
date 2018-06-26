@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
@@ -30,7 +31,7 @@
             <thead>
             <tr>
                 <th>Name</th>
-                <th>Work Place</th>
+                <th>Age</th>
                 <th>Phone</th>
                 <th>Seller Name</th>
                 <th>Status</th>
@@ -39,32 +40,18 @@
             </tr>
             </thead>
             <tbody>
+            <c:forEach var="c" items="${list}">
             <tr>
-                <td>John</td>
-                <td>Gia Lai</td>
-                <td>123456</td>
-                <td>Trinh</td>
-                <td>
-                   Lead
-                </td>
-                <td>
-                    ODC
-                </td>
-                <td>framgia</td>
+                <td>${c.name}</td>
+                <td>${c.age}</td>
+                <td>${c.phone}</td>
+                <td>${c.userBySeller.userName}</td>
+                <td>${c.statusByStatusId.name}</td>
+                <td>${c.productType}</td>
+                <td>${c.company}</td>
+
             </tr>
-            <tr>
-                <td>Marri</td>
-                <td>Gia Lai</td>
-                <td>123456</td>
-                <td>Teo</td>
-                <td>
-                    Prospect
-                </td>
-                <td>
-                    Outsource
-                </td>
-                <td>freelancer</td>
-            </tr>
+            </c:forEach>
             </tbody>
         </table>
 

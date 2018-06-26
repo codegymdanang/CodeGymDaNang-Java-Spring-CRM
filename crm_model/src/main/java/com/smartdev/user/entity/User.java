@@ -1,13 +1,15 @@
 package com.smartdev.user.entity;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 public class User {
     private String userName;
     private String passWord;
-    private Integer role;
     private Integer isDelete;
     private Collection<Customer> customersByUserName;
     private SellerDetail sellerDetailByUserName;
@@ -33,16 +35,6 @@ public class User {
     }
 
     @Basic
-    @Column(name = "role")
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    @Basic
     @Column(name = "isDelete")
     public Integer getIsDelete() {
         return isDelete;
@@ -50,30 +42,6 @@ public class User {
 
     public void setIsDelete(Integer isDelete) {
         this.isDelete = isDelete;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        User user = (User) o;
-
-        if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
-        if (passWord != null ? !passWord.equals(user.passWord) : user.passWord != null) return false;
-        if (role != null ? !role.equals(user.role) : user.role != null) return false;
-        if (isDelete != null ? !isDelete.equals(user.isDelete) : user.isDelete != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = userName != null ? userName.hashCode() : 0;
-        result = 31 * result + (passWord != null ? passWord.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
-        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
-        return result;
     }
 
     @OneToMany(mappedBy = "userBySeller")
@@ -93,4 +61,19 @@ public class User {
     public void setSellerDetailByUserName(SellerDetail sellerDetailByUserName) {
         this.sellerDetailByUserName = sellerDetailByUserName;
     }
+
+    @ManyToMany
+    @JoinTable(name="user_role",
+            joinColumns = @JoinColumn(name = "user_name"),
+            inverseJoinColumns = @JoinColumn(name = "role_id"))
+    private Set<Role> roles;
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
 }
