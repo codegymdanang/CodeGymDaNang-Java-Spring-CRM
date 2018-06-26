@@ -19,6 +19,9 @@
         h2{
             margin-left: 20px;
         }
+        .error {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -30,34 +33,34 @@
         <div class="form-group col-md-10">
             <form:label path="name">Name</form:label>
             <form:input path="name" cssClass="form-control" placeholder="name"/>
-            <form:errors path="name" />
+            <p><form:errors path="name" cssClass="error"/></p>
 
             <form:label path="age">Age</form:label>
             <form:input path="age" cssClass="form-control" placeholder="age"/>
-            <form:errors path="age" />
+            <p><form:errors path="age" cssClass="error"/></p>
 
             <form:label path="phone">Phone</form:label>
             <form:input path="phone" cssClass="form-control" placeholder="phone"/>
-            <form:errors path="phone" />
+            <p><form:errors path="phone" cssClass="error"/></p>
 
             <form:label path="company">Company</form:label>
             <form:input path="company" cssClass="form-control" placeholder="company"/>
-            <form:errors path="company" />
+            <p><form:errors path="company" cssClass="error"/></p>
 
             <form:label path="facebook">Facebook</form:label>
-            <form:input path="facebook" cssClass="form-control" placeholder="company"/>
-            <form:errors path="facebook" />
+            <form:input path="facebook" cssClass="form-control" placeholder="facebook"/>
+            <p><form:errors path="facebook" cssClass="error"/></p>
 
             <form:label path="mail">Email</form:label>
-            <form:input path="mail" cssClass="form-control" placeholder="company"/>
-            <form:errors path="mail" />
+            <form:input path="mail" cssClass="form-control" placeholder="email"/>
+            <p><form:errors path="mail" cssClass="error"/></p>
 
             <form:label path="productType" cssClass="mr-sm-2">Product Type</form:label>
             <form:select path="productType" cssClass="custom-select mr-sm-2">
                 <form:option value="1" label="Off source" selected="true"/>
                 <form:option value="2" label="Odc"/>
             </form:select>
-            <form:errors path="productType" />
+            <p><form:errors path="productType" cssClass="error"/></p>
             <br/>
             <div class="col-auto my-1">
                 <button type="submit" class="btn btn-primary mb-2">Add</button>

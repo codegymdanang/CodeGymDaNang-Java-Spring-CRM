@@ -19,6 +19,7 @@ public class Customer {
     private Integer age;
     private Integer phone;
     @Email
+    @NotEmpty(message = "Email is required")
     private String mail;
     @NotEmpty(message = "Facebook is required")
     private String facebook;
@@ -33,6 +34,7 @@ public class Customer {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
