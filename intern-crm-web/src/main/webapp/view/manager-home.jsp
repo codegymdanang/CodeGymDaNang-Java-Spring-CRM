@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <html>
 <head>
     <title>Manager Home</title>
@@ -18,10 +19,9 @@
         <div class="form-group">
             <label for="sel1">Year: </label>
             <select class="form-control" id="sel1">
-                <option>2015</option>
-                <option>2016</option>
-                <option>2017</option>
-                <option>2018</option>
+                <c:forEach items="${years}" var="year">
+                    <option value="${year}">${year}</>
+                </c:forEach>
             </select>
         </div>
         <div class="form-group">
@@ -31,6 +31,14 @@
                 <option>2</option>
                 <option>3</option>
                 <option>4</option>
+                <option>5</option>
+                <option>6</option>
+                <option>7</option>
+                <option>8</option>
+                <option>9</option>
+                <option>10</option>
+                <option>11</option>
+                <option>12</option>
             </select>
         </div>
     </div>
