@@ -110,4 +110,16 @@ public class SellerDetail {
     public void setUserByUserName(User userByUserName) {
         this.userByUserName = userByUserName;
     }
+
+    @Override
+    public String toString() {
+        return "SellerDetail{" +
+                "userName='" + userName + '\'' +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", mail='" + mail + '\'' +
+                ", phone=" + phone +
+                ", avatar='" + avatar + '\'' +
+                '}';
+    }
 }

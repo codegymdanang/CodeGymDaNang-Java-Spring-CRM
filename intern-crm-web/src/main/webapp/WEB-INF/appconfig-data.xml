@@ -10,6 +10,7 @@
 		http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
 ">
+
 		<context:property-placeholder location="classpath*:application.properties"/>
 		<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		    <property name="driverClassName" value="${jdbc.driverClassName}"/>
@@ -45,4 +46,6 @@
 			<property name="entityManagerFactory"
 				ref="entityManagerFactoryBean" />
 		</bean>
+
+		<jpa:repositories base-package="com.smartdev.user.dao" />
 	</beans>
