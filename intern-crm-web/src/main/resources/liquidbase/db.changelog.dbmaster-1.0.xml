@@ -84,5 +84,41 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
     <changeSet id="005" author="HaNguyen">
         <addPrimaryKey tableName="seller_detail" columnNames="user_name"></addPrimaryKey>
     </changeSet>
-
+	<changeSet id="006" author="NgocAnh">
+		<dropColumn tableName="user" columnName="role"></dropColumn>
+		<createTable tableName="user_role">
+			<column name="user_name" type="VARCHAR(20)"></column>
+			<column name="role_id" type="INT"></column>
+			<column name="id" type="int" autoIncrement="true">
+				<constraints nullable="false" primaryKey="true"></constraints>
+			</column>
+		</createTable>
+		<createTable tableName="role">
+			<column name="id" autoIncrement="true" type="int(1)">
+				<constraints nullable="false" primaryKey="true"></constraints>
+			</column>
+			<column name="name" type="Varchar(10)"></column>
+		</createTable>
+		<insert tableName="role">
+			<column name="name" value="MANAGER"></column>
+			<column name="name" value="SELLER"></column>
+		</insert>
+		<addForeignKeyConstraint baseTableName="user_role" baseColumnNames="user_name" constraintName="fk_userRole_user" referencedTableName="user"
+								 referencedColumnNames="user_name"></addForeignKeyConstraint>
+		<addForeignKeyConstraint baseTableName="user_role" baseColumnNames="role_id" constraintName="fk_userRole_role" referencedTableName="role"
+								 referencedColumnNames="id"></addForeignKeyConstraint>
+	</changeSet>
+	<changeSet id="007" author="AnhNgoc">
+		<delete tableName="role">
+			<where>id = 1</where>
+		</delete>
+	</changeSet>
+	<changeSet id="008" author="AnhNgoc">
+		<insert tableName="role">
+			<column name="name" value="MANAGER"></column>
+		</insert>
+		<insert tableName="role">
+			<column name="name" value="SELLER"></column>
+		</insert>
+	</changeSet>
 </databaseChangeLog>
