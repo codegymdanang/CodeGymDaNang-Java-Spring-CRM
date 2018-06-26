@@ -1,4 +1,4 @@
-package org.crm.services.service;
+package com.smartdev.crm.service;
 
 import com.smartdev.user.entity.SellerDetail;
 

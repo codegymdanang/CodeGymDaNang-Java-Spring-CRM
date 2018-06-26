@@ -1,5 +1,6 @@
-package org.crm.services.service;
+package com.smartdev.crm.service;
 
+import com.smartdev.crm.service.SellerDetailService;
 import com.smartdev.user.dao.repository.SellerDetailRepository;
 import com.smartdev.user.entity.SellerDetail;
 import org.springframework.beans.factory.annotation.Autowired;
