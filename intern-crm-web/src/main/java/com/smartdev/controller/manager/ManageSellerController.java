@@ -1,13 +1,11 @@
 package com.smartdev.controller.manager;
 
 import com.smartdev.user.entity.SellerDetail;
-import org.crm.services.service.SellerDetailService;
+import com.smartdev.crm.service.SellerDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
