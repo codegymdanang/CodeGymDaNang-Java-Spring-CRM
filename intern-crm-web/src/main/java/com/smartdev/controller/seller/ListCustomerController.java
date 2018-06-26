@@ -38,6 +38,7 @@ public class ListCustomerController {
         if(result.hasErrors()) {
             return "addcustomer";
         }
+        customerService.addCustomer(customer);
         return "redirect:/seller/list-custom";
     }
 }
