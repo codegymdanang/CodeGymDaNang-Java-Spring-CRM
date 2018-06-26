@@ -7,15 +7,17 @@ import java.util.List;
 import java.util.Set;
 
 @Entity
+@Table(name = "user")
 public class User {
-    private String userName;
-    private String passWord;
-    private Integer isDelete;
-    private Collection<Customer> customersByUserName;
-    private SellerDetail sellerDetailByUserName;
-
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_name")
+    private String userName;
+    @Column(name = "pass_word")
+    private String passWord;
+    @Column(name = "isDelete")
+    private Integer isDelete;
+
     public String getUserName() {
         return userName;
     }
@@ -24,8 +26,6 @@ public class User {
         this.userName = userName;
     }
 
-    @Basic
-    @Column(name = "pass_word")
     public String getPassWord() {
         return passWord;
     }
@@ -34,8 +34,6 @@ public class User {
         this.passWord = passWord;
     }
 
-    @Basic
-    @Column(name = "isDelete")
     public Integer getIsDelete() {
         return isDelete;
     }
@@ -45,6 +43,8 @@ public class User {
     }
 
     @OneToMany(mappedBy = "userBySeller")
+    private Collection<Customer> customersByUserName;
+
     public Collection<Customer> getCustomersByUserName() {
         return customersByUserName;
     }
@@ -54,6 +54,8 @@ public class User {
     }
 
     @OneToOne(mappedBy = "userByUserName")
+    private SellerDetail sellerDetailByUserName;
+
     public SellerDetail getSellerDetailByUserName() {
         return sellerDetailByUserName;
     }
@@ -66,13 +68,13 @@ public class User {
     @JoinTable(name="user_role",
             joinColumns = @JoinColumn(name = "user_name"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
-    private Set<Role> roles;
+    private Collection<Role> roles;
 
-    public Set<Role> getRoles() {
+    public Collection<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Collection<Role> roles) {
         this.roles = roles;
     }
 

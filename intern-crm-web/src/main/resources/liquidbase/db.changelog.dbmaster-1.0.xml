@@ -143,4 +143,7 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 	<changeSet id="009" author="HaNguyen">
 		<addDefaultValue tableName="user" columnName="isDelete" defaultValue="0"></addDefaultValue>
 	</changeSet>
+    <changeSet id="010" author="HaNguyen">
+        <dropColumn tableName="user_role" columnName="id"></dropColumn>
+    </changeSet>
 </databaseChangeLog>
