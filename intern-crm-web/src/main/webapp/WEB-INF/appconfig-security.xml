@@ -10,8 +10,10 @@
     <http auto-config="true">
         <intercept-url pattern="/manager/**" access="hasRole('MANAGER')"/>
         <intercept-url pattern="/seller/**" access="hasRole('SELLER')"/>
-        <form-login login-page="/login" authentication-failure-url="/loginErr" username-parameter="username" password-parameter="password"/>
-        <logout logout-success-url="/" />
+        <form-login login-page="/login" authentication-failure-url="/login?error=true"
+                    authentication-success-handler-ref="myAuthenticationSuccessHandler"
+                    username-parameter="username" password-parameter="password"/>
+        <logout logout-success-url="/login" />
     </http>
 
     <authentication-manager alias="authenticationManager">
@@ -26,4 +28,5 @@
                 class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder">
         <beans:constructor-arg name="strength" value="11"/>
     </beans:bean>
+    <beans:bean id="myAuthenticationSuccessHandler" class="com.smartdev.crm.service.secure.CrmAuthenticationSuccessHandler"/>
 </beans:beans>
