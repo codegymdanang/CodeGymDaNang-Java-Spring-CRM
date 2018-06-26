@@ -1,4 +1,7 @@
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+
 <div>
+
     <!-- Body Seller Manager -->
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">Seller Manager</h2>
@@ -67,55 +70,28 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <th>ID</th>
+                <%--<th>Username</th>--%>
                 <th>Name</th>
-                <th>Phone</th>
+                <th>Age</th>
                 <th>Email</th>
-                <th>Address</th>
+                <th>Phone</th>
                 <th></th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <th>1</th>
-                <td>Mark</td>
-                <td>0993113105</td>
-                <td>email@domain</td>
-                <td>102 Main street city</td>
-                <td>
-                    <button class="btn btn-info">EDIT</button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">DELETE</button>
-                </td>
-            </tr>
-            <tr>
-                <th>2</th>
-                <td>John</td>
-                <td>0912333999</td>
-                <td>email@domain</td>
-                <td>102 Main street city</td>
-                <td>
-                    <button class="btn btn-info">EDIT</button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">DELETE</button>
-                </td>
-            </tr>
-            <tr>
-                <th>3</th>
-                <td>Clare</td>
-                <td>0993123456</td>
-                <td>email@domain</td>
-                <td>102 Main street city</td>
-                <td>
-                    <button class="btn btn-info">EDIT</button>
-                </td>
-                <td>
-                    <button class="btn btn-danger">DELETE</button>
-                </td>
-            </tr>
+            <c:forEach items="${sellerDetails}" var="sellerDetail">
+                <tr>
+                <td>${sellerDetail.userName}</td>
+                <td>${sellerDetail.name}</td>
+                <td>${sellerDetail.age}</td>
+                <td>${sellerDetail.mail}</td>
+                <td>${sellerDetail.phone}</td>
+                <td> <button class="btn btn-info">EDIT</button></td>
+                <td><button class="btn btn-danger">DELETE</button></td>
+                </tr>
+            </c:forEach>
+
             </tbody>
         </table>
 
