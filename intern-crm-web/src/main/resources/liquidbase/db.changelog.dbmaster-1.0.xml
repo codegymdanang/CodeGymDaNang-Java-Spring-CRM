@@ -123,7 +123,21 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 	</changeSet>
 	<changeSet id="008" author="HaNguyen">
 		<insert tableName="status">
-			<column name=""></column>
+			<column name="name" value="Prospect"></column>
 		</insert>
+		<insert tableName="status">
+			<column name="name" value="Lead"></column>
+		</insert>
+		<insert tableName="status">
+			<column name="name" value="Potential"></column>
+		</insert>
+		<insert tableName="status">
+			<column name="name" value="Active"></column>
+		</insert>
+		<insert tableName="status">
+			<column name="name" value="Block"></column>
+		</insert>
+		<addDefaultValue tableName="history_advisory" columnName="status_id" defaultValue="1"></addDefaultValue>
+		<addDefaultValue tableName="customer" columnName="status_id" defaultValue="1"></addDefaultValue>
 	</changeSet>
 </databaseChangeLog>
