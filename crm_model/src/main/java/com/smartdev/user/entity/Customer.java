@@ -1,17 +1,31 @@
 package com.smartdev.user.entity;
 
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity
 public class Customer {
     private Integer id;
+    @NotEmpty(message = "Name is required")
     private String name;
+    @NotNull(message = "Age is required")
+    @Min(18) @Max(100)
     private Integer age;
     private Integer phone;
+    @Email
+    @NotEmpty(message = "Email is required")
     private String mail;
+    @NotEmpty(message = "Facebook is required")
     private String facebook;
+    @NotNull(message = "Product type is required")
     private Integer productType;
+    @NotEmpty(message = "Company is required")
     private String company;
     private Integer isDelete;
     private Status statusByStatusId;
@@ -20,6 +34,7 @@ public class Customer {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }
