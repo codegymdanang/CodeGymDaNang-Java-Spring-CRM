@@ -48,4 +48,7 @@
     <definition name="addcustomer" extends="definition-seller">
         <put-attribute name="body" value="/view/addcustomer.jsp"/>
     </definition>
+    <definition name="advisory" extends="definition-seller">
+        <put-attribute name="body" value="/view/advisory.jsp"/>
+    </definition>
 </tiles-definitions>

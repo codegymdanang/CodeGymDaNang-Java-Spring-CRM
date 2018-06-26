@@ -32,6 +32,11 @@ public class ListCustomerController {
         return "list-custom";
     }
 
+    @RequestMapping(value = "advisory", method = RequestMethod.GET)
+    public String advisory(){
+        return "advisory";
+    }
+
     @RequestMapping(value = "/addcustomer",method = RequestMethod.GET)
     public ModelAndView addCustomer(){
         ModelAndView modelAndView = new ModelAndView("addcustomer");
