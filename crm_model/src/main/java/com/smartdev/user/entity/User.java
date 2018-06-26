@@ -7,10 +7,10 @@ import java.util.Collection;
 public class User {
     private String userName;
     private String passWord;
-    private Integer role;
     private Integer isDelete;
     private Collection<Customer> customersByUserName;
     private SellerDetail sellerDetailByUserName;
+    private Collection<UserRole> userRolesByUserName;
 
     @Id
     @Column(name = "user_name")
@@ -33,16 +33,6 @@ public class User {
     }
 
     @Basic
-    @Column(name = "role")
-    public Integer getRole() {
-        return role;
-    }
-
-    public void setRole(Integer role) {
-        this.role = role;
-    }
-
-    @Basic
     @Column(name = "isDelete")
     public Integer getIsDelete() {
         return isDelete;
@@ -61,7 +51,6 @@ public class User {
 
         if (userName != null ? !userName.equals(user.userName) : user.userName != null) return false;
         if (passWord != null ? !passWord.equals(user.passWord) : user.passWord != null) return false;
-        if (role != null ? !role.equals(user.role) : user.role != null) return false;
         if (isDelete != null ? !isDelete.equals(user.isDelete) : user.isDelete != null) return false;
 
         return true;
@@ -71,7 +60,6 @@ public class User {
     public int hashCode() {
         int result = userName != null ? userName.hashCode() : 0;
         result = 31 * result + (passWord != null ? passWord.hashCode() : 0);
-        result = 31 * result + (role != null ? role.hashCode() : 0);
         result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
         return result;
     }
@@ -92,5 +80,14 @@ public class User {
 
     public void setSellerDetailByUserName(SellerDetail sellerDetailByUserName) {
         this.sellerDetailByUserName = sellerDetailByUserName;
+    }
+
+    @OneToMany(mappedBy = "userByUserName")
+    public Collection<UserRole> getUserRolesByUserName() {
+        return userRolesByUserName;
+    }
+
+    public void setUserRolesByUserName(Collection<UserRole> userRolesByUserName) {
+        this.userRolesByUserName = userRolesByUserName;
     }
 }
