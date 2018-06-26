@@ -140,4 +140,7 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 		<addDefaultValue tableName="history_advisory" columnName="status_id" defaultValue="1"></addDefaultValue>
 		<addDefaultValue tableName="customer" columnName="status_id" defaultValue="1"></addDefaultValue>
 	</changeSet>
+	<changeSet id="009" author="HaNguyen">
+		<addDefaultValue tableName="user" columnName="isDelete" defaultValue="0"></addDefaultValue>
+	</changeSet>
 </databaseChangeLog>
