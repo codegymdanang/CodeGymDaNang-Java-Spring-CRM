@@ -1,7 +1,7 @@
 package com.smartdev.controller.manager;
 
 import com.smartdev.user.entity.Customer;
-import org.crm.services.service.ListCustomManageService;
+import com.smartdev.crm.service.ListCustomManageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
