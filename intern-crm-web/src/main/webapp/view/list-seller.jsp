@@ -1,4 +1,5 @@
 <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 
 <div>
 
@@ -56,8 +57,8 @@
 
     <!-- Add and Search -->
     <div class="parent">
-        <button class="btn btn-success mx-5 my-3 " data-toggle="modal" data-target="#createAccountModal">
-            <i class="fa fa-plus-circle"></i> Create Seller</button>
+        <a class="btn btn-success mx-5 my-3 " href="/manager_crm/create-seller-form">
+            <i class="fa fa-plus-circle"></i> Create Seller</a>
 
         <form class="form-inline d-inline form-search mx-5 my-3 float-right ">
             <input class="form-control" type="text" placeholder="Search">
@@ -70,7 +71,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
-                <%--<th>Username</th>--%>
+                <th>Username</th>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Email</th>
@@ -99,70 +100,5 @@
 
 
 
-    <!-- Create Account Modal -->
-    <div class="modal fade" id="createAccountModal" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Create Account</h5>
-                    <button type="button" class="close" data-dismiss="modal">
-                        <span>&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form action="" class="form-group">
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-user"></i>
-                                            </span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-lock"></i>
-                                            </span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="Password">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-lock"></i>
-                                            </span>
-                            </div>
-                            <input type="password" class="form-control" placeholder="Confirm Password">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-phone"></i>
-                                            </span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Phone number">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-envelope "></i>
-                                            </span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Email">
-                        </div>
-                        <div class="input-group mb-3">
-                            <div class="input-group-prepend">
-                                            <span class="input-group-text">
-                                                <i class="fa fa-home"></i>
-                                            </span>
-                            </div>
-                            <input type="text" class="form-control" placeholder="Address">
-                        </div>
-                        <input type="submit" class="btn btn-primary btn-block" value="Confirm">
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
+
 </div>
