@@ -1,6 +1,6 @@
 package com.smartdev.controller.manager;
 
-import com.smartdev.crm.service.UserService;
+import com.smartdev.crm.service.user.UserService;
 import com.smartdev.user.entity.SellerDetail;
 import com.smartdev.crm.service.SellerDetailService;
 import com.smartdev.user.entity.User;
@@ -10,7 +10,6 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.util.List;
@@ -48,7 +47,7 @@ public class ManageSellerController {
             return "create-seller";
         }
 //            System.out.println(user.getUserName()+user.getPassWord());
-        userService.save(user);
+        userService.save(user,"SELLER");
         return "redirect:/manager_crm/list-seller";
     }
 
