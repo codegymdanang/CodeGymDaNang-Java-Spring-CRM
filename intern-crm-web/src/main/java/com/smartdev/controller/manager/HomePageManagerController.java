@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomePageManagerController {
 	@RequestMapping(value = "/home")
 	public String homeManager() {
-		return "home-manager";
+		return "manager-home";
 	}
 
 

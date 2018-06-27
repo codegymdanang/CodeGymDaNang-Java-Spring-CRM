@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-         pageEncoding="ISO-8859-1" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -29,17 +30,18 @@
     </div>
     <div class="card-body">
 
-        <form>
+        <form novalidate="novalidate" id="loginForm" role="form"
+              action="login" method="post" autocomplete="off">
             <div class="form-group">
-
-                <input type="email" class="form-control" id="username" placeholder="Username">
-
+                <input type="text" class="form-control" id="username" name="username" placeholder="Username">
             </div>
             <div class="form-group">
-                <input type="password" class="form-control" id="password" placeholder="Password">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Password">
             </div>
+            <input type="hidden" name="${_csrf.parameterName}"
+                    value="${_csrf.token}" />
 
-            <a class="btn btn-primary btn-block" href="/manager_crm/home">ENTER</a>
+            <button class="btn btn-primary btn-block" type="submit" name="submit">ENTER</button>
         </form>
     </div>
 </div>
