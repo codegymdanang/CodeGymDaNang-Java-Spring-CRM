@@ -11,34 +11,35 @@
 <head>
     <title>Manager Home</title>
     <link rel="stylesheet" href="/resource/css/manager-home.css">
+    <script src="/resource/scripts/home-manager.js" type="text/javascript"></script>
 </head>
-<body>
+<body onload="getData()">
 <div class="container">
 
     <div class="form-inline">
         <div class="form-group">
-            <label for="sel1">Year: </label>
-            <select class="form-control" id="sel1">
+            <label for="year">Year: </label>
+            <select class="form-control" id="year" onchange="getData()">
                 <c:forEach items="${years}" var="year">
                     <option value="${year}">${year}</>
                 </c:forEach>
             </select>
         </div>
         <div class="form-group">
-            <label for="sel1">Month: </label>
-            <select class="form-control" id="sel2">
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>6</option>
-                <option>7</option>
-                <option>8</option>
-                <option>9</option>
-                <option>10</option>
-                <option>11</option>
-                <option>12</option>
+            <label for="month">Month: </label>
+            <select class="form-control" id="month" onchange="getData()">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+                <option value="11">11</option>
+                <option value="12">12</option>
             </select>
         </div>
     </div>
@@ -48,7 +49,7 @@
         <div class="col-md-6">
             <div class="square-service-block">
                 <a href="#">
-                    <h1 class="ssb-title">10</h1>
+                    <h1 id="prospect" class="ssb-title">10</h1>
                     <h2 class="ssb-title">Prospect</h2>
                 </a>
             </div>
@@ -57,7 +58,7 @@
         <div class="col-md-6">
             <div class="square-service-block">
                 <a href="#">
-                    <h1 class="ssb-title">30</h1>
+                    <h1 id="lead" class="ssb-title">30</h1>
                     <h2 class="ssb-title">Lead</h2>
                 </a>
             </div>
@@ -68,7 +69,7 @@
         <div class="col-md-6">
             <div class="square-service-block">
                 <a href="#">
-                    <h1 class="ssb-title">20</h1>
+                    <h1 id="potential-lead" class="ssb-title">20</h1>
                     <h2 class="ssb-title">Potential Lead</h2>
                 </a>
             </div>
@@ -77,7 +78,7 @@
         <div class="col-md-6">
             <div class="square-service-block">
                 <a href="#">
-                    <h1 class="ssb-title">11</h1>
+                    <h1 id="active-lead" class="ssb-title">11</h1>
                     <h2 class="ssb-title">Active Lead</h2>
                 </a>
             </div>
@@ -89,4 +90,6 @@
     </div>
 </div>
 </body>
+
+
 </html>
