@@ -146,4 +146,49 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
     <changeSet id="010" author="HaNguyen">
         <dropColumn tableName="user_role" columnName="id"></dropColumn>
     </changeSet>
+	<changeSet id="011" author="HaNguyen">
+		<insert tableName="user">
+			<column name="user_name" value="admin"></column>
+			<column name="pass_word" value="admin"></column>
+		</insert>
+		<insert tableName="user_role">
+			<column name="user_name" value="admin"></column>
+			<column name="role_id" value="2"></column>
+		</insert>
+	</changeSet>
+	<changeSet id="012" author="HaNguyen">
+		<modifyDataType tableName="user" columnName="pass_word" newDataType="varchar(255)"></modifyDataType>
+	</changeSet>
+	<changeSet id="013" author="HaNguyen">
+		<delete tableName="user_role">
+			<where> role_id >1</where>
+		</delete>
+		<delete tableName="role" >
+			<where>id > 1</where>
+		</delete>
+		<insert tableName="role">
+			<column name="name" value="ROLE_MANAGER"></column>
+		</insert>
+		<insert tableName="role">
+			<column name="name" value="ROLE_SELLER"></column>
+		</insert>
+	</changeSet>
+	<changeSet id="014" author="HaNguyen">
+		<insert tableName="user">
+			<column name="user_name" value="admin3"></column>
+			<column name="pass_word" value="$2a$11$eJ10n/209e81j4REKS5zwOuac47fNF7B2M4fK/6oJJ06txvUDUUNG"></column>
+		</insert>
+		<insert tableName="user">
+			<column name="user_name" value="seller1"></column>
+			<column name="pass_word" value="$2a$11$b.R4OGRZ2WCqTqQqkx9qhe92UeZ64/7qYGvOtZ2a5lUfu8W32Vt2m"></column>
+		</insert>
+		<insert tableName="user_role">
+			<column name="user_name" value="admin3"></column>
+			<column name="role_id" value="4"></column>
+		</insert>
+		<insert tableName="user_role">
+			<column name="user_name" value="seller1"></column>
+			<column name="role_id" value="5"></column>
+		</insert>
+	</changeSet>
 </databaseChangeLog>

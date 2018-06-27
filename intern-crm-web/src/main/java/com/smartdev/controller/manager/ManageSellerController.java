@@ -27,9 +27,7 @@ public class ManageSellerController {
     @RequestMapping(value="/list-seller")
     public String listSeller(Model model) {
         List<SellerDetail> sellerDetails = sellerDetailService.getAllSellerDetail();
-
         model.addAttribute("sellerDetails",sellerDetails);
-
         return "list-seller";
     }
     @RequestMapping(value = "/create-seller-form")

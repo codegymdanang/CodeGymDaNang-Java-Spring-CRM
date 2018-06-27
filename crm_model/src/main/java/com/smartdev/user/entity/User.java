@@ -26,6 +26,15 @@ public class User {
     @Column(name = "isDelete")
     private Integer isDelete;
 
+    public User(){
+
+    }
+    public User(String userName, String passWord, Integer isDelete){
+        this.userName = userName;
+        this.passWord = passWord;
+        this.isDelete = isDelete;
+    }
+
     public String getUserName() {
         return userName;
     }
@@ -61,7 +70,7 @@ public class User {
         this.customersByUserName = customersByUserName;
     }
 
-    @OneToOne(mappedBy = "userByUserName")
+    @OneToOne(mappedBy = "userByUserName", fetch = FetchType.EAGER)
     private SellerDetail sellerDetailByUserName;
 
     public SellerDetail getSellerDetailByUserName() {
@@ -72,7 +81,7 @@ public class User {
         this.sellerDetailByUserName = sellerDetailByUserName;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="user_role",
             joinColumns = @JoinColumn(name = "user_name"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
