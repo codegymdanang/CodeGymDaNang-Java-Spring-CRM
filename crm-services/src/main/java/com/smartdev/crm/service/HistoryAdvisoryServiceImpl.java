@@ -1,10 +1,23 @@
 package com.smartdev.crm.service;
 
+import com.smartdev.user.dao.repository.HistoryAdvisoryRepository;
+import com.smartdev.user.entity.Customer;
+import com.smartdev.user.entity.HistoryAdvisory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
+    @Autowired
+    HistoryAdvisoryRepository historyAdvisoryRepository;
 
+    @Override
+    public List<HistoryAdvisory> getHistoryAdvisoriesByCustomer(Customer customer) {
+        return historyAdvisoryRepository.findByCustomerByCustomerId(customer);
+    }
 //    public static final String PROSPECT = "prospect";
 //    public static final String LEAD = "lead";
 //    public static final String POTENTIAL_LEAD = "potential lead";
@@ -42,4 +55,5 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
 //        }
 //        return statusCount;
 //    }
+
 }

@@ -179,7 +179,7 @@ public class Customer {
     }
 
     @OneToMany(mappedBy = "customerByCustomerId")
-    public Collection<HistoryAdvisory> getHistoryAdvisoriesById() {
+    public Collection<HistoryAdvisory> getHistoryAdvisoriesById(Integer id) {
         return historyAdvisoriesById;
     }
 

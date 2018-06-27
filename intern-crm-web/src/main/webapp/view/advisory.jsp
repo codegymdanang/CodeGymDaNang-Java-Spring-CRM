@@ -1,4 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <html>
 <head>
     <title>Advisory customer</title>
@@ -18,7 +22,7 @@
     </style>
 </head>
 <body>
-<h2 align="center"> ADVISORY CUSTOMER A </h2>
+<h2 align="center"> ADVISORY CUSTOMER ${getItemCustomer.name} </h2>
 <hr/>
 <table width="1000px" align="center">
     <tr>
@@ -28,56 +32,64 @@
     <tr class="table-active">
         <td>
             <p>
-                <span>Name: </span> le nguyen thanh tuyen
+                <span>Name: </span> ${getItemCustomer.name}
             </p>
         </td>
         <td rowspan="9">
             <div>
-                <p>
-                    <span>01/07/2018: </span> prospect - Some example text that's free-flowing within the dropdown menu.
-                </p>
+                    <c:forEach var="c" items="${historyAdvisories}">
+                        <p><span>${c.date} </span> ${c.comment} </p>
+                    </c:forEach>
             </div>
         </td>
     </tr>
     <tr class="table-primary">
         <td>
             <p>
-                <span>Facebook: </span> con chó
+                <span>Facebook: </span> ${getItemCustomer.facebook}
             </p>
         </td>
     </tr>
     <tr class="table-danger">
         <td>
             <p>
-                <span>Age: </span> 25/01/1997
+                <span>Age: </span> ${getItemCustomer.age}
             </p>
         </td>
     </tr>
     <tr class="table-success">
         <td>
             <p>
-                <span>Company: </span> smartdev
+                <span>Company: </span> ${getItemCustomer.company}
             </p>
         </td>
     </tr>
     <tr class="table-danger">
         <td>
             <p>
-                <span>Mail: </span> Lenguyenthanhtuyen97@gmail.com
+                <span>Mail: </span> ${getItemCustomer.mail}
             </p>
         </td>
     </tr>
     <tr class="table-warning">
         <td>
             <p>
-                <span>Phone: </span> 012264552598
+                <span>Phone: </span> 0${getItemCustomer.phone}
             </p>
         </td>
     </tr>
     <tr class="table-success">
         <td>
             <p>
-                <span>Product attending: </span> outsouting
+                <c:choose>
+                    <c:when test="${getItemCustomer.productType=='1'}">
+                        <span>Product attending: </span> outsouting
+                    </c:when>
+                    <c:otherwise>
+                        <span>Product attending: </span> odc
+                    </c:otherwise>
+                </c:choose>
+
             </p>
         </td>
     </tr>
@@ -95,7 +107,7 @@
                 <th>Comment</th>
             </tr>
             <tr>
-                <td><span style="color: blue">26/6/2018</span</td>
+                <td><span style="color: blue">26/6/2018</span></td>
                 <td>
                     <select class="custom-select" id="inputGroupSelect01">
                         <option selected>Choose...</option>

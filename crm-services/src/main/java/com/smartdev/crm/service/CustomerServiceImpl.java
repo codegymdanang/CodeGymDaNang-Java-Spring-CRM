@@ -24,4 +24,8 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setIsDelete(0);
         saveCustomer(customer);
     }
+    @Override
+    public Customer afindOneid(Integer id){
+        return customerRepository.findOne(id);
+    }
 }
