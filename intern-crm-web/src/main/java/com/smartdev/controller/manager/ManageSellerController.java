@@ -47,7 +47,7 @@ public class ManageSellerController {
             return "create-seller";
         }
 //            System.out.println(user.getUserName()+user.getPassWord());
-        userService.save(user,"SELLER");
+        userService.save(user,"ROLE_SELLER");
         return "redirect:/manager_crm/list-seller";
     }
 
