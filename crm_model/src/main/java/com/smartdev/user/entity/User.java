@@ -1,6 +1,10 @@
 package com.smartdev.user.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,10 +14,14 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_name")
+    @NotBlank(message = "Please fill out field")
+    @Size(min = 6, message = "must more than 6 chars ")
     private String userName;
+
     @Column(name = "pass_word")
+    @NotBlank(message = "Please fill out field")
+    @Size(min =6, max = 14,message = "must more than 6 chars and less than 14 chars")
     private String passWord;
     @Column(name = "isDelete")
     private Integer isDelete;
