@@ -22,9 +22,7 @@ public class ManageSellerController {
         for (SellerDetail sellerDetail :sellerDetails) {
             System.out.println(sellerDetail.toString());
         }
-
         model.addAttribute("sellerDetails",sellerDetails);
-
         return "list-seller";
     }
 

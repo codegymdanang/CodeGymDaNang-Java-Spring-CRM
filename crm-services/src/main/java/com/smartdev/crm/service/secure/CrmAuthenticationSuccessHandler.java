@@ -22,19 +22,12 @@ public class CrmAuthenticationSuccessHandler implements AuthenticationSuccessHan
     public void onAuthenticationSuccess(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse,
                                         Authentication authentication) throws IOException, ServletException {
         handle(httpServletRequest, httpServletResponse, authentication);
-        clearAuthenticationAttributes(httpServletRequest);
     }
 
     protected void handle(HttpServletRequest request,
                           HttpServletResponse response, Authentication authentication)
             throws IOException {
         String targetUrl = determineTargetUrl(authentication);
-        if (response.isCommitted()) {
-//            logger.debug(
-//                    "Response has already been committed. Unable to redirect to "
-//                            + targetUrl);
-            return;
-        }
         redirectStrategy.sendRedirect(request, response, targetUrl);
     }
 
@@ -44,10 +37,10 @@ public class CrmAuthenticationSuccessHandler implements AuthenticationSuccessHan
         Collection<? extends GrantedAuthority> authorities
                 = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
-            if (grantedAuthority.getAuthority().equals("SELLER")) {
+            if (grantedAuthority.getAuthority().equals("ROLE_SELLER")) {
                 isSeller = true;
                 break;
-            } else if (grantedAuthority.getAuthority().equals("MANAGER")) {
+            } else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
                 isManager = true;
                 break;
             }
@@ -55,7 +48,7 @@ public class CrmAuthenticationSuccessHandler implements AuthenticationSuccessHan
         if (isSeller) {
             return "/seller/list-custom-seller";
         } else if (isManager) {
-            return "/manager/home";
+            return "/manager_crm/home";
         } else {
             throw new IllegalStateException();
         }
@@ -67,13 +60,5 @@ public class CrmAuthenticationSuccessHandler implements AuthenticationSuccessHan
             return;
         }
         session.removeAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-    }
-
-    public void setRedirectStrategy(RedirectStrategy redirectStrategy) {
-        this.redirectStrategy = redirectStrategy;
-    }
-
-    protected RedirectStrategy getRedirectStrategy() {
-        return redirectStrategy;
     }
 }
