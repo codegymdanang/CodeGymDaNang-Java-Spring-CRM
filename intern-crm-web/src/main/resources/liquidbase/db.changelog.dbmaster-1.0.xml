@@ -166,6 +166,7 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 		<delete tableName="role" >
 			<where>id > 1</where>
 		</delete>
+		<modifyDataType tableName="role" columnName="name" newDataType="varchar(25)"></modifyDataType>
 		<insert tableName="role">
 			<column name="name" value="ROLE_MANAGER"></column>
 		</insert>
