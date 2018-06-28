@@ -1,6 +1,10 @@
 package com.smartdev.user.entity;
 
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
+import javax.validation.Valid;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -10,13 +14,26 @@ import java.util.Set;
 @Table(name = "user")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_name")
+    @NotBlank(message = "Please fill out field")
+    @Size(min = 6, message = "must more than 6 chars ")
     private String userName;
+
     @Column(name = "pass_word")
+    @NotBlank(message = "Please fill out field")
+    @Size(min =6, max = 14,message = "must more than 6 chars and less than 14 chars")
     private String passWord;
     @Column(name = "isDelete")
     private Integer isDelete;
+
+    public User(){
+
+    }
+    public User(String userName, String passWord, Integer isDelete){
+        this.userName = userName;
+        this.passWord = passWord;
+        this.isDelete = isDelete;
+    }
 
     public String getUserName() {
         return userName;
@@ -53,7 +70,7 @@ public class User {
         this.customersByUserName = customersByUserName;
     }
 
-    @OneToOne(mappedBy = "userByUserName")
+    @OneToOne(mappedBy = "userByUserName", fetch = FetchType.EAGER)
     private SellerDetail sellerDetailByUserName;
 
     public SellerDetail getSellerDetailByUserName() {
@@ -64,7 +81,7 @@ public class User {
         this.sellerDetailByUserName = sellerDetailByUserName;
     }
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name="user_role",
             joinColumns = @JoinColumn(name = "user_name"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
