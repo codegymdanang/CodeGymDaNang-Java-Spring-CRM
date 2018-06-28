@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Service
@@ -52,5 +53,15 @@ public class UserServiceImpl implements UserService {
         sellerDetail.setUserName(user.getUserName());
         userRepository.save(user);
         sellerDetailRepository.save(sellerDetail);
+    }
+
+    @Override
+    public User findByUsername(String username) {
+        List<User> users = userRepository.findAll();
+        for (User user : users) {
+            if(user.getUserName().equals(username))
+                return user;
+        }
+        return null;
     }
 }
