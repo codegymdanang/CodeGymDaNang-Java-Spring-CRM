@@ -36,9 +36,6 @@ public class ListCustomerController {
     HistoryAdvisoryService historyAdvisoryService;
 
     @Autowired
-    HistoryAdvisoryService historyAdvisoryService;
-
-    @Autowired
     StatusService statusService;
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
@@ -73,7 +70,7 @@ public class ListCustomerController {
     }
 
     @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.POST)
-    public String saveHistoryAdvisory(@ModelAttribute("history") HistoryTest historyTest){
+    public String saveHistoryAdvisory(@ModelAttribute("history") HistoryTest historyTest) {
         //create new HistoryAdvisory
         HistoryAdvisory historyAdvisory = new HistoryAdvisory();
 
@@ -100,6 +97,7 @@ public class ListCustomerController {
         //save status customer
         customerService.saveCustomer(customer);
         return "redirect:/seller/list-custom";
+    }
     @RequestMapping(value = "/advisory/{id}", method = RequestMethod.GET)
     public ModelAndView advisory(@PathVariable(value = "id") Integer id){
         Customer customer = customerService.afindOneid(id);

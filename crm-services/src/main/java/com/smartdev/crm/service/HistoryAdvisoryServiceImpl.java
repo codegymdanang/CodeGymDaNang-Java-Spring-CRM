@@ -24,6 +24,7 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
     @Override
     public HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory) {
         return historyAdvisoryRepository.save(theHistoryAdvisory);
+    }
   
     @Override
     public List<HistoryAdvisory> getHistoryAdvisoriesByCustomer(Customer customer) {
