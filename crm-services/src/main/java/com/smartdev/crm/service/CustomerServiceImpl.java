@@ -24,4 +24,11 @@ public class CustomerServiceImpl implements CustomerService {
         customer.setIsDelete(0);
         saveCustomer(customer);
     }
+
+    @Override
+    public Customer getCustomerById(Integer theId) {
+        return customerRepository.findOne(theId);
+    }
+
+
 }
