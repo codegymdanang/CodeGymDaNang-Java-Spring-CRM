@@ -21,7 +21,7 @@ public class User {
 
     @Column(name = "pass_word")
     @NotBlank(message = "Please fill out field")
-    @Size(min =6, max = 14,message = "must more than 6 chars and less than 14 chars")
+    @Size(min =6,message = "must more than 6 chars")
     private String passWord;
     @Column(name = "isDelete")
     private Integer isDelete;
