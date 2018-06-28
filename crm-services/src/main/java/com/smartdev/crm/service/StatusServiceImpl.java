@@ -13,11 +13,24 @@ public class StatusServiceImpl implements StatusService {
 
     @Override
     public List<Status> getAll() {
+      return statusRepository.findAll();
+    }
+    @Override
+    public List<Status> findAll() {
         return statusRepository.findAll();
     }
 
     @Override
     public Status findById(Integer id) {
         return statusRepository.findOne(id);
+    }
+    @Override
+    public Status findByName(String name) {
+        List<Status> statuses = findAll();
+        for (Status status : statuses) {
+            if(status.getName().equals(name))
+                return status;
+        }
+        return null;
     }
 }

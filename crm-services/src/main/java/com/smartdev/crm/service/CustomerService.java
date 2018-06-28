@@ -7,4 +7,5 @@ public interface CustomerService {
     void saveCustomer(Customer customer);
     void addCustomer(Customer customer);
     Customer getCustomerById(Integer theId);
+    Customer afindOneid(Integer id);
 }

@@ -7,11 +7,16 @@ import com.smartdev.user.model.StatusCount;
 import java.util.List;
 
 public interface HistoryAdvisoryService {
+
     List<HistoryAdvisory> findByCustomerByCustomerId(Customer customer);
 
     HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory);
-//    List<HistoryAdvisory> findAll();
-//
-//    StatusCount getNumberOfEachStatus();
 
+    public  List<HistoryAdvisory> getHistoryAdvisoriesByCustomer(Customer customer);
+  
+    List<HistoryAdvisory> findAll();
+
+    List<Integer> getYearOfHistoryAdvisory();
+
+    StatusCount getNumberOfEachStatusByYearAndMonth(int year, int month);
 }

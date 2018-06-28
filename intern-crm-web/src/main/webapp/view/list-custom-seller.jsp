@@ -1,3 +1,4 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <div>
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
@@ -49,7 +50,7 @@
             </thead>
             <tbody>
             <tr>
-                <td>John</td>
+                <td><a href="/seller/advisory/2">con chó</a></td>
                 <td>Gia Lai</td>
                 <td>123456</td>
                 <td>

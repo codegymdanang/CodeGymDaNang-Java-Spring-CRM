@@ -17,6 +17,10 @@
     <definition name="list-seller" extends="definition-manager">
         <put-attribute name="body" value="/view/list-seller.jsp"/>
     </definition>
+    <definition name="create-seller" extends="definition-manager">
+        <put-attribute name="body" value="/view/create-seller.jsp"/>
+    </definition>
+
     <definition name="login" template="/view/login.jsp">
     </definition>
 

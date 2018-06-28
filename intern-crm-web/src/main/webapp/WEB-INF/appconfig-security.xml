@@ -7,13 +7,13 @@
 		http://www.springframework.org/schema/security
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
-    <http auto-config="true">
-        <intercept-url pattern="/manager/**" access="hasRole('MANAGER')"/>
-        <intercept-url pattern="/seller/**" access="hasRole('SELLER')"/>
-        <form-login login-page="/login" authentication-failure-url="/login?error=true"
+    <http auto-config="false">
+        <intercept-url pattern="/manager_crm/**" access="hasRole('ROLE_MANAGER')"/>
+        <intercept-url pattern="/seller/**" access="hasRole('ROLE_SELLER')"/>
+        <form-login login-page="/" authentication-failure-url="/?error=true"
                     authentication-success-handler-ref="myAuthenticationSuccessHandler"
                     username-parameter="username" password-parameter="password"/>
-        <logout logout-success-url="/login" />
+        <logout logout-success-url="/" delete-cookies="JSESSIONID" />
     </http>
 
     <authentication-manager alias="authenticationManager">
