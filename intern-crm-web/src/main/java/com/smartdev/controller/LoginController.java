@@ -30,4 +30,8 @@ public class LoginController {
             model.addAttribute("message", "You have been logged out successfully.");
         return "login";
     }
+    @RequestMapping(value="/logout", method = RequestMethod.GET)
+    public String logout(){
+        return "login";
+    }
 }
