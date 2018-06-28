@@ -6,6 +6,7 @@
       To change this template use File | Settings | File Templates.
     --%>
         <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+            <%@ taglib uri = "http://java.sun.com/jsp/jstl/core" prefix = "c" %>
 
         <header class="bg-main p-2 header ">
                 <div class="mx-5 d-flex justify-content-between">
@@ -15,13 +16,14 @@
                         <div class="h-tilte">
                                 <p class=" h1 font-weight-light font-italic text-uppercase text-white p-0">CRM system </p>
                         </div>
+                            <form id="logoutForm" method="POST" action="../logout">
+                                    <input type="hidden" name="${_csrf.parameterName}"
+                                    value="${_csrf.token}" />
+                            </form>
                         <div class="account d-flex align-items-center ">
                                 <a href="#" class="btn p-0">
                                 <i class="fa fa-user-circle text-warning fa-2x"></i>
-                                </a>
-                                <a href="/" class="logout" style="margin-left: 1em;">
-                                        <span class="btn btn-warning">Logout</span>
-                                </a>
+                                <a onclick="document.forms['logoutForm'].submit()" class="btn btn-warning">Logout</a>
                         </div>
                 </div>
         </header>
