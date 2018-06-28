@@ -45,6 +45,10 @@ public class CustomerServiceImpl implements CustomerService {
         saveCustomer(customer);
     }
     @Override
+    public Customer getCustomerById(Integer theId) {
+        return customerRepository.findOne(theId);
+    }
+    @Override
     public Customer afindOneid(Integer id){
         return customerRepository.findOne(id);
     }

@@ -37,10 +37,14 @@
                 <th>Status</th>
                 <th>Product</th>
                 <th>Company</th>
+                <th></th>
             </tr>
             </thead>
-            <tbody>
             <c:forEach var="c" items="${list}">
+            <c:url var="upDateLink" value="/seller/changerStatus">
+                <c:param name="customer" value="${c.id}"/>
+            </c:url>
+            <tbody>
             <tr>
                 <td>${c.name}</td>
                 <td>${c.age}</td>
@@ -49,10 +53,12 @@
                 <td>${c.statusByStatusId.name}</td>
                 <td>${c.productType}</td>
                 <td>${c.company}</td>
-
+                <td>
+                    <a href="${upDateLink}">UpDate Status</a>
+                </td>
             </tr>
-            </c:forEach>
             </tbody>
+            </c:forEach>
         </table>
 
     </div>

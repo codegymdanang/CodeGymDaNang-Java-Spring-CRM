@@ -10,10 +10,20 @@ import com.smartdev.user.model.StatusCount;
 
 import java.util.*;
 
+import java.util.List;
+
 @Service
 public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
     @Autowired
     HistoryAdvisoryRepository historyAdvisoryRepository;
+    @Override
+    public List<HistoryAdvisory> findByCustomerByCustomerId(Customer customer) {
+        return historyAdvisoryRepository.findByCustomerByCustomerId(customer);
+    }
+
+    @Override
+    public HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory) {
+        return historyAdvisoryRepository.save(theHistoryAdvisory);
   
     @Override
     public List<HistoryAdvisory> getHistoryAdvisoriesByCustomer(Customer customer) {

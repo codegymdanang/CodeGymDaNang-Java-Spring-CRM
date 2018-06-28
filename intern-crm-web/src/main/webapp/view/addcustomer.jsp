@@ -63,7 +63,7 @@
             <p><form:errors path="productType" cssClass="error"/></p>
             <br/>
             <div class="col-auto my-1">
-                <button type="submit" class="btn btn-primary mb-2">Add</button>
+                <button type="submit" class="btn btn-primary mb-2">Save</button>
             </div>
         </div>
     </form:form>

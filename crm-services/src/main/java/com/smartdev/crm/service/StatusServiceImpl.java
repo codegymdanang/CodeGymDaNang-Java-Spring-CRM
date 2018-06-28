@@ -6,18 +6,24 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-
 @Service
 public class StatusServiceImpl implements StatusService {
-
     @Autowired
     StatusRepository statusRepository;
 
+    @Override
+    public List<Status> getAll() {
+      return statusRepository.findAll();
+    }
     @Override
     public List<Status> findAll() {
         return statusRepository.findAll();
     }
 
+    @Override
+    public Status findById(Integer id) {
+        return statusRepository.findOne(id);
+    }
     @Override
     public Status findByName(String name) {
         List<Status> statuses = findAll();
