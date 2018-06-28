@@ -17,4 +17,15 @@ public class SellerDetailServiceImpl implements SellerDetailService {
     public List<SellerDetail> getAllSellerDetail() {
         return sellerDetailRepository.findAll();
     }
+
+    @Override
+    public SellerDetail findByUsername(String username) {
+        List<SellerDetail> sellerDetails = getAllSellerDetail();
+        for(SellerDetail sellerDetail : sellerDetails) {
+            if(sellerDetail.getUserName().equals(username)) {
+                return sellerDetail;
+            }
+        }
+        return null;
+    }
 }
