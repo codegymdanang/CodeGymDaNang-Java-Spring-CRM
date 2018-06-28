@@ -27,6 +27,11 @@ public class UserServiceImpl implements UserService {
     private SellerDetailRepository sellerDetailRepository;
 
     @Override
+    public User getUserByUserName(String userName) {
+        return userRepository.findOne(userName);
+    }
+
+    @Override
     public boolean isUserExist(String userName) {
 
         User user = userRepository.findOne(userName);
