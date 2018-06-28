@@ -23,7 +23,7 @@ public class HomePageManagerController {
 
 	@RequestMapping(value = "/home")
 	public ModelAndView homeManager() {
-		ModelAndView modelAndView = new ModelAndView("manager-home");
+		ModelAndView modelAndView = new ModelAndView("home-manager");
 		modelAndView.addObject("years", historyAdvisoryService.getYearOfHistoryAdvisory());
 		return modelAndView;
 	}
