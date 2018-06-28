@@ -41,7 +41,7 @@
             </tr>
             </thead>
             <c:forEach var="c" items="${list}">
-            <c:url var="upDateLink" value="/seller/advisory">
+            <c:url var="upDateLink" value="/seller/changerStatus">
                 <c:param name="customer" value="${c.id}"/>
             </c:url>
             <tbody>

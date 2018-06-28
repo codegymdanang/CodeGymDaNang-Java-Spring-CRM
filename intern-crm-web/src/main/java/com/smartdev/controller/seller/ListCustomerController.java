@@ -46,8 +46,8 @@ public class ListCustomerController {
         return "list-custom";
     }
 
-    @RequestMapping(value = "advisory",method = RequestMethod.GET)
-    public ModelAndView advisory(@RequestParam("customer") Integer theId){
+    @RequestMapping(value = "/changerStatus",method = RequestMethod.GET)
+    public ModelAndView changerStatus(@RequestParam("customer") Integer theId){
         ModelAndView model = new ModelAndView("advisory");
         //create new historytest
         HistoryTest historyTest = new HistoryTest();
