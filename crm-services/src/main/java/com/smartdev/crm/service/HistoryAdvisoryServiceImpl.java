@@ -24,10 +24,7 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
     public static final String LEAD = "lead";
     public static final String POTENTIAL_LEAD = "potential lead";
     public static final String ACTIVE_LEAD = "active lead";
-
-    @Autowired
-    private HistoryAdvisoryRepository historyAdvisoryRepository;
-
+    
     @Override
     public List<HistoryAdvisory> findAll() {
         return historyAdvisoryRepository.findAll();
