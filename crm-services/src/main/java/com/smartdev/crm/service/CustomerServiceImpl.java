@@ -2,6 +2,7 @@ package com.smartdev.crm.service;
 
 import com.smartdev.user.dao.repository.CustomerRepository;
 import com.smartdev.user.entity.Customer;
+import com.smartdev.user.entity.Status;
 import com.smartdev.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -11,11 +12,16 @@ import org.springframework.stereotype.Service;
 @Service
 public class CustomerServiceImpl implements CustomerService {
 
+    private static final String PROSPECT = "Prospect";
+
     @Autowired
     CustomerRepository customerRepository;
 
     @Autowired
     SellerDetailService sellerDetailService;
+
+    @Autowired
+    StatusService statusService;
 
     @Override
     public void saveCustomer(Customer customer) {
@@ -33,6 +39,8 @@ public class CustomerServiceImpl implements CustomerService {
             username = principal.toString();
         }
         User user = sellerDetailService.findByUsername(username).getUserByUserName();
+        Status status = statusService.findByName(PROSPECT);
+        customer.setStatusByStatusId(status);
         customer.setUserBySeller(user);
         saveCustomer(customer);
     }
