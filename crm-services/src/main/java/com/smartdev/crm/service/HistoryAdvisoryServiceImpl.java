@@ -12,6 +12,12 @@ import java.util.*;
 
 @Service
 public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
+
+    public static final String PROSPECT = "Prospect";
+    public static final String LEAD = "Lead";
+    public static final String POTENTIAL_LEAD = "Potential";
+    public static final String ACTIVE_LEAD = "Active";
+
     @Autowired
     HistoryAdvisoryRepository historyAdvisoryRepository;
   
@@ -20,10 +26,10 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         return historyAdvisoryRepository.findByCustomerByCustomerId(customer);
     }
 
-    public static final String PROSPECT = "Prospect";
-    public static final String LEAD = "Lead";
-    public static final String POTENTIAL_LEAD = "Potential";
-    public static final String ACTIVE_LEAD = "Active";
+    @Override
+    public void save(HistoryAdvisory historyAdvisory) {
+        historyAdvisoryRepository.save(historyAdvisory);
+    }
     
     @Override
     public List<HistoryAdvisory> findAll() {
@@ -70,6 +76,7 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         if(date == null)
             return 0;
         calendar.setTime(date);
+        System.out.println("YEAR: " + calendar.get(Calendar.YEAR));
         return calendar.get(Calendar.YEAR);
     }
 
@@ -79,19 +86,7 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
             return 0;
         }
         calendar.setTime(date);
-        return calendar.get(Calendar.MONTH);
-    }
-
-    private Map<String, Integer> initHistoryClassifier() {
-        Map<String, Integer> historyClassifier = new HashMap<>();
-        historyClassifier.put(PROSPECT,0);
-        historyClassifier.put(LEAD, 0);
-        historyClassifier.put(POTENTIAL_LEAD, 0);
-        historyClassifier.put(ACTIVE_LEAD, 0);
-        return historyClassifier;
-    }
-
-   public HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory){
-        return historyAdvisoryRepository.save(theHistoryAdvisory);
+        System.out.println("MONTH: " + calendar.get(Calendar.MONTH));
+        return calendar.get(Calendar.MONTH) + 1;
     }
 }
