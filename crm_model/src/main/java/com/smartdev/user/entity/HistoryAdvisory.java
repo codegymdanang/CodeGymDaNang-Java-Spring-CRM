@@ -13,7 +13,6 @@ public class HistoryAdvisory {
     private Status statusByStatusId;
 
     @Id
-    @GeneratedValue
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
