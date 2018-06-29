@@ -17,5 +17,4 @@ public interface HistoryAdvisoryService {
 
     StatusCount getNumberOfEachStatusByYearAndMonth(int year, int month);
 
-    HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory);
 }
