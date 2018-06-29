@@ -99,7 +99,9 @@
 <br/>
 <br/>
 <div>
-    <form action="" name="update_advisoy">
+    <form:form action="saveHistoryAdvisory" modelAttribute="history" method="post">
+        <form:hidden path="customerId"/>
+        <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
         <table width="1000px" align="center">
             <tr>
                 <th>Date</th>
@@ -107,20 +109,18 @@
                 <th>Comment</th>
             </tr>
             <tr>
-                <td><span style="color: blue">26/6/2018</span></td>
                 <td>
-                    <select class="custom-select" id="inputGroupSelect01">
-                        <option selected>Choose...</option>
-                        <option value="1">Active</option>
-                        <option value="2">Lead</option>
-                        <option value="3">Lead active</option>
-                    </select>
+                    <form:input path="date" readonly="true"/>
                 </td>
                 <td>
-                    <p><textarea name="textadvisory" cols="90" rows="7">Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes,
-            Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes,
-            Various form elements have been rebooted for simpler base styles. Here are some of the most notable changes.</textarea>
-                    </p>
+                    <form:select path="status" class="custom-select">
+                        <c:forEach var="c" items="${listStatus}">
+                            <form:option value="${c.id}">${c.name}</form:option>
+                        </c:forEach>
+                    </form:select>
+                </td>
+                <td>
+                    <form:textarea path="comment"/>
                 </td>
             </tr>
             <tr>
@@ -130,6 +130,7 @@
             </tr>
         </table>
     </form>
+    </form:form>
 </div>
 <br/>
 <br/>

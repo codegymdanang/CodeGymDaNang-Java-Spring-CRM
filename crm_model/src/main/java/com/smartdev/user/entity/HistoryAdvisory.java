@@ -13,6 +13,7 @@ public class HistoryAdvisory {
     private Status statusByStatusId;
 
     @Id
+    @GeneratedValue
     @Column(name = "id")
     public Integer getId() {
         return id;

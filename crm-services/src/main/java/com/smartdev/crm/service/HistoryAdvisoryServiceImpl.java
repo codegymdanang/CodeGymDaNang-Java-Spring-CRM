@@ -90,4 +90,8 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         historyClassifier.put(ACTIVE_LEAD, 0);
         return historyClassifier;
     }
+
+   public HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory){
+        return historyAdvisoryRepository.save(theHistoryAdvisory);
+    }
 }
