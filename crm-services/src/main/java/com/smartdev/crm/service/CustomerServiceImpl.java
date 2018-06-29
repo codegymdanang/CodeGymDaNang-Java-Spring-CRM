@@ -9,9 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
-
 import java.sql.Timestamp;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -61,5 +62,10 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public Customer afindOneid(Integer id){
         return customerRepository.findOne(id);
+    }
+
+    @Override
+    public List<Customer> findByUserBySeller(User user) {
+        return customerRepository.findByUserBySeller(user);
     }
 }

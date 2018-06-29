@@ -27,14 +27,14 @@ public class UserServiceImpl implements UserService {
     private SellerDetailRepository sellerDetailRepository;
 
     @Override
-    public boolean isUserExist(String userName) {
-
-        User user = userRepository.findOne(userName);
-        boolean result = user != null;
-        return result;
+    public User getUserByUserName(String userName) {
+        return userRepository.findOne(userName);
     }
 
-
+    @Override
+    public boolean isUserExist(String userName) {
+        return userRepository.exists(userName);
+    }
 
     @Override
     public void save(User user, String roleName) {
