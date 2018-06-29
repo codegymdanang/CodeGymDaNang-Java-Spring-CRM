@@ -1,5 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
@@ -30,9 +31,10 @@
     </div>
 
     <!-- Add and Search -->
+    <spring:url var="addCustomerURL" value="/seller/addcustomer"/>
     <div class="parent">
         <button class="btn btn-success mx-5 my-3 " data-toggle="modal" data-target="#createAccountModal">
-            <a href="/seller/addcustomer" class="btn btn-success fa fa-plus-circle" > Add Customer</a>
+            <a href="${addCustomerURL}" class="btn btn-success fa fa-plus-circle" > Add Customer</a>
         </button>
     </div>
     <!-- Table list seller -->
