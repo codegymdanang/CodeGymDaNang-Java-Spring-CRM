@@ -27,4 +27,7 @@ public class StatusServiceImpl implements StatusService {
         }
         return null;
     }
+    public Status findById(Integer id) {
+        return statusRepository.findOne(id);
+    }
 }
