@@ -17,6 +17,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -61,7 +62,7 @@ public class ListCustomerController {
 
         //set customerId to object
         historyTest.setCustomerId(theId);
-
+        //
         //get all status
         List<Status> statuses = statusService.findAll();
         modelAndView.addObject("listStatus",statuses );
@@ -105,7 +106,7 @@ public class ListCustomerController {
         customerService.saveCustomer(customer);
 
         historyAdvisory.toString();
-        return "redirect:/seller/list-custom";
+        return "redirect:/seller/list-custom-seller";
     }
 
     @RequestMapping(value = "/addcustomer",method = RequestMethod.GET)

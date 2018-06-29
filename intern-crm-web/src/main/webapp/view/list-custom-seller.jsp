@@ -46,17 +46,24 @@
                 <th>Name</th>
                 <th>Work Place</th>
                 <th>Phone</th>
+                <th>Status</th>
 
-                <td></td>
-                <td></td>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${customers}" var="c">
+                <c:url var="upDateLink" value="/seller/advisory">
+                    <c:param name="customer" value="${c.id}"/>
+                </c:url>
             <tr>
-                <td><a href="/seller/advisory/${c.id}">${c.name}</a></td>
+                <td>${c.name}</td>
                 <td>${c.company}</td>
                 <td>${c.phone}</td>
+                <td>${c.statusByStatusId.name}</td>
+                <td><a href="${upDateLink}" class="btn btn-info">UpDate Status</a></td>
                 <td>
                    <button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button>
                 </td>
