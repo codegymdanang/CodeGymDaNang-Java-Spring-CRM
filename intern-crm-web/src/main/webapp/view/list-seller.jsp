@@ -71,6 +71,7 @@
         <table class="table table-striped">
             <thead>
             <tr>
+                <th>Status</th>
                 <th>Username</th>
                 <th>Name</th>
                 <th>Age</th>
@@ -82,15 +83,24 @@
             </thead>
             <tbody>
             <c:forEach items="${sellerDetails}" var="sellerDetail">
-                <tr>
-                <td>${sellerDetail.userName}</td>
-                <td>${sellerDetail.name}</td>
-                <td>${sellerDetail.age}</td>
-                <td>${sellerDetail.mail}</td>
-                <td>${sellerDetail.phone}</td>
-                <td> <button class="btn btn-info">EDIT</button></td>
-                <td><button class="btn btn-danger">DELETE</button></td>
-                </tr>
+
+                        <tr>
+                        <c:choose>
+                            <c:when test="${sellerDetail.userByUserName.isDelete==0}">
+                            <td><i class="fa fa-circle text-success"></i></td>
+                            </c:when>
+                            <c:otherwise>
+                             <td><i class="fa fa-circle text-danger"></i></td>
+                            </c:otherwise>
+                        </c:choose>
+                            <td>${sellerDetail.userName}</td>
+                            <td>${sellerDetail.name}</td>
+                            <td>${sellerDetail.age}</td>
+                            <td>${sellerDetail.mail}</td>
+                            <td>${sellerDetail.phone}</td>
+                            <td> <button class="btn btn-info">EDIT</button></td>
+                            <td><button class="btn btn-danger">DELETE</button></td>
+                        </tr>
             </c:forEach>
 
             </tbody>

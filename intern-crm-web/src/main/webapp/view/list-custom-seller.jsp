@@ -1,5 +1,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
@@ -44,23 +44,17 @@
                 <th>Name</th>
                 <th>Work Place</th>
                 <th>Phone</th>
-                <th></th>
+
                 <td></td>
                 <td></td>
             </tr>
             </thead>
             <tbody>
-            <%--<c:forEach var="c" items="${list}">--%>
-            <c:url var="upDateLink" value="/seller/advisory">
-                <c:param name="customer" value="2"/>
-            </c:url>
+            <c:forEach items="${customers}" var="c">
             <tr>
-                <td>con chó</td>
-                <td>Gia Lai</td>
-                <td>123456</td>
-                <td>
-                    <a href="${upDateLink}">UpDate Status</a>
-                </td>
+                <td><a href="/seller/advisory/${c.id}">${c.name}</a></td>
+                <td>${c.company}</td>
+                <td>${c.phone}</td>
                 <td>
                    <button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button>
                 </td>
@@ -68,7 +62,7 @@
                     <button class="btn btn-danger">DELETE</button>
                 </td>
             </tr>
-            <%--</c:forEach>--%>
+            </c:forEach>
             </tbody>
         </table>
 
