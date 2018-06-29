@@ -99,7 +99,7 @@ public class ListCustomerController {
         customer.setStatusByStatusId(status);
 
         //save data historyAdvisor
-        historyAdvisoryService.saveHistoryAdvisory(historyAdvisory);
+        historyAdvisoryService.save(historyAdvisory);
 
         //save status customer
         customerService.saveCustomer(customer);
