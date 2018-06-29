@@ -28,13 +28,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public boolean isUserExist(String userName) {
-
-        User user = userRepository.findOne(userName);
-        boolean result = user != null;
-        return result;
+        return userRepository.exists(userName);
     }
-
-
 
     @Override
     public void save(User user, String roleName) {
