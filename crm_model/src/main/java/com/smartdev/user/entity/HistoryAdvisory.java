@@ -14,6 +14,7 @@ public class HistoryAdvisory {
 
     @Id
     @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.AUTO)
     public Integer getId() {
         return id;
     }

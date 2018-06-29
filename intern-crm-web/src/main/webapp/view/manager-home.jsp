@@ -85,9 +85,9 @@
         </div>
     </div>
 
-    <div class="customer-info">
-        <h2 class="number-customer">Customer: 10</h2>
-    </div>
+    <%--<div class="customer-info">--%>
+        <%--<h2 class="number-customer">Customer: 10</h2>--%>
+    <%--</div>--%>
 </div>
 </body>
 
