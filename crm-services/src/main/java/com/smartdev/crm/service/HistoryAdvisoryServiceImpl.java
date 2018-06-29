@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Service;
 import com.smartdev.user.model.StatusCount;
 
+import java.time.Year;
 import java.util.*;
 
 @Service
@@ -41,9 +42,19 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         List<Integer> years = new ArrayList<>();
         List<HistoryAdvisory> historyAdvisories = findAll();
         for(HistoryAdvisory ha : historyAdvisories) {
-            years.add(getYearFromDate(ha.getDate()));
+            int year = getYearFromDate(ha.getDate());
+            if(checkYearUnique(years, year))
+                years.add(getYearFromDate(ha.getDate()));
         }
         return years;
+    }
+
+    public boolean checkYearUnique(List<Integer> years, int year) {
+        for (int y : years) {
+            if(year == y)
+                return false;
+        }
+        return true;
     }
 
     @Override
