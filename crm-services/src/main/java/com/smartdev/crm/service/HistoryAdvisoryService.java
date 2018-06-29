@@ -16,4 +16,6 @@ public interface HistoryAdvisoryService {
     List<Integer> getYearOfHistoryAdvisory();
 
     StatusCount getNumberOfEachStatusByYearAndMonth(int year, int month);
+
+    HistoryAdvisory saveHistoryAdvisory(HistoryAdvisory theHistoryAdvisory);
 }

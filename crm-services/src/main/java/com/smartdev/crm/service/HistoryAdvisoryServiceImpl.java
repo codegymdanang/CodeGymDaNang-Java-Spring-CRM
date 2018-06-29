@@ -89,5 +89,4 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         System.out.println("MONTH: " + calendar.get(Calendar.MONTH));
         return calendar.get(Calendar.MONTH) + 1;
     }
-
 }
