@@ -20,10 +20,10 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         return historyAdvisoryRepository.findByCustomerByCustomerId(customer);
     }
 
-    public static final String PROSPECT = "prospect";
-    public static final String LEAD = "lead";
-    public static final String POTENTIAL_LEAD = "potential lead";
-    public static final String ACTIVE_LEAD = "active lead";
+    public static final String PROSPECT = "Prospect";
+    public static final String LEAD = "Lead";
+    public static final String POTENTIAL_LEAD = "Potential";
+    public static final String ACTIVE_LEAD = "Active";
     
     @Override
     public List<HistoryAdvisory> findAll() {
