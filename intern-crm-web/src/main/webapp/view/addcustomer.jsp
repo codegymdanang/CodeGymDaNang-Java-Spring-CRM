@@ -101,7 +101,7 @@
                                 </div>
                             </div>
 
-                            <input type="submit" value="Register" class="btn btn-info btn-block" style="height: 43px">
+                            <input type="submit" value="Add" class="btn btn-info btn-block" style="height: 43px">
 
                         </form:form>
                     </div>
