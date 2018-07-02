@@ -31,10 +31,13 @@
     </div>
 
     <!-- Add and Search -->
+
+
     <c:url var="addCustomerURL" value="/seller/addcustomer"/>
     <div class="parent">
+            <a href="${addCustomerURL}" class="btn btn-success mx-5 my-3" >
+                <i class="fa fa-plus-circle"></i> Add Customer</a>
 
-            <a href="${addCustomerURL}" class="btn btn-success fa fa-plus-circle mx-5 my-3" > Add Customer</a>
 
     </div>
     <!-- Table list seller -->
@@ -47,7 +50,7 @@
                 <th>Work Place</th>
                 <th>Phone</th>
                 <th>Status</th>
-
+                <th>Create date</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -63,9 +66,10 @@
                 <td>${c.company}</td>
                 <td>${c.phone}</td>
                 <td>${c.statusByStatusId.name}</td>
+                <td>2018-7-2</td>
                 <td><a href="${upDateLink}" class="btn btn-info">UpDate Status</a></td>
                 <td>
-                   <button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button>
+                    <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button></a>
                 </td>
                 <td>
                     <button class="btn btn-danger">DELETE</button>
@@ -87,19 +91,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="formGroupExampleInput">Name</label>
+
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="name" value="">
-                    <label for="formGroupExampleInput2">Age</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="age" value="">
-                    <label for="formGroupExampleInput2">Phone</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="phone" value="">
-                    <label for="formGroupExampleInput2">Company</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="company" value="">
-                    <label for="formGroupExampleInput2">Facebook</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="facebook" value="">
-                    <label for="formGroupExampleInput2">Email</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email" value="">
-                    <label class="mr-sm-2" for="inlineFormCustomSelect">Product type</label>
+                    <br/>
                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                         <option selected>Choose...</option>
                         <option value="1">offsource</option>
