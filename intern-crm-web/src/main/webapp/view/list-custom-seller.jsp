@@ -31,9 +31,12 @@
     </div>
 
     <!-- Add and Search -->
+
     <c:url var="addCustomerURL" value="/seller/addcustomer"/>
     <div class="parent">
-            <a href="${addCustomerURL}" class="btn btn-success fa fa-plus-circle  mx-5 my-3 " > Add Customer</a>
+            <a href="${addCustomerURL}" class="btn btn-success mx-5 my-3" >
+                <i class="fa fa-plus-circle"></i> Add Customer</a>
+
     </div>
     <!-- Table list seller -->
 
