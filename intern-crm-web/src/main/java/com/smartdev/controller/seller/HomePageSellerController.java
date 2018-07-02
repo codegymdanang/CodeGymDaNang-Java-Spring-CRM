@@ -24,7 +24,7 @@ public class HomePageSellerController {
 	public String listCustomSeller(Principal principal, Model model){
 		String username = principal.getName();
 		User user =userService.getUserByUserName(username);
-		List<Customer> customers = customerService.findByUserBySeller(user);
+		List<Customer> customers = customerService.findByUserBySellerAndIsDelete(user,0);
 		model.addAttribute("customers",customers);
 		return "list-custom-seller";
 
