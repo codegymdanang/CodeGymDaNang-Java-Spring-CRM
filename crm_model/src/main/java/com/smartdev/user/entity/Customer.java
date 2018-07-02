@@ -17,6 +17,7 @@ public class Customer {
     @NotNull(message = "Age is required")
     @Min(18) @Max(100)
     private Integer age;
+    @NotNull(message = "Phone is required")
     private Integer phone;
     @Email
     @NotEmpty(message = "Email is required")
