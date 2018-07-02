@@ -88,6 +88,7 @@ public class HistoryAdvisoryServiceImpl implements HistoryAdvisoryService {
         return statusCount;
     }
 
+
     private int getYearFromDate(Date date) {
         Calendar calendar = Calendar.getInstance();
         if(date == null)

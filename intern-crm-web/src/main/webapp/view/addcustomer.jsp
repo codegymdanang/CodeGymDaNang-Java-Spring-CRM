@@ -6,12 +6,13 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Add Customer</title>
     <style type="text/css">
+
         .error {
             color: red;
             margin-bottom: 20px;
@@ -40,7 +41,7 @@
 </head>
 <body>
 
-    <spring:url var="addCustomerURL" value="/seller/addcustomer"/>
+    <c:url var="addCustomerURL" value="/seller/addcustomer"/>
     <div class="container">
         <div class="row centered-form">
             <div class="col-xs-10 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
@@ -106,8 +107,11 @@
                         </form:form>
                     </div>
                 </div>
+
             </div>
+            <p><form:errors path="productType" cssClass="error"/></p>
         </div>
     </div>
+
 </body>
 </html>

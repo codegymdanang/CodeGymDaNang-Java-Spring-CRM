@@ -38,7 +38,7 @@
         <td rowspan="9">
             <div>
                     <c:forEach var="c" items="${historyAdvisories}">
-                        <p><span>${c.date} </span> ${c.comment} </p>
+                        <p>${c.date} ${c.statusByStatusId.name} ${c.comment} </p>
                     </c:forEach>
             </div>
         </td>
@@ -115,7 +115,9 @@
                 <td>
                     <form:select path="status" class="custom-select">
                         <c:forEach var="c" items="${listStatus}">
-                            <form:option value="${c.id}">${c.name}</form:option>
+
+                             <form:option value="${c.id}">${c.name}</form:option>
+
                         </c:forEach>
                     </form:select>
                 </td>

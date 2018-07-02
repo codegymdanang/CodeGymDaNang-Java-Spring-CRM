@@ -1,6 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
@@ -31,11 +31,12 @@
     </div>
 
     <!-- Add and Search -->
-    <spring:url var="addCustomerURL" value="/seller/addcustomer"/>
+
+    <c:url var="addCustomerURL" value="/seller/addcustomer"/>
     <div class="parent">
-        <button class="btn btn-success mx-5 my-3 " data-toggle="modal" data-target="#createAccountModal">
-            <a href="${addCustomerURL}" class="btn btn-success fa fa-plus-circle" > Add Customer</a>
-        </button>
+            <a href="${addCustomerURL}" class="btn btn-success mx-5 my-3" >
+                <i class="fa fa-plus-circle"></i> Add Customer</a>
+
     </div>
     <!-- Table list seller -->
 
@@ -46,19 +47,27 @@
                 <th>Name</th>
                 <th>Work Place</th>
                 <th>Phone</th>
-
-                <td></td>
-                <td></td>
+                <th>Status</th>
+                <th>Create date</th>
+                <th></th>
+                <th></th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
             <c:forEach items="${customers}" var="c">
+                <c:url var="upDateLink" value="/seller/advisory">
+                    <c:param name="customer" value="${c.id}"/>
+                </c:url>
             <tr>
-                <td><a href="/seller/advisory/${c.id}">${c.name}</a></td>
+                <td>${c.name}</td>
                 <td>${c.company}</td>
                 <td>${c.phone}</td>
+                <td>${c.statusByStatusId.name}</td>
+                <td>2018-7-2</td>
+                <td><a href="${upDateLink}" class="btn btn-info">UpDate Status</a></td>
                 <td>
-                   <button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button>
+                    <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button></a>
                 </td>
                 <td>
                     <button class="btn btn-danger">DELETE</button>
@@ -80,19 +89,19 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <label for="formGroupExampleInput">Name</label>
+
                     <input type="text" class="form-control" id="formGroupExampleInput" placeholder="name" value="">
-                    <label for="formGroupExampleInput2">Age</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="age" value="">
-                    <label for="formGroupExampleInput2">Phone</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="phone" value="">
-                    <label for="formGroupExampleInput2">Company</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="company" value="">
-                    <label for="formGroupExampleInput2">Facebook</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="facebook" value="">
-                    <label for="formGroupExampleInput2">Email</label>
+                    <br/>
                     <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email" value="">
-                    <label class="mr-sm-2" for="inlineFormCustomSelect">Product type</label>
+                    <br/>
                     <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
                         <option selected>Choose...</option>
                         <option value="1">offsource</option>
