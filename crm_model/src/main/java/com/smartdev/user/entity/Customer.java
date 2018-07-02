@@ -159,6 +159,24 @@ public class Customer {
         return result;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", phone=" + phone +
+                ", mail='" + mail + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", productType=" + productType +
+                ", company='" + company + '\'' +
+                ", isDelete=" + isDelete +
+                ", statusByStatusId=" + statusByStatusId +
+                ", userBySeller=" + userBySeller +
+                ", historyAdvisoriesById=" + historyAdvisoriesById +
+                '}';
+    }
+
     @ManyToOne
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     public Status getStatusByStatusId() {

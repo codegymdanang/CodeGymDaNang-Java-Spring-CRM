@@ -59,6 +59,9 @@
                 <c:url var="upDateLink" value="/seller/advisory">
                     <c:param name="customer" value="${c.id}"/>
                 </c:url>
+                <c:url var="deleteLink" value="/seller/delete">
+                    <c:param name="customer" value="${c.id}"/>
+                </c:url>
             <tr>
                 <td>${c.name}</td>
                 <td>${c.company}</td>
@@ -69,8 +72,8 @@
                 <td>
                     <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button></a>
                 </td>
-                <td>
-                    <button class="btn btn-danger">DELETE</button>
+                <td><a href="${deleteLink}"
+                       onclick="if (!confirm('Are you sure??')) return false" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             </c:forEach>
