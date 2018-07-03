@@ -55,7 +55,14 @@
     <definition name="advisory" extends="definition-seller">
         <put-attribute name="body" value="/view/advisory.jsp"/>
     </definition>
+
+
+    <definition name="update-seller-detail" extends="definition-seller">
+        <put-attribute name="body" value="/view/update-seller-detail.jsp"/>
+    </definition>
+
     <definition name="delete" extends="definition-seller">
         <put-attribute name="body" value="/view/list-custom-seller.jsp"/>
     </definition>
+  
 </tiles-definitions>
