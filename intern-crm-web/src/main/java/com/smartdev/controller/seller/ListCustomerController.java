@@ -77,7 +77,7 @@ public class ListCustomerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.GET)
     public String saveHistoryAdvisory(@ModelAttribute("history") HistoryTest historyTest) {
         //create new HistoryAdvisory
         HistoryAdvisory historyAdvisory = new HistoryAdvisory();

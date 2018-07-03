@@ -99,7 +99,7 @@
 <br/>
 <br/>
 <div>
-    <form:form action="saveHistoryAdvisory" modelAttribute="history" method="post">
+    <form:form action="saveHistoryAdvisory" modelAttribute="history" method="GET">
         <form:hidden path="customerId"/>
         <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
         <table width="1000px" align="center">
