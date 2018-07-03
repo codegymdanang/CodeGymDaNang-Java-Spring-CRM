@@ -9,5 +9,5 @@ public interface CustomerService {
     void saveCustomer(Customer customer);
     void addCustomer(Customer customer);
     Customer afindOneid(Integer id);
-    List<Customer> findByUserBySeller(User user);
+    List<Customer> findByUserBySellerAndIsDelete(User user,Integer isDelete);
 }

@@ -124,4 +124,14 @@ public class ListCustomerController {
         customerService.addCustomer(customer);
         return "redirect:/seller/list-custom";
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(@RequestParam("customer") Integer theId){
+        Customer customer = customerService.afindOneid(theId);
+        customer.setIsDelete(1);
+        customerService.saveCustomer(customer);
+
+        return "redirect:/seller/list-custom";
+    }
+
 }
