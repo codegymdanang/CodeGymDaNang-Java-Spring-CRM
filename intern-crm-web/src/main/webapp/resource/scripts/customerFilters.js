@@ -1,8 +1,10 @@
 window.onload = function () {
-    var selItemStatus = sessionStorage.getItem("SelItemStatus");
-    $('#select-filters-status').val(selItemStatus);
-    var selItemProductType = sessionStorage.getItem("SelItemProductType");
-    $('#select-filters-product').val(selItemProductType);
+    var saveItemStatus = sessionStorage.getItem("SelItemStatus");
+    var setItemStatus = saveItemStatus!=null? saveItemStatus : 0;
+    $('#select-filters-status').val(setItemStatus);
+    var saveItemProductType = sessionStorage.getItem("SelItemProductType");
+    var setItemProducType = saveItemProductType!=null? saveItemProductType : 0;
+    $('#select-filters-product').val(setItemProducType);
 }
 
 function listCustomerByFilters() {

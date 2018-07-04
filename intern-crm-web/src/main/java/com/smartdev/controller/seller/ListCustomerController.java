@@ -1,7 +1,6 @@
 package com.smartdev.controller.seller;
 
 import com.smartdev.crm.service.HistoryAdvisoryService;
-import com.smartdev.crm.service.ListCustomManageService;
 import com.smartdev.crm.service.StatusService;
 import com.smartdev.user.entity.Customer;
 import com.smartdev.crm.service.CustomerService;
@@ -14,7 +13,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -30,8 +28,6 @@ import java.util.List;
 public class ListCustomerController {
 
     @Autowired
-    ListCustomManageService listCustomManageService;
-    @Autowired
     CustomerService customerService;
     @Autowired
     HistoryAdvisoryService historyAdvisoryService;
@@ -41,23 +37,7 @@ public class ListCustomerController {
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
     public String listCustom(Model model,@RequestParam(required = false) Integer statusId, @RequestParam(required = false) Integer productType){
-        List<Customer> customerList = new ArrayList<>();
-        statusId = statusId==null ? 0 : statusId;
-        productType = productType==null ? 0 : productType;
-        if(statusId == 0 && productType == 0) {
-            customerList = listCustomManageService.listAllCustomer();
-        }else{
-            if(statusId == 0){
-                customerList = customerService.findCustomersByProductType(productType);
-            }else{
-                Status status = statusService.findById(statusId);
-                if(productType == 0){
-                    customerList = customerService.findCustomersByStatusId(status);
-                }else {
-                    customerList = customerService.findByProductTypeAndStatusByStatusId(productType, status);
-                }
-            }
-        }
+        List<Customer> customerList = customerService.listCustomerWithFilter(statusId, productType);
         model.addAttribute("list",customerList);
         return "list-custom";
     }

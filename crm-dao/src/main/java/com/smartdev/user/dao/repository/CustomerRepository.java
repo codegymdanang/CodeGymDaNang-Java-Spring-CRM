@@ -26,4 +26,6 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     List<Customer> findByCompanyContaining(String company);
     List<Customer> findByMailContaining(String mail);
 
+    List<Customer> findByIsDelete(Integer isDelete);
+
 }
