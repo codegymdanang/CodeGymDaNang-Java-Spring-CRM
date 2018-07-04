@@ -5,30 +5,35 @@
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
     </div>
+    <form class="" action="/seller/searchSeller" method="post">
     <div class="row  mx-5 mb-3">
+
         <div class="col-3">
             <div class="input-group">
                 <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect03">Options</label>
+                    <label class="input-group-text">Options</label>
                 </div>
-                <select class="custom-select" id="inputGroupSelect03">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
+                <select class="custom-select" name="thongtin">
+
+                    <option value="Name">Name</option>
+                    <option value="Mail">Mail</option>
+                    <option value="Company">Company</option>
+
                 </select>
             </div>
         </div>
         <div class="col-4">
             <div class="input-group">
-                <form class="form-inline d-inline form-search float-right ">
-                    <input class="form-control" type="text" placeholder="Search">
+
+                    <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
+                    <input class="form-control" name="search" value="${key}" type="text" placeholder="Search">
                     <button class="btn btn-success " type="submit">Search</button>
-                </form>
+
             </div>
         </div>
 
     </div>
+    </form>
 
     <!-- Add and Search -->
     <c:url var="addCustomerURL" value="/seller/addcustomer"/>
@@ -38,6 +43,11 @@
 
     </div>
     <!-- Table list seller -->
+    <c:choose>
+    <c:when test="${customers.size()==0}">
+        <p class="text-danger text-center">Không có kết quả tìm kiếm</p>
+    </c:when>
+    <c:otherwise>
 
     <div class="table-seller mx-5">
         <table class="table table-hover">
@@ -76,6 +86,8 @@
         </table>
 
     </div>
+    </c:otherwise>
+    </c:choose>
     <!-- Modal -->
     <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">

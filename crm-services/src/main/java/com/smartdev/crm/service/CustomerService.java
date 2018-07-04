@@ -10,4 +10,10 @@ public interface CustomerService {
     void addCustomer(Customer customer);
     Customer afindOneid(Integer id);
     List<Customer> findByUserBySellerAndIsDelete(User user,Integer isDelete);
+    List<Customer> findByNameContaining(String name);
+    List<Customer> findByCompanyContaining (String company);
+    List<Customer>  findByMailContaining(String mail);
+    List<Customer> findByUserBySeller( User user);
+    List<Customer> checkOption(String option , String search);
+
 }
