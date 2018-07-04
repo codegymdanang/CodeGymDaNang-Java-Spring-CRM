@@ -95,7 +95,6 @@
     </c:otherwise>
     </c:choose>
 </div>
-</div>
 <div id="result"></div>
 
 <script type="text/javascript" src="/resource/scripts/customerFilters.js"></script>
