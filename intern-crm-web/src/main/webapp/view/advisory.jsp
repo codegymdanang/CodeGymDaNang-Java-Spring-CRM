@@ -78,7 +78,6 @@
     <form:hidden path="customerId"/>
     <input type="hidden"  name="${_csrf.parameterName}"   value="${_csrf.token}"/>
             <div class="row text-center mb-4">
-
                 <div class="col-3 pl-5">
                     <h4>Date</h4>
                     <form:input path="date" readonly="true"/>

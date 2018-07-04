@@ -8,7 +8,10 @@ import com.smartdev.crm.service.CustomerService;
 import com.smartdev.user.entity.HistoryAdvisory;
 import com.smartdev.user.entity.HistoryTest;
 import com.smartdev.user.entity.Status;
+import com.smartdev.user.model.CustomerRespon;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
 import java.sql.Timestamp;
-import java.util.Collection;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -36,8 +39,22 @@ public class ListCustomerController {
     StatusService statusService;
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
-    public String listCustom(Model model){
-        List<Customer> customerList = listCustomManageService.listAllCustomer();
+    public String listCustom(Model model,@RequestParam Integer statusId, @RequestParam Integer productType){
+        List<Customer> customerList = new ArrayList<>();
+        if(statusId == 0 && productType == 0) {
+            customerList = listCustomManageService.listAllCustomer();
+        }else{
+            if(statusId == 0){
+                customerList = customerService.findCustomersByProductType(productType);
+            }else{
+                Status status = statusService.findById(statusId);
+                if(productType == 0){
+                    customerList = customerService.findCustomersByStatusId(status);
+                }else {
+                    customerList = customerService.findByProductTypeAndStatusByStatusId(productType, status);
+                }
+            }
+        }
         model.addAttribute("list",customerList);
         return "list-custom";
     }
@@ -77,7 +94,7 @@ public class ListCustomerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.GET)
     public String saveHistoryAdvisory(@ModelAttribute("history") HistoryTest historyTest) {
         //create new HistoryAdvisory
         HistoryAdvisory historyAdvisory = new HistoryAdvisory();
@@ -124,4 +141,36 @@ public class ListCustomerController {
         customerService.addCustomer(customer);
         return "redirect:/seller/list-custom";
     }
+    @RequestMapping(value = "/list-custom-filter", method = RequestMethod.GET, headers = {"Accept=text/xml, application/json"})
+    @ResponseBody
+    public ResponseEntity<CustomerRespon> listCustomerByFilters(@RequestParam Integer statusId, @RequestParam Integer productType){
+        List<Customer> customerList = new ArrayList<>();
+        List<CustomerRespon> customerRespons = new ArrayList<>();
+        if(statusId== 0 && productType == 0){
+//            return customerService.findByProductTypeAndStatusByStatusId(productType,null);
+        }else if(statusId >0){
+            Status status = statusService.findById(statusId);
+            customerList =customerService.findCustomersByStatusId(status);
+        }else if(productType>0){
+//            return customerService.findCustomersByProductType(productType);
+        }else {
+//            return listCustomManageService.listAllCustomer();
+        }
+        for (Customer cus: customerList) {
+            CustomerRespon customerRespon = new CustomerRespon(cus);
+            customerRespons.add(customerRespon);
+        }
+        return new ResponseEntity<>(customerRespons.get(0), HttpStatus.OK);
+
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(@RequestParam("customer") Integer theId){
+        Customer customer = customerService.afindOneid(theId);
+        customer.setIsDelete(1);
+        customerService.saveCustomer(customer);
+
+        return "redirect:/seller/list-custom";
+    }
+
 }

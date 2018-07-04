@@ -40,28 +40,52 @@
     <c:otherwise>
 
     <div class="table-seller mx-5">
-        <table class="table table-hover">
+        <table class="table table-hover" id="table-customers">
             <thead>
             <tr>
                 <th>Name</th>
                 <th>Age</th>
                 <th>Phone</th>
                 <th>Seller Name</th>
-                <th>Status</th>
-                <th>Product</th>
+                <th>
+                    <select id="select-filters-status" onchange="listCusByFilters()">
+                        <option selected value="0">Status</option>
+                        <option value="1">Prospect</option>
+                        <option value="2">Lead</option>
+                        <option value="3">Potential</option>
+                        <option value="4">Active</option>
+                        <option value="5">Block</option>
+                    </select>
+                </th>
+                <th>
+                    <select id="select-filters-product" onchange="listCusByFilters()">
+                        <option selected value="0">Product Type</option>
+                        <option value="1">Out Source</option>
+                        <option value="2">ODD</option>
+                    </select>
+                </th>
                 <th>Company</th>
             </tr>
             </thead>
-            <tbody>
+            <tbody id="listCus-body">
             <c:forEach var="c" items="${list}">
             <tr>
-                <td>${c.name}</td>
-                <td>${c.age}</td>
-                <td>${c.phone}</td>
-                <td>${c.userBySeller.userName}</td>
-                <td>${c.statusByStatusId.name}</td>
-                <td>${c.productType}</td>
-                <td>${c.company}</td>
+                <td id="name">${c.name}</td>
+                <td id="age">${c.age}</td>
+                <td id="phone">${c.phone}</td>
+                <td id="seller-name">${c.userBySeller.sellerDetailByUserName.name}</td>
+                <td id="status-name">${c.statusByStatusId.name}</td>
+                <td id="product-type">
+                    <c:choose>
+                        <c:when test="${c.productType == 1}">
+                            Out Source
+                        </c:when>
+                        <c:otherwise>
+                            ODD
+                        </c:otherwise>
+                    </c:choose>
+                </td>
+                <td id="company">${c.company}</td>
             </tr>
             </c:forEach>
             </tbody>
@@ -71,3 +95,7 @@
     </c:otherwise>
     </c:choose>
 </div>
+</div>
+<div id="result"></div>
+
+<script type="text/javascript" src="/resource/scripts/customerFilters.js"></script>
