@@ -94,7 +94,7 @@ public class ListCustomerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.POST)
+    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.GET)
     public String saveHistoryAdvisory(@ModelAttribute("history") HistoryTest historyTest) {
         //create new HistoryAdvisory
         HistoryAdvisory historyAdvisory = new HistoryAdvisory();
@@ -163,4 +163,14 @@ public class ListCustomerController {
         return new ResponseEntity<>(customerRespons.get(0), HttpStatus.OK);
 
     }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String delete(@RequestParam("customer") Integer theId){
+        Customer customer = customerService.afindOneid(theId);
+        customer.setIsDelete(1);
+        customerService.saveCustomer(customer);
+
+        return "redirect:/seller/list-custom";
+    }
+
 }

@@ -6,68 +6,112 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<%@ taglib prefix="spring" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
 <head>
     <title>Add Customer</title>
     <style type="text/css">
-        .a{
-            margin-top: 30px;
-            width: 800px;
-        }
-        h2{
-            margin-left: 20px;
-        }
+
         .error {
             color: red;
+            margin-bottom: 20px;
         }
+
+        body{
+            background-color: #525252;
+        }
+        .centered-form{
+            margin-top: 60px;
+        }
+
+        .centered-form .panel{
+            background: rgba(255, 255, 255, 0.8);
+            box-shadow: rgba(0, 0, 0, 0.3) 20px 20px 20px;
+        }
+
+        .size {
+            height: 40px;
+        }
+
     </style>
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+    <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 </head>
 <body>
-    <div class="a">
-        <h2>Add customer</h2>
-    <div class="col-auto">
-        <spring:url var="addCustomerURL" value="/seller/addcustomer"/>
-    <form:form method="post" modelAttribute="customer" action="${addCustomerURL}">
-        <div class="form-group col-md-10">
-            <form:label path="name">Name</form:label>
-            <form:input path="name" cssClass="form-control" placeholder="name"/>
-            <p><form:errors path="name" cssClass="error"/></p>
 
-            <form:label path="age">Age</form:label>
-            <form:input path="age" cssClass="form-control" placeholder="age"/>
-            <p><form:errors path="age" cssClass="error"/></p>
+    <c:url var="addCustomerURL" value="/seller/addcustomer"/>
+    <div class="container">
+        <div class="row centered-form">
+            <div class="col-xs-10 col-sm-10 col-md-10 col-sm-offset-1 col-md-offset-1">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h1 class="panel-title">Add customer <small>CRM</small></h1>
+                    </div>
+                    <div class="panel-body">
+                        <form:form method="post" modelAttribute="customer" action="${addCustomerURL}" role="form">
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <form:input path="name" name="name" id="name" cssClass="form-control" placeholder="Name" cssStyle="height: 43px"/>
+                                        <form:errors path="name" cssClass="error"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <form:input path="age" name="age" id="age" cssClass="form-control" placeholder="Age" cssStyle="height: 43px"/>
+                                        <form:errors path="age" cssClass="error"/>
+                                    </div>
+                                </div>
+                            </div>
 
-            <form:label path="phone">Phone</form:label>
-            <form:input path="phone" cssClass="form-control" placeholder="phone"/>
-            <p><form:errors path="phone" cssClass="error"/></p>
+                            <div class="form-group">
+                                <form:input path="mail" name="email" id="email" cssClass="form-control" placeholder="email" cssStyle="height: 43px"/>
+                                <form:errors path="mail" cssClass="error"/>
+                            </div>
 
-            <form:label path="company">Company</form:label>
-            <form:input path="company" cssClass="form-control" placeholder="company"/>
-            <p><form:errors path="company" cssClass="error"/></p>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <form:input path="company" name="company" id="company" cssClass="form-control" placeholder="company" cssStyle="height: 43px"/>
+                                        <form:errors path="company" cssClass="error"/>
+                                    </div>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <form:input path="facebook" name="facebook" id="facebook" cssClass="form-control" placeholder="facebook" cssStyle="height: 43px"/>
+                                        <form:errors path="facebook" cssClass="error"/>
+                                    </div>
+                                </div>
+                            </div>
 
-            <form:label path="facebook">Facebook</form:label>
-            <form:input path="facebook" cssClass="form-control" placeholder="facebook"/>
-            <p><form:errors path="facebook" cssClass="error"/></p>
+                            <div class="row">
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <form:input type="tel" path="phone" name="phone" id="phone" cssClass="form-control size" placeholder="phone" cssStyle="height: 43px"/>
+                                    <form:errors path="phone" cssClass="error"/>
+                                </div>
+                                <div class="col-xs-6 col-sm-6 col-md-6">
+                                    <div class="form-group">
+                                        <form:select path="productType" cssClass="form-control" cssStyle="height: 43px">
+                                            <form:option value="1" label="Off source" selected="true"/>
+                                            <form:option value="2" label="Odc"/>
+                                        </form:select>
+                                        <form:errors path="productType" cssClass="error"/>
+                                    </div>
+                                </div>
+                            </div>
 
-            <form:label path="mail">Email</form:label>
-            <form:input path="mail" cssClass="form-control" placeholder="email"/>
-            <p><form:errors path="mail" cssClass="error"/></p>
+                            <input type="submit" value="Add" class="btn btn-info btn-block" style="height: 43px">
 
-            <form:label path="productType" cssClass="mr-sm-2">Product Type</form:label>
-            <form:select path="productType" cssClass="custom-select mr-sm-2">
-                <form:option value="1" label="Off source" selected="true"/>
-                <form:option value="2" label="Odc"/>
-            </form:select>
-            <p><form:errors path="productType" cssClass="error"/></p>
-            <br/>
-            <div class="col-auto my-1">
-                <button type="submit" class="btn btn-primary mb-2">Add</button>
+                        </form:form>
+                    </div>
+                </div>
+
             </div>
+            <p><form:errors path="productType" cssClass="error"/></p>
         </div>
-    </form:form>
     </div>
-    </div>
+
 </body>
 </html>

@@ -9,4 +9,6 @@ public interface UserService {
 
     public void save(User user, String roleName);
 
+    public void update(User user);
+
 }

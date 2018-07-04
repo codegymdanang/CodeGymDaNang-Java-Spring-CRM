@@ -64,8 +64,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findByUserBySeller(User user) {
-        return customerRepository.findByUserBySeller(user);
+    public List<Customer> findByUserBySellerAndIsDelete(User user, Integer isDelete) {
+        return customerRepository.findByUserBySellerAndIsDelete(user, isDelete);
     }
 
     @Override
@@ -82,4 +82,5 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId) {
         return customerRepository.findByProductTypeAndStatusByStatusId(productType,statusId);
     }
+
 }
