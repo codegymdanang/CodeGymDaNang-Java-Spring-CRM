@@ -8,6 +8,7 @@ import java.util.List;
 public interface CustomerService {
     void saveCustomer(Customer customer);
     void addCustomer(Customer customer);
-    Customer afindOneid(Integer id);
+    Customer findOneid(Integer id);
     List<Customer> findByUserBySeller(User user);
+
 }

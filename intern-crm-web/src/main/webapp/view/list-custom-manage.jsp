@@ -47,7 +47,14 @@
                 <td>${c.phone}</td>
                 <td>${c.userBySeller.userName}</td>
                 <td>${c.statusByStatusId.name}</td>
-                <td>${c.productType}</td>
+                <c:choose>
+                    <c:when test="${c.productType=='1'}">
+                        <td>Off source</td>
+                    </c:when>
+                    <c:otherwise>
+                         <td>Odc</td>
+                    </c:otherwise>
+                </c:choose>
                 <td>${c.company}</td>
             </tr>
             </c:forEach>

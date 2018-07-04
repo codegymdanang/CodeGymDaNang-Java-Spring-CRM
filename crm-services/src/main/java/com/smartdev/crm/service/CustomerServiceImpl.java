@@ -60,7 +60,7 @@ public class CustomerServiceImpl implements CustomerService {
         historyAdvisoryService.save(historyAdvisory);
     }
     @Override
-    public Customer afindOneid(Integer id){
+    public Customer findOneid(Integer id){
         return customerRepository.findOne(id);
     }
 
@@ -68,4 +68,8 @@ public class CustomerServiceImpl implements CustomerService {
     public List<Customer> findByUserBySeller(User user) {
         return customerRepository.findByUserBySeller(user);
     }
+
+
+
+
 }
