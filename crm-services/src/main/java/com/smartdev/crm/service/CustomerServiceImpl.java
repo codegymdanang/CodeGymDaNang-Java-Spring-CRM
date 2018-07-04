@@ -1,5 +1,6 @@
 package com.smartdev.crm.service;
 
+import com.smartdev.crm.service.user.UserService;
 import com.smartdev.user.dao.repository.CustomerRepository;
 import com.smartdev.user.entity.Customer;
 import com.smartdev.user.entity.HistoryAdvisory;
@@ -12,7 +13,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -30,6 +30,9 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Autowired
     HistoryAdvisoryService historyAdvisoryService;
+
+    @Autowired
+    UserService userService;
 
     @Override
     public void saveCustomer(Customer customer) {
@@ -65,11 +68,69 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findByUserBySeller(User user) {
-        return customerRepository.findByUserBySeller(user);
+    public List<Customer> findByUserBySellerAndIsDelete(User user, Integer isDelete) {
+        return customerRepository.findByUserBySellerAndIsDelete(user, isDelete);
+    }
+
+    @Override
+    public List<Customer> findCustomersByStatusId(Status status) {
+        return customerRepository.findByStatusByStatusId(status);
+    }
+
+    @Override
+    public List<Customer> findCustomersByProductType(Integer productType) {
+        return customerRepository.findAllByProductType(productType);
+    }
+
+    @Override
+    public List<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId) {
+        return customerRepository.findByProductTypeAndStatusByStatusId(productType,statusId);
     }
 
 
+    @Override
+    public List<Customer> findByNameContaining(String name) {
+        return customerRepository.findByNameContaining(name);
+    }
 
+    @Override
+    public List<Customer> findByCompanyContaining(String company) {
+        return customerRepository.findByCompanyContaining(company);
+    }
+
+    @Override
+    public List<Customer> findByMailContaining(String mail) {
+        return customerRepository.findByMailContaining(mail);
+    }
+
+    @Override
+    public List<Customer> findByUserBySeller(User user) {
+
+        return customerRepository.findByUserBySeller(user);
+    }
+
+    @Override
+    public List<Customer> checkOption(String option, String search) {
+       List<Customer> customers = null;
+        switch (option){
+            case "Name":
+                customers=findByNameContaining(search);
+                break;
+
+            case "Company":
+                customers=findByCompanyContaining(search);
+                break;
+            case "Mail":
+                customers= findByMailContaining(search);
+                break;
+            case "SellerName":
+                User user = userService.getUserByUserName(search);
+                customers= findByUserBySeller(user);
+                break;
+
+        }
+        return customers;
+
+    }
 
 }

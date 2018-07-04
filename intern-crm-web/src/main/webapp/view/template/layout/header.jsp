@@ -16,14 +16,16 @@
                         <div class="h-tilte">
                                 <p class=" h1 font-weight-light font-italic text-uppercase text-white p-0">CRM system </p>
                         </div>
-                            <form id="logoutForm" method="POST" action="../logout">
-                                    <input type="hidden" name="${_csrf.parameterName}"
-                                    value="${_csrf.token}" />
-                            </form>
+
                         <div class="account d-flex align-items-center ">
-                                <a href="#" class="btn p-0">
-                                <i class="fa fa-user-circle text-warning fa-2x"></i>
-                                <a onclick="document.forms['logoutForm'].submit()" class="btn btn-warning">Logout</a>
+                                <a href="/edit-user" class="btn p-0">
+                                        <i class="fa fa-user-circle text-warning fa-2x"></i></a>
+
+                                    <form id="logoutForm" method="POST" action="../logout">
+                                         <input type="hidden" name="${_csrf.parameterName}"
+                                           value="${_csrf.token}" />
+                                    </form>
+                                <a onclick="document.forms['logoutForm'].submit()" class=" ml-2 btn btn-warning">Logout</a>
                         </div>
                 </div>
         </header>

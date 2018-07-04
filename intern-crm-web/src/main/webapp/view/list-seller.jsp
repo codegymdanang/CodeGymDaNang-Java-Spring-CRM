@@ -78,7 +78,6 @@
                 <th>Email</th>
                 <th>Phone</th>
                 <th></th>
-                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -98,7 +97,6 @@
                             <td>${sellerDetail.age}</td>
                             <td>${sellerDetail.mail}</td>
                             <td>${sellerDetail.phone}</td>
-                            <td> <button class="btn btn-info">EDIT</button></td>
                             <td><button class="btn btn-danger">DELETE</button></td>
                         </tr>
             </c:forEach>

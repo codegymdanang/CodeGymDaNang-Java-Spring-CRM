@@ -17,6 +17,7 @@ public class Customer {
     @NotNull(message = "Age is required")
     @Min(18) @Max(100)
     private Integer age;
+    @NotNull(message = "Phone is required")
     private Integer phone;
     @Email
     @NotEmpty(message = "Email is required")
@@ -174,6 +175,24 @@ public class Customer {
         result = 31 * result + (company != null ? company.hashCode() : 0);
         result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
         return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", phone=" + phone +
+                ", mail='" + mail + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", productType=" + productType +
+                ", company='" + company + '\'' +
+                ", isDelete=" + isDelete +
+                ", statusByStatusId=" + statusByStatusId +
+                ", userBySeller=" + userBySeller +
+                ", historyAdvisoriesById=" + historyAdvisoriesById +
+                '}';
     }
 
     @ManyToOne

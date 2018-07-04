@@ -28,4 +28,9 @@ public class SellerDetailServiceImpl implements SellerDetailService {
         }
         return null;
     }
+
+    @Override
+    public void update(SellerDetail sellerDetail) {
+        sellerDetailRepository.save(sellerDetail);
+    }
 }

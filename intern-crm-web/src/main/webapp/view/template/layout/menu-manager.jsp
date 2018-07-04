@@ -15,7 +15,7 @@
     <a href="/manager_crm/list-seller" class="text-white lead ">Seller Manager</a>
     </li>
     <li class="p-3">
-    <a href="/manager_crm/list-custom" class="text-white lead">Customer Manager</a>
+    <a href="/manager_crm/list-custom?statusId=0&productType=0" class="text-white lead">Customer Manager</a>
     </li>
     <li class="p-3">
     <a href="#" class="text-white lead ">Block list</a>
