@@ -11,6 +11,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -133,4 +134,30 @@ public class CustomerServiceImpl implements CustomerService {
 
     }
 
+    @Override
+    public List<Customer> listAllCustomer() {
+        return customerRepository.findByIsDelete(0);
+    }
+
+    @Override
+    public List<Customer> listCustomerWithFilter(Integer statusId, Integer productType) {
+        List<Customer> customerList = new ArrayList<>();
+        statusId = statusId==null ? 0 : statusId;
+        productType = productType==null ? 0 : productType;
+        if(statusId == 0 && productType == 0) {
+            customerList = listAllCustomer();
+        }else{
+            if(statusId == 0){
+                customerList = findCustomersByProductType(productType);
+            }else{
+                Status status = statusService.findById(statusId);
+                if(productType == 0){
+                    customerList = findCustomersByStatusId(status);
+                }else {
+                    customerList = findByProductTypeAndStatusByStatusId(productType, status);
+                }
+            }
+        }
+        return customerList;
+    }
 }
