@@ -41,7 +41,7 @@ public class LoginController {
         return "login";
     }
 
-    @RequestMapping(value = "/edit-user", method = RequestMethod.GET)
+    @RequestMapping(value = " /edit-user", method = RequestMethod.GET)
     public String editUser() {
         Collection<? extends GrantedAuthority> authorities = SecurityContextHolder.getContext().
                 getAuthentication().getAuthorities();
