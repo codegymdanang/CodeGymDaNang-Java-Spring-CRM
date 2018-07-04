@@ -35,8 +35,15 @@
     <definition name="update-manager-account" extends="definition-manager">
         <put-attribute name="body" value="/view/update-manager-account.jsp"/>
     </definition>
-
-
+    <definition name="campain-customer" extends="definition-manager">
+        <put-attribute name="body" value="/view/campain-customer.jsp"/>
+    </definition>
+    <definition name="campain" extends="definition-manager">
+        <put-attribute name="body" value="/view/campain.jsp"/>
+    </definition>
+    <definition name="campain-manager" extends="definition-manager">
+        <put-attribute name="body" value="/view/campain-manager.jsp"/>
+    </definition>
 <!-- seller-->
     <definition name="definition-seller" template="/view/template/layout/template.jsp">
         <put-attribute name="header" value="/view/template/layout/header.jsp" />
@@ -57,7 +64,9 @@
     <definition name="advisory" extends="definition-seller">
         <put-attribute name="body" value="/view/advisory.jsp"/>
     </definition>
-
+    <definition name="editcustomer" extends="definition-seller">
+        <put-attribute name="body" value="/view/editcustomer.jsp"/>
+    </definition>
 
     <definition name="update-seller-detail" extends="definition-seller">
         <put-attribute name="body" value="/view/update-seller-detail.jsp"/>

@@ -22,6 +22,10 @@
         });
     }
 
+    $(document).ready(function () {
+        $('#month').val(getCurrentMonth());
+    })
+
     function getYear() {
         return $("#year").val();
     }
@@ -29,4 +33,11 @@
     function getMonth() {
         return $("#month").val();
     }
+
+    function getCurrentMonth() {
+        var today = new Date();
+        return today.getMonth() + 1;
+    }
+
+
 

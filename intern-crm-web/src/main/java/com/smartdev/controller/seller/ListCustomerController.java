@@ -14,6 +14,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
@@ -63,7 +64,7 @@ public class ListCustomerController {
 
     @RequestMapping(value = "/advisory", method = RequestMethod.GET)
     public ModelAndView advisory(@RequestParam("customer") Integer theId){
-        Customer customer = customerService.afindOneid(theId);
+        Customer customer = customerService.findOneid(theId);
         List<HistoryAdvisory> historyAdvisories= historyAdvisoryService.getHistoryAdvisoriesByCustomer(customer);
         ModelAndView modelAndView = new ModelAndView("advisory");
         modelAndView.addObject("getItemCustomer",customer);
@@ -114,7 +115,7 @@ public class ListCustomerController {
         historyAdvisory.setComment(historyTest.getComment());
 
         //get id of customer and set status of customer
-        Customer customer = customerService.afindOneid(historyTest.getCustomerId());
+        Customer customer = customerService.findOneid(historyTest.getCustomerId());
         historyAdvisory.setCustomerByCustomerId(customer);
         customer.setStatusByStatusId(status);
 
@@ -143,6 +144,29 @@ public class ListCustomerController {
         customerService.addCustomer(customer);
         return "redirect:/seller/list-custom";
     }
+    @RequestMapping(value = "/editcustomer/{id}",method = RequestMethod.GET)
+    public ModelAndView getEditCustomer(@PathVariable(value = "id") Integer id){
+       Customer customer = customerService.findOneid(id);
+       ModelAndView modelAndView = new ModelAndView("editcustomer");
+       modelAndView.addObject("getItemCustomer",customer);
+       return modelAndView;
+    }
+    @RequestMapping(value = "/editcustomer/{id}",method = RequestMethod.POST)
+    public String postEditCustomer(@ModelAttribute("getItemCustomer") @Valid Customer customer, BindingResult result) {
+        if (result.hasErrors()) {
+            return "editcustomer";
+        }
+        Customer customerOld = customerService.findOneid(customer.getId());
+        customerOld.setAge(customer.getAge());
+        customerOld.setName(customer.getName());
+        customerOld.setCompany(customer.getCompany());
+        customerOld.setFacebook(customer.getFacebook());
+        customerOld.setMail(customer.getMail());
+        customerOld.setPhone(customer.getPhone());
+        customerOld.setProductType(customer.getProductType());
+        customerService.saveCustomer(customerOld);
+       return "redirect:/seller/list-custom";
+    }
     @RequestMapping(value = "/list-custom-filter", method = RequestMethod.GET, headers = {"Accept=text/xml, application/json"})
     @ResponseBody
     public ResponseEntity<CustomerRespon> listCustomerByFilters(@RequestParam Integer statusId, @RequestParam Integer productType){
@@ -168,7 +192,7 @@ public class ListCustomerController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam("customer") Integer theId){
-        Customer customer = customerService.afindOneid(theId);
+        Customer customer = customerService.findOneid(theId);
         customer.setIsDelete(1);
         customerService.saveCustomer(customer);
 

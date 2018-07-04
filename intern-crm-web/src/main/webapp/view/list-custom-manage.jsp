@@ -78,10 +78,10 @@
                 <td id="product-type">
                     <c:choose>
                         <c:when test="${c.productType == 1}">
-                            Out Source
+                            Off Source
                         </c:when>
                         <c:otherwise>
-                            ODD
+                            ODC
                         </c:otherwise>
                     </c:choose>
                 </td>
