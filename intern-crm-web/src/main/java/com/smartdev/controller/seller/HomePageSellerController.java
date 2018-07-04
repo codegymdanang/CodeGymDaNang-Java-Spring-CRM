@@ -86,6 +86,7 @@ public class HomePageSellerController {
         }
 
         SellerDetail sellerDetail = sellerDetailService.findByUsername(userSellerDetails.getUsername());
+
         sellerDetail.setName(userSellerDetails.getName());
         sellerDetail.setAge(userSellerDetails.getAge());
         sellerDetail.setPhone(userSellerDetails.getPhone());
@@ -93,7 +94,7 @@ public class HomePageSellerController {
 
         sellerDetailService.update(sellerDetail);
 
-        return "list-custom-seller";
+        return "redirect:/seller/list-custom-seller";
     }
 
 }

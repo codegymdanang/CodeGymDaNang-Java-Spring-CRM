@@ -32,7 +32,9 @@
         <put-attribute name="body" value="/view/list-custom-manage.jsp"/>
     </definition>
 
-
+    <definition name="update-manager-account" extends="definition-manager">
+        <put-attribute name="body" value="/view/update-manager-account.jsp"/>
+    </definition>
 
 
 <!-- seller-->
