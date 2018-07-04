@@ -39,8 +39,10 @@ public class ListCustomerController {
     StatusService statusService;
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
-    public String listCustom(Model model,@RequestParam Integer statusId, @RequestParam Integer productType){
+    public String listCustom(Model model,@RequestParam(required = false) Integer statusId, @RequestParam(required = false) Integer productType){
         List<Customer> customerList = new ArrayList<>();
+        statusId = statusId==null ? 0 : statusId;
+        productType = productType==null ? 0 : productType;
         if(statusId == 0 && productType == 0) {
             customerList = listCustomManageService.listAllCustomer();
         }else{
@@ -94,7 +96,7 @@ public class ListCustomerController {
         return modelAndView;
     }
 
-    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.GET)
+    @RequestMapping(value = "/saveHistoryAdvisory", method = RequestMethod.POST)
     public String saveHistoryAdvisory(@ModelAttribute("history") HistoryTest historyTest) {
         //create new HistoryAdvisory
         HistoryAdvisory historyAdvisory = new HistoryAdvisory();
