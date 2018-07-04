@@ -57,7 +57,9 @@
     <definition name="advisory" extends="definition-seller">
         <put-attribute name="body" value="/view/advisory.jsp"/>
     </definition>
-
+    <definition name="editcustomer" extends="definition-seller">
+        <put-attribute name="body" value="/view/editcustomer.jsp"/>
+    </definition>
 
     <definition name="update-seller-detail" extends="definition-seller">
         <put-attribute name="body" value="/view/update-seller-detail.jsp"/>

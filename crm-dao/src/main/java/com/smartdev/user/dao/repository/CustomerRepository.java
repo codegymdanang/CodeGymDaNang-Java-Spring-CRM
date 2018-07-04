@@ -12,11 +12,6 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
-    //show ra thông tin khách hàng
-//    @Modifying
-//    @Transactional
-//    @Query("select one from Customer one where one.id=:id")
-////    public Customer findOne();
     List<Customer> findByUserBySeller(User user);
 
     List<Customer> findByStatusByStatusId(Status status);

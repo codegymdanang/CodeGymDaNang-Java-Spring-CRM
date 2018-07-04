@@ -82,7 +82,7 @@
                 <td>2018-7-2</td>
                 <td><a href="${upDateLink}" class="btn btn-info">UpDate Status</a></td>
                 <td>
-                    <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" data-toggle="modal" data-target="#exampleModal" value="">EDIT</button></a>
+                    <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" value="">EDIT</button></a>
                 </td>
                 <td><a href="${deleteLink}"
                        onclick="if (!confirm('Are you sure??')) return false" class="btn btn-danger">Delete</a>
@@ -95,41 +95,3 @@
     </div>
     </c:otherwise>
     </c:choose>
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">EDIT CUSTOMER</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-
-                    <input type="text" class="form-control" id="formGroupExampleInput" placeholder="name" value="">
-                    <br/>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="age" value="">
-                    <br/>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="phone" value="">
-                    <br/>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="company" value="">
-                    <br/>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="facebook" value="">
-                    <br/>
-                    <input type="text" class="form-control" id="formGroupExampleInput2" placeholder="Email" value="">
-                    <br/>
-                    <select class="custom-select mr-sm-2" id="inlineFormCustomSelect">
-                        <option selected>Choose...</option>
-                        <option value="1">offsource</option>
-                        <option value="2">odc</option>
-                    </select>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary">Save changes</button>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
