@@ -20,10 +20,19 @@ public interface CustomerService {
     List<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId);
 
     List<Customer> findByUserBySellerAndIsDelete(User user,Integer isDelete);
+  
     List<Customer> findByNameContaining(String name,Integer isDelete);
+  
     List<Customer> findByCompanyContaining (String company,Integer isDelete);
+  
     List<Customer>  findByMailContaining(String mail,Integer isDelete);
+  
     List<Customer> findByUserBySeller( User user,Integer isDelete);
+
     List<Customer> checkOption(String option , String search);
+
+    List<Customer> listAllCustomer();
+
+    List<Customer> listCustomerWithFilter(Integer statusId, Integer productType);
 
 }
