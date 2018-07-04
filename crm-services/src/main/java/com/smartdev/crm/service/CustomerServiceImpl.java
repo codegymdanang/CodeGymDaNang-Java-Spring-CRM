@@ -89,24 +89,24 @@ public class CustomerServiceImpl implements CustomerService {
 
 
     @Override
-    public List<Customer> findByNameContaining(String name) {
-        return customerRepository.findByNameContaining(name);
+    public List<Customer> findByNameContaining(String name,Integer isDelete) {
+        return customerRepository.findByNameContainingAndIsDelete(name,isDelete);
     }
 
     @Override
-    public List<Customer> findByCompanyContaining(String company) {
-        return customerRepository.findByCompanyContaining(company);
+    public List<Customer> findByCompanyContaining(String company,Integer isDelete) {
+        return customerRepository.findByCompanyContainingAndIsDelete(company,isDelete);
     }
 
     @Override
-    public List<Customer> findByMailContaining(String mail) {
-        return customerRepository.findByMailContaining(mail);
+    public List<Customer> findByMailContaining(String mail,Integer isDelete) {
+        return customerRepository.findByMailContainingAndIsDelete(mail,isDelete);
     }
 
     @Override
-    public List<Customer> findByUserBySeller(User user) {
+    public List<Customer> findByUserBySeller(User user,Integer isDelete) {
 
-        return customerRepository.findByUserBySeller(user);
+        return customerRepository.findByUserBySellerAndIsDelete(user,isDelete);
     }
 
     @Override
@@ -114,18 +114,18 @@ public class CustomerServiceImpl implements CustomerService {
        List<Customer> customers = null;
         switch (option){
             case "Name":
-                customers=findByNameContaining(search);
+                customers=findByNameContaining(search,0);
                 break;
 
             case "Company":
-                customers=findByCompanyContaining(search);
+                customers=findByCompanyContaining(search,0);
                 break;
             case "Mail":
-                customers= findByMailContaining(search);
+                customers= findByMailContaining(search,0);
                 break;
             case "SellerName":
                 User user = userService.getUserByUserName(search);
-                customers= findByUserBySeller(user);
+                customers= findByUserBySeller(user,0);
                 break;
 
         }
