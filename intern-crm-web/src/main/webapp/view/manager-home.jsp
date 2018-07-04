@@ -11,6 +11,7 @@
 <head>
     <title>Manager Home</title>
     <link rel="stylesheet" href="/resource/css/manager-home.css">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.0.min.js"></script>
     <script src="/resource/scripts/home-manager.js" type="text/javascript"></script>
 </head>
 <body onload="getData()">
