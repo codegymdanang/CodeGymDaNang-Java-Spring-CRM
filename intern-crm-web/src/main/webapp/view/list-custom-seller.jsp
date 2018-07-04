@@ -93,5 +93,5 @@
         </table>
 
     </div>
-
-</div>
+    </c:otherwise>
+    </c:choose>

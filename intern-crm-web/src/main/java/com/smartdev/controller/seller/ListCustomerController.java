@@ -192,7 +192,7 @@ public class ListCustomerController {
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
     public String delete(@RequestParam("customer") Integer theId){
-        Customer customer = customerService.afindOneid(theId);
+        Customer customer = customerService.findOneid(theId);
         customer.setIsDelete(1);
         customerService.saveCustomer(customer);
 

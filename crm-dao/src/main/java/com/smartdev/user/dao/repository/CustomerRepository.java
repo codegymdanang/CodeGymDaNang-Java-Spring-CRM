@@ -12,6 +12,8 @@ import java.util.List;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Integer> {
+    List<Customer> findByUserBySeller(User user);
+
     List<Customer> findByStatusByStatusId(Status status);
 
     List<Customer> findAllByProductType(Integer productType);

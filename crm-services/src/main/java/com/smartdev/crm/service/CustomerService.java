@@ -12,8 +12,7 @@ public interface CustomerService {
     void addCustomer(Customer customer);
   
     Customer findOneid(Integer id);
-    List<Customer> findByUserBySeller(User user);
-    
+
     List<Customer> findCustomersByStatusId(Status status);
 
     List<Customer> findCustomersByProductType(Integer productType);
