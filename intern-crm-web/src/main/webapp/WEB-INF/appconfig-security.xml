@@ -8,6 +8,7 @@
 		http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="false">
+        <csrf disabled="true"/>
         <intercept-url pattern="/manager_crm/**" access="hasRole('ROLE_MANAGER')"/>
         <intercept-url pattern="/seller/**" access="hasRole('ROLE_SELLER')"/>
         <form-login login-page="/" authentication-failure-url="/?error=true"
