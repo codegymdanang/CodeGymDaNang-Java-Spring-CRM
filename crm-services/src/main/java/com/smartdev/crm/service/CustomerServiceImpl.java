@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
-import java.util.UUID;
 
 @Service
 public class CustomerServiceImpl implements CustomerService {
@@ -69,5 +68,19 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findByUserBySellerAndIsDelete(user, isDelete);
     }
 
+    @Override
+    public List<Customer> findCustomersByStatusId(Status status) {
+        return customerRepository.findByStatusByStatusId(status);
+    }
+
+    @Override
+    public List<Customer> findCustomersByProductType(Integer productType) {
+        return customerRepository.findAllByProductType(productType);
+    }
+
+    @Override
+    public List<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId) {
+        return customerRepository.findByProductTypeAndStatusByStatusId(productType,statusId);
+    }
 
 }
