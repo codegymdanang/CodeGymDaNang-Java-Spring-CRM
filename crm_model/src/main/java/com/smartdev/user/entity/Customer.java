@@ -49,6 +49,24 @@ public class Customer {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", phone=" + phone +
+                ", mail='" + mail + '\'' +
+                ", facebook='" + facebook + '\'' +
+                ", productType=" + productType +
+                ", company='" + company + '\'' +
+                ", isDelete=" + isDelete +
+                ", statusByStatusId=" + statusByStatusId +
+                ", userBySeller=" + userBySeller +
+                ", historyAdvisoriesById=" + historyAdvisoriesById +
+                '}';
+    }
+
     public void setName(String name) {
         this.name = name;
     }
