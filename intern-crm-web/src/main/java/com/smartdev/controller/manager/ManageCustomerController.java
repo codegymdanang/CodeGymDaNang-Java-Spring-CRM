@@ -4,6 +4,7 @@ import com.smartdev.crm.service.CustomerService;
 import com.smartdev.crm.service.StatusService;
 import com.smartdev.user.entity.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +24,7 @@ public class ManageCustomerController {
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
     public String listCustom(Model model, @RequestParam Integer statusId, @RequestParam Integer
             productType, @RequestParam(defaultValue = "1") Integer pageNum) {
-        List<Customer> customerList = customerService.listCustomerWithFilter(statusId,
+        Page<Customer> customerList = customerService.listCustomerWithFilter(statusId,
                 productType, pageNum);
         model.addAttribute("list", customerList);
         return "list-custom-manage";

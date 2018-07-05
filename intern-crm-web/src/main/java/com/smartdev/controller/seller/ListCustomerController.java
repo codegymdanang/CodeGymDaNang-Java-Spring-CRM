@@ -9,6 +9,9 @@ import com.smartdev.user.entity.HistoryTest;
 import com.smartdev.user.entity.Status;
 import com.smartdev.user.model.CustomerRespon;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -18,7 +21,6 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
-import java.awt.print.Pageable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -27,9 +29,9 @@ import java.util.List;
 @Controller
 @RequestMapping("/seller")
 public class ListCustomerController {
-
     @Autowired
     CustomerService customerService;
+
     @Autowired
     HistoryAdvisoryService historyAdvisoryService;
 
@@ -39,9 +41,8 @@ public class ListCustomerController {
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
     public String listCustom(Model model, @RequestParam(required = false) Integer statusId,
                              @RequestParam(required =false) Integer productType,
-                             @RequestParam(defaultValue = "1") Integer pageNum) {
-        List<Customer> customerList = customerService.listCustomerWithFilter(statusId, productType, pageNum);
-        model.addAttribute("list", customerList);
+                             @RequestParam(required = false ,defaultValue = "1") Integer pageNum) {
+        model.addAttribute("list", customerService.listCustomerWithFilter(statusId, productType, pageNum));
         return "list-custom";
     }
 
@@ -168,7 +169,7 @@ public class ListCustomerController {
 //            return customerService.findByProductTypeAndStatusByStatusId(productType,null);
         } else if (statusId > 0) {
             Status status = statusService.findById(statusId);
-            customerList = customerService.findCustomersByStatusId(status);
+//            customerList = customerService.findCustomersByStatusId(status);
         } else if (productType > 0) {
 //            return customerService.findCustomersByProductType(productType);
         } else {
