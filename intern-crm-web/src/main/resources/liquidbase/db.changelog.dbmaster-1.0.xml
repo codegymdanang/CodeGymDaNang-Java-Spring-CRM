@@ -221,4 +221,9 @@ http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.0.xsd"
 		<addForeignKeyConstraint baseTableName="customer_campaign" baseColumnNames="campaign_id" constraintName="fk_customer_campaign"
 								 referencedTableName="campaign" referencedColumnNames="id"></addForeignKeyConstraint>
 	</changeSet>
+	<changeSet id="016" author="HaNguyen">
+		<addColumn tableName="customer_campaign">
+			<column name="isMoved" type="INT(1)" defaultValue="0"></column>
+		</addColumn>
+	</changeSet>
 </databaseChangeLog>

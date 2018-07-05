@@ -4,7 +4,7 @@ import javax.persistence.*;
 import java.util.Objects;
 
 @Entity
-@Table(name = "customer_campaign", schema = "crm_db", catalog = "")
+@Table(name = "customer_campaign")
 public class CustomerCampaign {
     private int id;
     private String name;
@@ -15,6 +15,7 @@ public class CustomerCampaign {
     private Integer statusId;
     private Integer productType;
     private String company;
+    private Integer isMoved;
     private Campaign campaignByCampaignId;
 
     @Id
@@ -106,6 +107,16 @@ public class CustomerCampaign {
 
     public void setCompany(String company) {
         this.company = company;
+    }
+
+    @Basic
+    @Column(name = "isMoved")
+    public Integer getIsMoved() {
+        return isMoved;
+    }
+
+    public void setIsMoved(Integer isMoved) {
+        this.isMoved = isMoved;
     }
 
     @ManyToOne
