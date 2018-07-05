@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.validation.Valid;
+import java.awt.print.Pageable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -36,19 +37,22 @@ public class ListCustomerController {
     StatusService statusService;
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
-    public String listCustom(Model model,@RequestParam(required = false) Integer statusId, @RequestParam(required = false) Integer productType){
-        List<Customer> customerList = customerService.listCustomerWithFilter(statusId, productType);
-        model.addAttribute("list",customerList);
+    public String listCustom(Model model, @RequestParam(required = false) Integer statusId,
+                             @RequestParam(required =false) Integer productType,
+                             @RequestParam(defaultValue = "1") Integer pageNum) {
+        List<Customer> customerList = customerService.listCustomerWithFilter(statusId, productType, pageNum);
+        model.addAttribute("list", customerList);
         return "list-custom";
     }
 
     @RequestMapping(value = "/advisory", method = RequestMethod.GET)
-    public ModelAndView advisory(@RequestParam("customer") Integer theId){
+    public ModelAndView advisory(@RequestParam("customer") Integer theId) {
         Customer customer = customerService.findOneid(theId);
-        List<HistoryAdvisory> historyAdvisories= historyAdvisoryService.getHistoryAdvisoriesByCustomer(customer);
+        List<HistoryAdvisory> historyAdvisories = historyAdvisoryService
+                .getHistoryAdvisoriesByCustomer(customer);
         ModelAndView modelAndView = new ModelAndView("advisory");
-        modelAndView.addObject("getItemCustomer",customer);
-        modelAndView.addObject("historyAdvisories",historyAdvisories);
+        modelAndView.addObject("getItemCustomer", customer);
+        modelAndView.addObject("historyAdvisories", historyAdvisories);
 
 
         //create new historytest
@@ -65,13 +69,12 @@ public class ListCustomerController {
         //
         //get all status
         List<Status> statuses = statusService.findAll();
-        modelAndView.addObject("listStatus",statuses );
+        modelAndView.addObject("listStatus", statuses);
 
-        System.out.println("hhhhh"+historyTest.getStatus());
+        System.out.println("hhhhh" + historyTest.getStatus());
 
         //send object to view
-        modelAndView.addObject("history",historyTest );
-
+        modelAndView.addObject("history", historyTest);
 
 
         return modelAndView;
@@ -109,30 +112,34 @@ public class ListCustomerController {
         return "redirect:/seller/list-custom-seller";
     }
 
-    @RequestMapping(value = "/addcustomer",method = RequestMethod.GET)
-    public ModelAndView addCustomer(){
+    @RequestMapping(value = "/addcustomer", method = RequestMethod.GET)
+    public ModelAndView addCustomer() {
         ModelAndView modelAndView = new ModelAndView("addcustomer");
         modelAndView.addObject("customer", new Customer());
         return modelAndView;
     }
 
     @RequestMapping(value = "/addcustomer", method = RequestMethod.POST)
-    public String handleAddCustomer(@ModelAttribute("customer") @Valid Customer customer, BindingResult result) {
-        if(result.hasErrors()) {
+    public String handleAddCustomer(@ModelAttribute("customer") @Valid Customer customer,
+                                    BindingResult result) {
+        if (result.hasErrors()) {
             return "addcustomer";
         }
         customerService.addCustomer(customer);
         return "redirect:/seller/list-custom";
     }
-    @RequestMapping(value = "/editcustomer/{id}",method = RequestMethod.GET)
-    public ModelAndView getEditCustomer(@PathVariable(value = "id") Integer id){
-       Customer customer = customerService.findOneid(id);
-       ModelAndView modelAndView = new ModelAndView("editcustomer");
-       modelAndView.addObject("getItemCustomer",customer);
-       return modelAndView;
+
+    @RequestMapping(value = "/editcustomer/{id}", method = RequestMethod.GET)
+    public ModelAndView getEditCustomer(@PathVariable(value = "id") Integer id) {
+        Customer customer = customerService.findOneid(id);
+        ModelAndView modelAndView = new ModelAndView("editcustomer");
+        modelAndView.addObject("getItemCustomer", customer);
+        return modelAndView;
     }
-    @RequestMapping(value = "/editcustomer/{id}",method = RequestMethod.POST)
-    public String postEditCustomer(@ModelAttribute("getItemCustomer") @Valid Customer customer, BindingResult result) {
+
+    @RequestMapping(value = "/editcustomer/{id}", method = RequestMethod.POST)
+    public String postEditCustomer(@ModelAttribute("getItemCustomer") @Valid Customer customer,
+                                   BindingResult result) {
         if (result.hasErrors()) {
             return "editcustomer";
         }
@@ -145,24 +152,29 @@ public class ListCustomerController {
         customerOld.setPhone(customer.getPhone());
         customerOld.setProductType(customer.getProductType());
         customerService.saveCustomer(customerOld);
-       return "redirect:/seller/list-custom";
+        return "redirect:/seller/list-custom";
     }
-    @RequestMapping(value = "/list-custom-filter", method = RequestMethod.GET, headers = {"Accept=text/xml, application/json"})
+
+    @RequestMapping(value = "/list-custom-filter", method = RequestMethod.GET, headers =
+            {"Accept=text/xml, " +
+            "application/json"})
     @ResponseBody
-    public ResponseEntity<CustomerRespon> listCustomerByFilters(@RequestParam Integer statusId, @RequestParam Integer productType){
+    public ResponseEntity<CustomerRespon> listCustomerByFilters(@RequestParam Integer statusId,
+                                                                @RequestParam Integer
+            productType) {
         List<Customer> customerList = new ArrayList<>();
         List<CustomerRespon> customerRespons = new ArrayList<>();
-        if(statusId== 0 && productType == 0){
+        if (statusId == 0 && productType == 0) {
 //            return customerService.findByProductTypeAndStatusByStatusId(productType,null);
-        }else if(statusId >0){
+        } else if (statusId > 0) {
             Status status = statusService.findById(statusId);
-            customerList =customerService.findCustomersByStatusId(status);
-        }else if(productType>0){
+            customerList = customerService.findCustomersByStatusId(status);
+        } else if (productType > 0) {
 //            return customerService.findCustomersByProductType(productType);
-        }else {
+        } else {
 //            return listCustomManageService.listAllCustomer();
         }
-        for (Customer cus: customerList) {
+        for (Customer cus : customerList) {
             CustomerRespon customerRespon = new CustomerRespon(cus);
             customerRespons.add(customerRespon);
         }
@@ -171,7 +183,7 @@ public class ListCustomerController {
     }
 
     @RequestMapping(value = "/delete", method = RequestMethod.GET)
-    public String delete(@RequestParam("customer") Integer theId){
+    public String delete(@RequestParam("customer") Integer theId) {
         Customer customer = customerService.findOneid(theId);
         customer.setIsDelete(1);
         customerService.saveCustomer(customer);
