@@ -14,21 +14,9 @@
         <div class="row  mx-5 mb-3">
 
         <div class="col-3">
-               <%-- <div class="input-group">
-                    <div class="input-group-prepend">
-                        <label class="input-group-text">Tháng</label>
-                    </div>
-                    <select class="custom-select" name="thang" id="inputGroupSelect03">
-                        <option value="">Choose</option>
-                        <c:forEach begin="1" end="12" var="i">
-                            <option value="${i}">${i}</option>
-                        </c:forEach>
-                    </select>
-                </div>--%>
             </div>
             <div class="col-4">
                 <div class="input-group">
-
 
                     <input class="form-control" name="key" type="text" value="" placeholder="Search">
                     <button class="btn btn-success " type="submit">Search</button>
