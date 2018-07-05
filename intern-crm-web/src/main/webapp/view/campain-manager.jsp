@@ -6,13 +6,14 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <h5 class="h2 text-center font-weight-bold m-4 text-muted">Campain Management</h5>
     <form class="form-inline d-inline form-search mx-5 my-3 float-right ">
         <input class="form-control" type="text" placeholder="Search">
         <button class="btn btn-success " type="submit">Search</button>
     </form>
-    </form>
+
 
     <div class="m-5">
         <table class="table table-striped">
@@ -25,30 +26,14 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>Fast campain</td>
-                <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A vero voluptas nobis neque
-                    doloremque fugit similique hic architecto dignissimos quos!</td>
-                <td>2018-07-01</td>
-                <td>2018-08-01</td>
-            </tr>
-            <tr>
-                <td>Small campain</td>
-                <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A vero voluptas nobis neque
-                    doloremque fugit similique hic architecto dignissimos quos!</td>
-                <td>2018-08-09</td>
-                <td>2018-09-09</td>
-            </tr>
-
-            <tr>
-                <td>Big campain</td>
-                <td>Lorem ipsum, dolor sit amet consectetur adipisicing elit. A vero voluptas nobis neque
-                    doloremque fugit similique hic architecto dignissimos quos!</td>
-                <td>2018-09-10</td>
-                <td>2018-11-10</td>
-            </tr>
-
-
+            <c:forEach var="c" items="${campaigns}">
+                <tr>
+                    <td>${c.name}</td>
+                    <td>${c.description}</td>
+                    <td>${c.dateStart}</td>
+                    <td>${c.dateEnd}</td>
+                </tr>
+            </c:forEach>
             </tbody>
         </table>
 
