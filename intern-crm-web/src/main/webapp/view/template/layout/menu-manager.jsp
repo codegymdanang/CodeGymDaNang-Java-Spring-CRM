@@ -18,10 +18,10 @@
     <a href="/manager_crm/list-custom?statusId=0&productType=0" class="text-white lead">Customer Manager</a>
     </li>
     <li class="p-3">
-    <a href="/manager_crm/campain" class="text-white lead ">Create campain</a>
+    <a href="/manager_crm/campaign" class="text-white lead ">Create campain</a>
     </li>
     <li class="p-3">
-    <a href="/manager_crm/campain-manager" class="text-white lead ">Campain manager</a>
+    <a href="/manager_crm/campaign-manager" class="text-white lead ">Campain manager</a>
     </li>
     <li class="p-3">
     <a href="#" class="text-white lead ">Block list</a>

@@ -23,15 +23,23 @@
                 <th class="w-50">Description</th>
                 <th>Start</th>
                 <th>End</th>
+                <th>Detail</th>
             </tr>
             </thead>
             <tbody>
+
             <c:forEach var="c" items="${campaigns}">
+                <c:url var="listCustomersLink" value="/manager_crm/campaign-customer">
+                    <c:param name="campaignId" value="${c.id}"></c:param>
+                </c:url>
                 <tr>
                     <td>${c.name}</td>
                     <td>${c.description}</td>
                     <td>${c.dateStart}</td>
                     <td>${c.dateEnd}</td>
+                    <td>
+                        <a href="${listCustomersLink}" class="btn btn-success"><i class="fa fa-arrow-right"></i></a>
+                    </td>
                 </tr>
             </c:forEach>
             </tbody>
