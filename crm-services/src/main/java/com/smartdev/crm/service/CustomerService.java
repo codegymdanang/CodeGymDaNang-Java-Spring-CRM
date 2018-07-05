@@ -3,6 +3,8 @@ package com.smartdev.crm.service;
 import com.smartdev.user.entity.Customer;
 import com.smartdev.user.entity.Status;
 import com.smartdev.user.entity.User;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
@@ -13,11 +15,11 @@ public interface CustomerService {
   
     Customer findOneid(Integer id);
 
-    List<Customer> findCustomersByStatusId(Status status);
+    Page<Customer> findCustomersByStatusId(Status status, Pageable pageable);
 
-    List<Customer> findCustomersByProductType(Integer productType);
+    Page<Customer> findCustomersByProductType(Integer productType, Pageable pageable);
 
-    List<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId);
+    Page<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId, Pageable pageable);
 
     List<Customer> findByUserBySellerAndIsDelete(User user,Integer isDelete);
   
@@ -31,8 +33,8 @@ public interface CustomerService {
 
     List<Customer> checkOption(String option , String search);
 
-    List<Customer> listAllCustomer();
+    Page<Customer> listAllCustomer(Pageable pageable);
 
-    List<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum);
+    Page<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum);
 
 }

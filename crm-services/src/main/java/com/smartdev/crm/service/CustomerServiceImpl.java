@@ -7,11 +7,13 @@ import com.smartdev.user.entity.HistoryAdvisory;
 import com.smartdev.user.entity.Status;
 import com.smartdev.user.entity.User;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
-import java.awt.print.Pageable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -48,7 +50,7 @@ public class CustomerServiceImpl implements CustomerService {
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         String username;
         if (principal instanceof UserDetails) {
-            username = ((UserDetails)principal).getUsername();
+            username = ((UserDetails) principal).getUsername();
         } else {
             username = principal.toString();
         }
@@ -65,8 +67,9 @@ public class CustomerServiceImpl implements CustomerService {
         historyAdvisory.setDate(createdDate);
         historyAdvisoryService.save(historyAdvisory);
     }
+
     @Override
-    public Customer findOneid(Integer id){
+    public Customer findOneid(Integer id) {
         return customerRepository.findOne(id);
     }
 
@@ -76,59 +79,60 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> findCustomersByStatusId(Status status) {
-        return customerRepository.findByStatusByStatusId(status);
+    public Page<Customer> findCustomersByStatusId(Status status, Pageable pageable) {
+        return customerRepository.findByStatusByStatusIdAndIsDelete(status, 0, pageable);
     }
 
     @Override
-    public List<Customer> findCustomersByProductType(Integer productType) {
-        return customerRepository.findAllByProductType(productType);
+    public Page<Customer> findCustomersByProductType(Integer productType, Pageable pageable) {
+        return customerRepository.findAllByProductTypeAndIsDelete(productType, 0, pageable);
     }
 
     @Override
-    public List<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId) {
-        return customerRepository.findByProductTypeAndStatusByStatusId(productType,statusId);
+    public Page<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status
+            statusId, Pageable pageable) {
+        return customerRepository.findByProductTypeAndStatusByStatusId(productType, statusId, pageable);
     }
 
 
     @Override
-    public List<Customer> findByNameContaining(String name,Integer isDelete) {
-        return customerRepository.findByNameContainingAndIsDelete(name,isDelete);
+    public List<Customer> findByNameContaining(String name, Integer isDelete) {
+        return customerRepository.findByNameContainingAndIsDelete(name, isDelete);
     }
 
     @Override
-    public List<Customer> findByCompanyContaining(String company,Integer isDelete) {
-        return customerRepository.findByCompanyContainingAndIsDelete(company,isDelete);
+    public List<Customer> findByCompanyContaining(String company, Integer isDelete) {
+        return customerRepository.findByCompanyContainingAndIsDelete(company, isDelete);
     }
 
     @Override
-    public List<Customer> findByMailContaining(String mail,Integer isDelete) {
-        return customerRepository.findByMailContainingAndIsDelete(mail,isDelete);
+    public List<Customer> findByMailContaining(String mail, Integer isDelete) {
+        return customerRepository.findByMailContainingAndIsDelete(mail, isDelete);
     }
 
     @Override
-    public List<Customer> findByUserBySeller(User user,Integer isDelete) {
+    public List<Customer> findByUserBySeller(User user, Integer isDelete) {
 
-        return customerRepository.findByUserBySellerAndIsDelete(user,isDelete);
+        return customerRepository.findByUserBySellerAndIsDelete(user, isDelete);
     }
 
     @Override
     public List<Customer> checkOption(String option, String search) {
-       List<Customer> customers = null;
-        switch (option){
+        List<Customer> customers = null;
+        switch (option) {
             case "Name":
-                customers=findByNameContaining(search,0);
+                customers = findByNameContaining(search, 0);
                 break;
 
             case "Company":
-                customers=findByCompanyContaining(search,0);
+                customers = findByCompanyContaining(search, 0);
                 break;
             case "Mail":
-                customers= findByMailContaining(search,0);
+                customers = findByMailContaining(search, 0);
                 break;
             case "SellerName":
                 User user = userService.getUserByUserName(search);
-                customers= findByUserBySeller(user,0);
+                customers = findByUserBySeller(user, 0);
                 break;
 
         }
@@ -137,30 +141,29 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> listAllCustomer() {
-        return customerRepository.findByIsDelete(0);
+    public Page<Customer> listAllCustomer(Pageable pageable) {
+        return customerRepository.findByIsDelete(0, pageable);
     }
 
     @Override
-    public List<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum) {
-
-        List<Customer> customerList = new ArrayList<>();
-        statusId = statusId==null ? 0 : statusId;
-        productType = productType==null ? 0 : productType;
-        if(statusId == 0 && productType == 0) {
-            customerList = listAllCustomer();
-        }else{
-            if(statusId == 0){
-                customerList = findCustomersByProductType(productType);
-            }else{
+    public Page<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer
+            pageNum) {
+        Pageable pageable = new PageRequest(pageNum-1, 10);
+        statusId = statusId == null ? 0 : statusId;
+        productType = productType == null ? 0 : productType;
+        if (statusId == 0 && productType == 0) {
+            return listAllCustomer(pageable);
+        } else {
+            if (statusId == 0) {
+                return findCustomersByProductType(productType, pageable);
+            } else {
                 Status status = statusService.findById(statusId);
-                if(productType == 0){
-                    customerList = findCustomersByStatusId(status);
-                }else {
-                    customerList = findByProductTypeAndStatusByStatusId(productType, status);
+                if (productType == 0) {
+                    return findCustomersByStatusId(status, pageable);
+                } else {
+                    return findByProductTypeAndStatusByStatusId(productType, status, pageable);
                 }
             }
         }
-        return customerList;
     }
 }
