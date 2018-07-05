@@ -1,11 +1,13 @@
 package com.smartdev.controller.seller;
 
 import com.smartdev.crm.service.CustomerService;
+import com.smartdev.crm.service.HistoryAdvisoryService;
 import com.smartdev.crm.service.SellerDetailService;
 import com.smartdev.crm.service.helper.PasswordChecker;
 import com.smartdev.crm.service.helper.SellerDetailToUserSellerDetail;
 import com.smartdev.crm.service.user.UserService;
 import com.smartdev.user.entity.Customer;
+import com.smartdev.user.entity.HistoryAdvisory;
 import com.smartdev.user.entity.SellerDetail;
 import com.smartdev.user.entity.User;
 import com.smartdev.user.model.UserSellerDetails;
@@ -23,6 +25,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import javax.validation.Valid;
 import java.security.Principal;
+import java.sql.Timestamp;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -38,12 +43,26 @@ public class HomePageSellerController {
     @Autowired
     private CustomerService customerService;
 
+    @Autowired
+    HistoryAdvisoryService historyAdvisoryService;
+
   	@RequestMapping(value = "/list-custom-seller", method = RequestMethod.GET)
 	public String listCustomSeller(Principal principal, Model model){
 		String username = principal.getName();
 		User user =userService.getUserByUserName(username);
 		List<Customer> customers = customerService.findByUserBySellerAndIsDelete(user,0);
+        HashMap<Customer,HistoryAdvisory> map = new HashMap<>();
+        for (Customer c:customers) {
+            List<HistoryAdvisory> historyAdvisoryList = historyAdvisoryService.getHistoryAdvisoriesByCustomer(c);
+            HistoryAdvisory historyAdvisory = historyAdvisoryList.get(0);
+            map.put(c,historyAdvisory);
+        }
+
+        map.get(customers.get(0)).getDate();
+
+
 		model.addAttribute("customers",customers);
+		model.addAttribute("map",map);
 		return "list-custom-seller";
 
 
