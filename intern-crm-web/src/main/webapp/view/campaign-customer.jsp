@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: lnmin
@@ -19,56 +20,45 @@
             <tr>
                 <th></th>
                 <th>Name</th>
-                <th>Company</th>
                 <th>Age</th>
                 <th>Phone</th>
-                <th>Email</th>
+                <th>Mail</th>
+                <th>Facebook</th>
+                <th>Product type</th>
+                <th>Company</th>
+                <th>Status</th>
                 <th></th>
             </tr>
             </thead>
             <tbody>
+            <c:forEach var="customer" items="${customers}">
             <tr>
                 <td>
                     <input type="checkbox">
                 </td>
-                <th>Mark</th>
-                <td>Smart Dev</td>
-                <td>24</td>
-                <td>0993113105</td>
-                <td>email@domain</td>
-                <td><select class="custom-select">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select></td>
-            </tr>
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <th>Mark</th>
-                <td>Smart Dev</td>
-                <td>24</td>
-                <td>0993113105</td>
-                <td>email@domain</td>
-                <td><select class="custom-select">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select></td>
-            </tr>
 
-            <tr>
-                <td>
-                    <input type="checkbox">
-                </td>
-                <th>Mark</th>
-                <td>Smart Dev</td>
-                <td>24</td>
-                <td>0993113105</td>
-                <td>email@domain</td>
+                <td>${customer.name}</td>
+                <td>${customer.age}</td>
+                <td>${customer.phone}</td>
+                <td>${customer.mail}</td>
+                <td>${customer.facebook}</td>
+                <c:choose>
+                    <c:when test="${customer.productType==1}">
+                        <td>Outsourcing</td>
+                    </c:when>
+                    <c:otherwise>
+                        <td>ODC</td>
+                    </c:otherwise>
+                </c:choose>
+                <td>${customer.company}</td>
+                <c:choose>
+                    <c:when test="${customer.isMoved==0}">
+                        <td><i class="fa fa-circle text-success"></i></td>
+                    </c:when>
+                    <c:otherwise>
+                       <td><i class="fa fa-circle text-secondary"></i></td>
+                    </c:otherwise>
+                </c:choose>
                 <td><select class="custom-select">
                     <option selected>Choose...</option>
                     <option value="1">One</option>
@@ -76,6 +66,8 @@
                     <option value="3">Three</option>
                 </select></td>
             </tr>
+            </c:forEach>
+
             </tbody>
         </table>
         <div class="text-center mt-5">
