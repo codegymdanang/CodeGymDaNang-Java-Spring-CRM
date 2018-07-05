@@ -17,7 +17,7 @@ public class CampaignServiceImpl implements CampaignService {
     }
 
     @Override
-    public List<Campaign> findByNameContaining(String name) {
+    public List<Campaign> findByName(String name) {
         return campaignRepository.findByNameContaining(name);
     }
 

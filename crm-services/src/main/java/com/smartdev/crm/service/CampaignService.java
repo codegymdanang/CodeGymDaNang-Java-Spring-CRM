@@ -6,6 +6,6 @@ import java.util.List;
 
 public interface CampaignService {
     List<Campaign> getAll();
-    List<Campaign> findByNameContaining(String name);
+    List<Campaign> findByName(String name);
 
 }

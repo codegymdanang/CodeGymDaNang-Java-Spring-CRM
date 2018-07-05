@@ -31,7 +31,7 @@ public class CampainController {
     }
     @RequestMapping(value="/searchCompain", method= RequestMethod.POST)
     public String searchCompain(@RequestParam(value="key" , required = false) String key, Model model){
-            List<Campaign> campaigns  = campaignService.findByNameContaining(key);
+            List<Campaign> campaigns  = campaignService.findByName(key);
             model.addAttribute("campaigns",campaigns);
         return "campain-manager";
     }
