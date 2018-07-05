@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,6 +27,12 @@ public class CampainController {
     public String getCampainManager(Model model){
         List<Campaign> campaigns = campaignService.getAll();
         model.addAttribute("campaigns",campaigns );
+        return "campain-manager";
+    }
+    @RequestMapping(value="/searchCompain", method= RequestMethod.POST)
+    public String searchCompain(@RequestParam(value="key" , required = false) String key, Model model){
+            List<Campaign> campaigns  = campaignService.findByName(key);
+            model.addAttribute("campaigns",campaigns);
         return "campain-manager";
     }
     @RequestMapping(value = "/campain-customer", method = RequestMethod.GET)

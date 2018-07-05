@@ -43,6 +43,7 @@
         <table class="table table-hover" id="table-customers">
             <thead>
             <tr>
+
                 <th>Name</th>
                 <th>Age</th>
                 <th>Phone</th>

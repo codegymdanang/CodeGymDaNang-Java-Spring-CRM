@@ -15,4 +15,13 @@ public class CampaignServiceImpl implements CampaignService {
     public List<Campaign> getAll() {
         return campaignRepository.findAll();
     }
+
+    @Override
+    public List<Campaign> findByName(String name) {
+        return campaignRepository.findByNameContaining(name);
+    }
+
+
+
+
 }

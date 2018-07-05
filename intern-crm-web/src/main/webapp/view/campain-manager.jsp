@@ -9,12 +9,40 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <h5 class="h2 text-center font-weight-bold m-4 text-muted">Campain Management</h5>
-    <form class="form-inline d-inline form-search mx-5 my-3 float-right ">
-        <input class="form-control" type="text" placeholder="Search">
-        <button class="btn btn-success " type="submit">Search</button>
+
+    <form class="" action="/manager_crm/searchCompain" method="post">
+        <div class="row  mx-5 mb-3">
+
+        <div class="col-3">
+               <%-- <div class="input-group">
+                    <div class="input-group-prepend">
+                        <label class="input-group-text">Tháng</label>
+                    </div>
+                    <select class="custom-select" name="thang" id="inputGroupSelect03">
+                        <option value="">Choose</option>
+                        <c:forEach begin="1" end="12" var="i">
+                            <option value="${i}">${i}</option>
+                        </c:forEach>
+                    </select>
+                </div>--%>
+            </div>
+            <div class="col-4">
+                <div class="input-group">
+
+
+                    <input class="form-control" name="key" type="text" value="" placeholder="Search">
+                    <button class="btn btn-success " type="submit">Search</button>
+
+                </div>
+            </div>
+
+        </div>
     </form>
-
-
+    <c:choose>
+        <c:when test="${campaigns.size()==0}">
+            <p class="text-danger text-center" >không có kết quả</p>
+        </c:when>
+        <c:otherwise>
     <div class="m-5">
         <table class="table table-striped">
             <thead>
@@ -36,6 +64,7 @@
             </c:forEach>
             </tbody>
         </table>
-
     </div>
+        </c:otherwise>
+    </c:choose>
 </div>
