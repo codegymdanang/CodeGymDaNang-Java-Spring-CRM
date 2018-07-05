@@ -21,11 +21,16 @@ public class ManageCustomerController {
     StatusService statusService;
 
     @RequestMapping(value = "/list-custom", method = RequestMethod.GET)
-    public String listCustom(Model model, @RequestParam Integer statusId, @RequestParam Integer productType){
-        List<Customer> customerList = customerService.listCustomerWithFilter(statusId, productType);
-        model.addAttribute("list",customerList);
+    public String listCustom(Model model, @RequestParam Integer statusId, @RequestParam Integer
+            productType, @RequestParam(defaultValue = "1") Integer pageNum) {
+        List<Customer> customerList = customerService.listCustomerWithFilter(statusId,
+                productType, pageNum);
+        model.addAttribute("list", customerList);
         return "list-custom-manage";
     }
-    @RequestMapping(value = "addcustomer",method = RequestMethod.GET)
-    public String addCustomer(){ return "addcustomer";}
+
+    @RequestMapping(value = "addcustomer", method = RequestMethod.GET)
+    public String addCustomer() {
+        return "addcustomer";
+    }
 }

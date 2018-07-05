@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+
+import java.awt.print.Pageable;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
@@ -140,7 +142,8 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public List<Customer> listCustomerWithFilter(Integer statusId, Integer productType) {
+    public List<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum) {
+
         List<Customer> customerList = new ArrayList<>();
         statusId = statusId==null ? 0 : statusId;
         productType = productType==null ? 0 : productType;

@@ -33,6 +33,6 @@ public interface CustomerService {
 
     List<Customer> listAllCustomer();
 
-    List<Customer> listCustomerWithFilter(Integer statusId, Integer productType);
+    List<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum);
 
 }
