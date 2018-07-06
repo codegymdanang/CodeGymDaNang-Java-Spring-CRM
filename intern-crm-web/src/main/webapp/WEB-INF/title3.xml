@@ -32,6 +32,10 @@
         <put-attribute name="body" value="/view/list-custom-manage.jsp"/>
     </definition>
 
+    <definition name="list-custom-manage-search" extends="definition-manager">
+        <put-attribute name="body" value="/view/search-customer.jsp"/>
+    </definition>
+
     <definition name="update-manager-account" extends="definition-manager">
         <put-attribute name="body" value="/view/update-manager-account.jsp"/>
     </definition>
@@ -57,7 +61,9 @@
     <definition name="list-custom" extends="definition-seller">
         <put-attribute name="body" value="/view/list-custom-manage.jsp"/>
     </definition>
-
+    <definition name="list-custom-search" extends="definition-seller">
+        <put-attribute name="body" value="/view/search-customer.jsp"/>
+    </definition>
     <definition name="addcustomer" extends="definition-seller">
         <put-attribute name="body" value="/view/addcustomer.jsp"/>
     </definition>
