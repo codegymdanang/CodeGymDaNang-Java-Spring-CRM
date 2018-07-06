@@ -7,11 +7,13 @@
     --%>
         <%@ page contentType="text/html;charset=UTF-8" language="java" %>
         <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
-        <!DOCTYPE html>
+            <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+            <!DOCTYPE html>
         <html lang="en">
 
         <head>
-        <meta charset="UTF-8">
+            <c:url var="url" value="/resource/css/style.css"/>
+            <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <meta http-equiv="X-UA-Compatible" content="ie=edge">
         <title>CRM System</title>
@@ -22,7 +24,7 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
         integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
         crossorigin="anonymous">
-        <link rel="stylesheet" href="/resource/css/style.css">
+        <link rel="stylesheet" href="${url}">
 
         </head>
 

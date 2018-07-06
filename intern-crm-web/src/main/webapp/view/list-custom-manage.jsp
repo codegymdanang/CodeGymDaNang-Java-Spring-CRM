@@ -130,4 +130,4 @@
     </c:choose>
 </div>
 <div id="result" style="clear: both"></div>
-<script type="text/javascript" src="/resource/scripts/customerFilters.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resource/scripts/customerFilters.js"></script>

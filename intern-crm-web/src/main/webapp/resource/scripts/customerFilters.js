@@ -1,5 +1,6 @@
 var setItemStatus = 0;
 var setItemProducType = 0;
+var setItemMenu = 1;
 window.onload = function () {
     var saveItemStatus = sessionStorage.getItem("SelItemStatus");
     setItemStatus = saveItemStatus!=null? saveItemStatus : 0;
@@ -7,6 +8,10 @@ window.onload = function () {
     var saveItemProductType = sessionStorage.getItem("SelItemProductType");
     setItemProducType = saveItemProductType!=null? saveItemProductType : 0;
     $('#select-filters-product').val(setItemProducType);
+    var saveMenuElement = sessionStorage.getItem("menu-element");
+    if(saveMenuElement!=null){
+        setItemMenu = saveMenuElement
+    }
 }
 
 function listCustomerByFilters() {
@@ -65,6 +70,11 @@ function redirectPage(page) {
         window.location.href = window.location.pathname + "?statusId="
             + setItemStatus + "&productType=" + setItemProducType + "&pageNum="+ pageNum;
     }
+}
+function changeActiveLi(element) {
+    element.removeClass('active');
+    var saveElement = element.getAttribute("data-li")
+   sessionStorage.setItem("menu-element", saveElement);
 }
 
 
