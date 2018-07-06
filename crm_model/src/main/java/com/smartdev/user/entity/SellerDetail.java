@@ -3,7 +3,7 @@ package com.smartdev.user.entity;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "seller_detail", schema = "crm_db", catalog = "")
+@Table(name = "seller_detail")
 public class SellerDetail {
     private String userName;
     private String name;
