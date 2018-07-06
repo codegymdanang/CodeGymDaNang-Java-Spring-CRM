@@ -31,10 +31,10 @@ public class SearchController {
                 = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_SELLER")) {
-               modelAndView.setViewName("list-custom");
+               modelAndView.setViewName("list-custom-search");
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
-                 modelAndView.setViewName("list-custom-manage");
+                 modelAndView.setViewName("list-custom-manage-search");
                 break;
             }
 
