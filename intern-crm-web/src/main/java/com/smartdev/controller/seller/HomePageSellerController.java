@@ -47,7 +47,7 @@ public class HomePageSellerController {
     HistoryAdvisoryService historyAdvisoryService;
 
   	@RequestMapping(value = "/list-custom-seller", method = RequestMethod.GET)
-	public String listCustomSeller(Principal principal, Model model){
+public String listCustomSeller(Principal principal, Model model){
 		String username = principal.getName();
 		User user =userService.getUserByUserName(username);
 		List<Customer> customers = customerService.findByUserBySellerAndIsDelete(user,0);
@@ -57,16 +57,11 @@ public class HomePageSellerController {
             HistoryAdvisory historyAdvisory = historyAdvisoryList.get(0);
             map.put(c,historyAdvisory);
         }
-
         map.get(customers.get(0)).getDate();
-
-
-		model.addAttribute("customers",customers);
-		model.addAttribute("map",map);
-		return "list-custom-seller";
-
-
-	}
+	model.addAttribute("customers",customers);
+	model.addAttribute("map",map);
+	return "list-custom-seller";
+}
 
     @RequestMapping(value = "/update-seller-detail", method = RequestMethod.GET)
     public String updateSellerDetail(Principal principal, Model model) {
