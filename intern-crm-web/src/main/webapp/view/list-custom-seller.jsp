@@ -67,6 +67,7 @@
             </tr>
             </thead>
             <tbody>
+
             <c:forEach items="${customers}" var="c">
                 <c:url var="upDateLink" value="/seller/advisory">
                     <c:param name="customer" value="${c.id}"/>
@@ -79,7 +80,7 @@
                 <td>${c.company}</td>
                 <td>${c.phone}</td>
                 <td>${c.statusByStatusId.name}</td>
-                <td>2018-7-2</td>
+                <td>${map.get(c).getDate()}</td>
                 <td><a href="${upDateLink}" class="btn btn-info">UpDate Status</a></td>
                 <td>
                     <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" value="">EDIT</button></a>

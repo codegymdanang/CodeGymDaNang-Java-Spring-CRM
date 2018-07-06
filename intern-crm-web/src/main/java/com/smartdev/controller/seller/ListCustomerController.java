@@ -127,7 +127,7 @@ public class ListCustomerController {
             return "addcustomer";
         }
         customerService.addCustomer(customer);
-        return "redirect:/seller/list-custom";
+        return "redirect:/seller/list-custom-seller";
     }
 
     @RequestMapping(value = "/editcustomer/{id}", method = RequestMethod.GET)
@@ -153,7 +153,7 @@ public class ListCustomerController {
         customerOld.setPhone(customer.getPhone());
         customerOld.setProductType(customer.getProductType());
         customerService.saveCustomer(customerOld);
-        return "redirect:/seller/list-custom";
+        return "redirect:/seller/list-custom-seller";
     }
 
     @RequestMapping(value = "/list-custom-filter", method = RequestMethod.GET, headers =
@@ -189,7 +189,7 @@ public class ListCustomerController {
         customer.setIsDelete(1);
         customerService.saveCustomer(customer);
 
-        return "redirect:/seller/list-custom";
+        return "redirect:/seller/list-custom-seller";
     }
 
 }
