@@ -5,7 +5,7 @@
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
     </div>
-    <form class="" action="/seller/searchSeller" method="post">
+    <form class="" action="${pageContext.request.contextPath}/seller/searchSeller" method="post">
     <div class="row  mx-5 mb-3">
 
         <div class="col-3">
@@ -38,7 +38,7 @@
     <!-- Add and Search -->
 
 
-    <c:url var="addCustomerURL" value="/seller/addcustomer"/>
+    <c:url var="addCustomerURL" value="${pageContext.request.contextPath}/seller/addcustomer"/>
     <div class="parent">
             <a href="${addCustomerURL}" class="btn btn-success mx-5 my-3" >
                 <i class="fa fa-plus-circle"></i> Add Customer</a>
@@ -69,10 +69,10 @@
             <tbody>
 
             <c:forEach items="${customers}" var="c">
-                <c:url var="upDateLink" value="/seller/advisory">
+                <c:url var="upDateLink" value="${pageContext.request.contextPath}/seller/advisory">
                     <c:param name="customer" value="${c.id}"/>
                 </c:url>
-                <c:url var="deleteLink" value="/seller/delete">
+                <c:url var="deleteLink" value="${pageContext.request.contextPath}/seller/delete">
                     <c:param name="customer" value="${c.id}"/>
                 </c:url>
             <tr>
@@ -83,7 +83,7 @@
                 <td>${map.get(c).getDate()}</td>
                 <td><a href="${upDateLink}" class="btn btn-info">UpDate Status</a></td>
                 <td>
-                    <a href="/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" value="">EDIT</button></a>
+                    <a href="${pageContext.request.contextPath}/seller/editcustomer/${c.id}"><button class="btn btn-info btn btn-primary" value="">EDIT</button></a>
                 </td>
                 <td><a href="${deleteLink}"
                        onclick="if (!confirm('Are you sure??')) return false" class="btn btn-danger">Delete</a>
