@@ -20,4 +20,14 @@ public class CampaignServiceImpl implements CampaignService {
     public List<Campaign> findByNameContaining(String key) {
         return campaignRepository.findByNameContaining(key);
     }
+
+   @Override
+    public List<Campaign> findByDateEnd_MonthOrAndDateStart_Month(int x,int y) {
+        return campaignRepository.findByDateMonth(x,y);
+   }
+
+    @Override
+    public List<Campaign> findByDateMonAndName(int month, int month1, String key) {
+        return campaignRepository.findByDateMonAndName(month,month1,key);
+    }
 }

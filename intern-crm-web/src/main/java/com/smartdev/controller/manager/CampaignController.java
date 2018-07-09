@@ -41,11 +41,25 @@ public class CampaignController {
         model.addAttribute("campaigns",campaigns );
         return "campaign-manager";
     }
-    @RequestMapping(value = "/search", method = RequestMethod.GET)
-    public String search(Model model, @RequestParam("key") String key){
+    @RequestMapping(value = "/search_campaign", method = RequestMethod.GET)
+    public String search( @RequestParam(value="key" , required = false) String key, @RequestParam(value="month" , required = false) String month,Model model){
+        System.out.println("month111:" + month);
+        System.out.println("key" + key);
 
-        List<Campaign> campaigns = campaignService.findByNameContaining(key);
-        model.addAttribute("campaigns",campaigns );
+        if(month.equals("")) {
+            List<Campaign> campaigns = campaignService.findByNameContaining(key);
+            model.addAttribute("campaigns",campaigns );
+        }
+        if(key.equals("")) {
+            int month1 = Integer.valueOf(month);
+            List<Campaign> campaigns = campaignService.findByDateEnd_MonthOrAndDateStart_Month(month1, month1);
+            model.addAttribute("campaigns",campaigns );
+        }
+        if(!key.equals("") && !(month.equals(""))) {
+            int month1 = Integer.valueOf(month);
+            List<Campaign> campaigns = campaignService.findByDateMonAndName(month1, month1, key);
+            model.addAttribute("campaigns",campaigns );
+        }
         return "campaign-manager";
     }
     @RequestMapping(value = "/campaign-customer", method = RequestMethod.GET)
