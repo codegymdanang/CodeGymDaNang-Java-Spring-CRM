@@ -9,11 +9,15 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div>
     <h5 class="h2 text-center font-weight-bold m-4 text-muted">Campain Management</h5>
-    <form class="form-inline d-inline form-search mx-5 my-3 float-right ">
-        <input class="form-control" type="text" placeholder="Search">
+    <form action="/manager_crm/search" method="get" class="form-inline d-inline form-search mx-5 my-3 float-right ">
+        <input class="form-control" name="key" type="text" placeholder="Search">
         <button class="btn btn-success " type="submit">Search</button>
     </form>
-
+<c:choose>
+    <c:when test="${campaigns.size()==0}">
+        <p class="text-danger text-center">Không co kết quả</p>
+    </c:when>
+    <c:otherwise>
 
     <div class="m-5">
         <table class="table table-striped">
@@ -46,4 +50,7 @@
         </table>
 
     </div>
+    </c:otherwise>
+
+</c:choose>
 </div>
