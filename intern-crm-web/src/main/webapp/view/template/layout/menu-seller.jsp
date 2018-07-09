@@ -18,7 +18,7 @@
                 <a href="${pageContext.request.contextPath}/seller/list-custom?statusId=0&productType=0" class="text-white lead">Customer Manager</a>
             </li>
             <li class="p-3" onclick="changeActiveLi(this)" data-li="2">
-                <a href="#" class="text-white lead ">Block list</a>
+                <a href="${pageContext.request.contextPath}/blocklist" class="text-white lead ">Block list</a>
             </li>
         </ul>
     </div>

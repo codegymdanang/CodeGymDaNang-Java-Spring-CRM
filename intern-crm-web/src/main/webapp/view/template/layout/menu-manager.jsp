@@ -27,7 +27,7 @@
                 <a href="${pageContext.request.contextPath}/manager_crm/campaign-manager" class="text-white lead ">Campain manager</a>
             </li>
             <li class="p-3" onclick="changeActiveLi(this)" data-li="5">
-                <a href="#" class="text-white lead ">Block list</a>
+                <a href="${pageContext.request.contextPath}/blocklist" class="text-white lead ">Block list</a>
             </li>
         </ul>
     </div>
