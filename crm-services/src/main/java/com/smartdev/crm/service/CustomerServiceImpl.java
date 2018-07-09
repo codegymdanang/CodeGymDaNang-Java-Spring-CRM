@@ -15,7 +15,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -165,5 +164,23 @@ public class CustomerServiceImpl implements CustomerService {
                 }
             }
         }
+    }
+
+    @Override
+    public List<Customer> checkOptionBlock(String option , String search, Status status) {
+        List<Customer> customersbl = null;
+        switch(option){
+            case "Name": customersbl = customerRepository.findByNameContainingAndIsDeleteAndStatusByStatusId(search,0,status);
+            break;
+            case "Company": customersbl = customerRepository.findByCompanyContainingAndIsDeleteAndStatusByStatusId(search,0,status);
+            break;
+            case "Mail": customersbl = customerRepository.findByMailContainingAndIsDeleteAndStatusByStatusId(search,0,status);
+            break;
+            case "SellerName":
+                User user = userService.getUserByUserName(search);
+                customersbl = customerRepository.findByUserBySellerAndIsDeleteAndStatusByStatusId(user,0,status);
+                break;
+        }
+        return customersbl;
     }
 }

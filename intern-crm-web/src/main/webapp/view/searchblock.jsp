@@ -4,7 +4,7 @@
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
     </div>
-    <form class="" action="${pageContext.request.contextPath}/search" method="post">
+    <form class="" action="/search-block" method="post">
         <div class="row  mx-5 mb-3">
 
             <div class="col-3">
@@ -34,7 +34,7 @@
         </div>
     </form>
     <c:choose>
-        <c:when test="${list.size()==0}">
+        <c:when test="${itemsBlock.size()==0}">
             <p class="text-danger text-center">Không có kết quả tìm kiếm</p>
         </c:when>
         <c:otherwise>
@@ -53,7 +53,7 @@
                     </tr>
                     </thead>
                     <tbody id="listCus-body">
-                    <c:forEach var="c" items="${list}">
+                    <c:forEach var="c" items="${itemsBlock}">
                         <tr>
                             <td id="name">${c.name}</td>
                             <td id="age">${c.age}</td>
@@ -80,4 +80,3 @@
         </c:otherwise>
     </c:choose>
 </div>
-

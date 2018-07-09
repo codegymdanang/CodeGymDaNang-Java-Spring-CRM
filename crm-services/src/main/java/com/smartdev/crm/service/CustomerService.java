@@ -36,5 +36,5 @@ public interface CustomerService {
     Page<Customer> listAllCustomer(Pageable pageable);
 
     Page<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum);
-
+    List<Customer> checkOptionBlock(String option , String search, Status status);
 }

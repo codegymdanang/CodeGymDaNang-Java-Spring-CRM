@@ -12,7 +12,7 @@
 <div class="row">
     <div class="col-6 p-5 mx-auto">
         <h3 class="text-uppercase text-center mb-3 text-muted font-weight-light">Account</h3>
-        <form:form action="/manager_crm/update-account" modelAttribute="user" method="post">
+        <form:form action="${pageContext.request.contextPath}/manager_crm/update-account" modelAttribute="user" method="post">
             <form:hidden path="username"/>
             <span class="text-danger">${passwordErrors}</span>
 

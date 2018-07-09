@@ -32,7 +32,7 @@
                 </thead>
                 <tbody>
                 <c:forEach var="customer" items="${customers}">
-                <form action="/manager_crm/campaign-customer" method="post">
+                <form action="${pageContext.request.contextPath}/manager_crm/campaign-customer" method="post">
                     <input type="hidden" name="customerId" value="${customer.id}">
                     <tr>
                         <c:choose>

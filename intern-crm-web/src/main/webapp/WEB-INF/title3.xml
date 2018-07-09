@@ -48,6 +48,12 @@
     <definition name="campaign-manager" extends="definition-manager">
         <put-attribute name="body" value="/view/campaign-manager.jsp"/>
     </definition>
+    <definition name="block-list-for-manager" extends="definition-manager">
+        <put-attribute name="body" value="/view/blocklist.jsp"/>
+    </definition>
+    <definition name="block-search-for-manager" extends="definition-manager">
+        <put-attribute name="body" value="/view/searchblock.jsp"/>
+    </definition>
 <!-- seller-->
     <definition name="definition-seller" template="/view/template/layout/template.jsp">
         <put-attribute name="header" value="/view/template/layout/header.jsp" />
@@ -81,5 +87,10 @@
     <definition name="delete" extends="definition-seller">
         <put-attribute name="body" value="/view/list-custom-seller.jsp"/>
     </definition>
-  
+    <definition name="block-list-for-seller" extends="definition-seller">
+        <put-attribute name="body" value="/view/blocklist.jsp"/>
+    </definition>
+    <definition name="block-search-for-seller" extends="definition-seller">
+        <put-attribute name="body" value="/view/searchblock.jsp"/>
+    </definition>
 </tiles-definitions>
