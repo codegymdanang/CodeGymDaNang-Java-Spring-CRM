@@ -24,7 +24,7 @@
     <a href="/manager_crm/campaign-manager" class="text-white lead ">Campain manager</a>
     </li>
     <li class="p-3">
-    <a href="#" class="text-white lead ">Block list</a>
+    <a href="/blocklist" class="text-white lead ">Block list</a>
     </li>
     </ul>
     </div>
