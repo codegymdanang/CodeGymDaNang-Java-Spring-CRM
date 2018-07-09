@@ -2,13 +2,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
          pageEncoding="ISO-8859-1"%>
 <%@ page isELIgnored="false"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <div>
     <div class="title">
         <h2 class="text-muted text-center my-5 h1 font-weight-light">List Customer</h2>
     </div>
-    <form class="" action="/search" method="post">
+    <form class="" action="${pageContext.request.contextPath}/search" method="post">
         <div class="row  mx-5 mb-3">
 
             <div class="col-3">
@@ -130,4 +128,4 @@
     </c:choose>
 </div>
 <div id="result" style="clear: both"></div>
-<script type="text/javascript" src="/resource/scripts/customerFilters.js"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/resource/scripts/customerFilters.js"></script>

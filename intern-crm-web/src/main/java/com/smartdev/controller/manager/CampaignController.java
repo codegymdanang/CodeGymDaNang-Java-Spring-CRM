@@ -41,6 +41,13 @@ public class CampaignController {
         model.addAttribute("campaigns",campaigns );
         return "campaign-manager";
     }
+    @RequestMapping(value = "/search", method = RequestMethod.GET)
+    public String search(Model model, @RequestParam("key") String key){
+
+        List<Campaign> campaigns = campaignService.findByNameContaining(key);
+        model.addAttribute("campaigns",campaigns );
+        return "campaign-manager";
+    }
     @RequestMapping(value = "/campaign-customer", method = RequestMethod.GET)
     public String getCampaignCustomer(Model model,@RequestParam(value = "campaignId") Integer campainId,
                                       @RequestParam(value ="error",required = false) String error){

@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+    <c:url var="url" value="/resource/css/style.css"/>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -17,7 +18,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
           integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
-    <link rel="stylesheet" href="/resource/css/style.css">
+    <link rel="stylesheet" href="${url}">
 
 </head>
 <body class="bg-main">

@@ -27,7 +27,7 @@
                     <th>Product type</th>
                     <th>Company</th>
                     <th>Moved</th>
-                    <th></th>
+                    <th>Seller</th>
                 </tr>
                 </thead>
                 <tbody>

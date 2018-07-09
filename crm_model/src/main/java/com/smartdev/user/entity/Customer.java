@@ -10,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import java.util.Collection;
 
 @Entity
+@Table(name = "customer")
 public class Customer {
     private Integer id;
     @NotEmpty(message = "Name is required")
