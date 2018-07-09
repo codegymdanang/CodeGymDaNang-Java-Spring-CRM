@@ -40,4 +40,9 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
 
     List<Customer> findByUserBySellerAndIsDelete(User user, Integer isDelete);
 
+    //---------------------------------------
+    List<Customer> findByMailContainingAndIsDeleteAndStatusByStatusId(String mail, Integer isDelete, Status id_block);
+    List<Customer> findByNameContainingAndIsDeleteAndStatusByStatusId(String name, Integer isDelete, Status id_block);
+    List<Customer> findByCompanyContainingAndIsDeleteAndStatusByStatusId(String company, Integer isDelete, Status id_block);
+    List<Customer> findByUserBySellerAndIsDeleteAndStatusByStatusId(User user, Integer isDelete, Status status);
 }
