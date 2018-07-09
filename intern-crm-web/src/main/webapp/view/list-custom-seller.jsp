@@ -69,10 +69,10 @@
             <tbody>
 
             <c:forEach items="${customers}" var="c">
-                <c:url var="upDateLink" value="${pageContext.request.contextPath}/seller/advisory">
+                <c:url var="upDateLink" value="/seller/advisory">
                     <c:param name="customer" value="${c.id}"/>
                 </c:url>
-                <c:url var="deleteLink" value="${pageContext.request.contextPath}/seller/delete">
+                <c:url var="deleteLink" value="/seller/delete">
                     <c:param name="customer" value="${c.id}"/>
                 </c:url>
             <tr>
