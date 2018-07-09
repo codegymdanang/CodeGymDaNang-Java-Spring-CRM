@@ -32,17 +32,27 @@
         <put-attribute name="body" value="/view/list-custom-manage.jsp"/>
     </definition>
 
+    <definition name="list-custom-manage-search" extends="definition-manager">
+        <put-attribute name="body" value="/view/search-customer.jsp"/>
+    </definition>
+
     <definition name="update-manager-account" extends="definition-manager">
         <put-attribute name="body" value="/view/update-manager-account.jsp"/>
     </definition>
-    <definition name="campain-customer" extends="definition-manager">
-        <put-attribute name="body" value="/view/campain-customer.jsp"/>
+    <definition name="campaign-customer" extends="definition-manager">
+        <put-attribute name="body" value="/view/campaign-customer.jsp"/>
     </definition>
-    <definition name="campain" extends="definition-manager">
-        <put-attribute name="body" value="/view/campain.jsp"/>
+    <definition name="campaign" extends="definition-manager">
+        <put-attribute name="body" value="/view/campaign.jsp"/>
     </definition>
-    <definition name="campain-manager" extends="definition-manager">
-        <put-attribute name="body" value="/view/campain-manager.jsp"/>
+    <definition name="campaign-manager" extends="definition-manager">
+        <put-attribute name="body" value="/view/campaign-manager.jsp"/>
+    </definition>
+    <definition name="block-list-for-manager" extends="definition-manager">
+        <put-attribute name="body" value="/view/blocklist.jsp"/>
+    </definition>
+    <definition name="block-search-for-manager" extends="definition-manager">
+        <put-attribute name="body" value="/view/searchblock.jsp"/>
     </definition>
 <!-- seller-->
     <definition name="definition-seller" template="/view/template/layout/template.jsp">
@@ -57,7 +67,9 @@
     <definition name="list-custom" extends="definition-seller">
         <put-attribute name="body" value="/view/list-custom-manage.jsp"/>
     </definition>
-
+    <definition name="list-custom-search" extends="definition-seller">
+        <put-attribute name="body" value="/view/search-customer.jsp"/>
+    </definition>
     <definition name="addcustomer" extends="definition-seller">
         <put-attribute name="body" value="/view/addcustomer.jsp"/>
     </definition>
@@ -75,5 +87,10 @@
     <definition name="delete" extends="definition-seller">
         <put-attribute name="body" value="/view/list-custom-seller.jsp"/>
     </definition>
-  
+    <definition name="block-list-for-seller" extends="definition-seller">
+        <put-attribute name="body" value="/view/blocklist.jsp"/>
+    </definition>
+    <definition name="block-search-for-seller" extends="definition-seller">
+        <put-attribute name="body" value="/view/searchblock.jsp"/>
+    </definition>
 </tiles-definitions>

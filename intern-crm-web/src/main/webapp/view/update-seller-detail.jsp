@@ -13,7 +13,7 @@
         <h2 class="text-uppercase text-muted">Update Account</h2>
     </div>
     <div>
-        <form:form action="/seller/update-seller-detail" modelAttribute="userSellerDetails" method="post">
+        <form:form action="${pageContext.request.contextPath}/seller/update-seller-detail" modelAttribute="userSellerDetails" method="post">
             <form:hidden path="username"/>
             <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
             <div class="row">

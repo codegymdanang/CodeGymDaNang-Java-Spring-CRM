@@ -9,62 +9,6 @@
     </div>
 
 
-    <!-- Filter -->
-    <div class="row  mx-5 mb-3">
-        <div class="col-3">
-            <h4 class="text-muted">Filter</h4>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect01">Options</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect01">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect02">Options</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect02">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-3">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <label class="input-group-text" for="inputGroupSelect03">Options</label>
-                </div>
-                <select class="custom-select" id="inputGroupSelect03">
-                    <option selected>Choose...</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                </select>
-            </div>
-        </div>
-    </div>
-
-    <!-- Add and Search -->
-    <div class="parent">
-        <a class="btn btn-success mx-5 my-3 " href="/manager_crm/create-seller-form">
-            <i class="fa fa-plus-circle"></i> Create Seller</a>
-
-        <form class="form-inline d-inline form-search mx-5 my-3 float-right ">
-            <input class="form-control" type="text" placeholder="Search">
-            <button class="btn btn-success " type="submit">Search</button>
-        </form>
-    </div>
     <!-- Table list seller -->
 
     <div class="table-seller mx-5">

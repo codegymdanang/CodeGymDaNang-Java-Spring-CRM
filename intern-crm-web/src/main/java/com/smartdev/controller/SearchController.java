@@ -1,7 +1,9 @@
 package com.smartdev.controller;
 
 import com.smartdev.crm.service.CustomerService;
+import com.smartdev.crm.service.StatusService;
 import com.smartdev.user.entity.Customer;
+import com.smartdev.user.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
@@ -22,6 +24,8 @@ import java.util.List;
 public class SearchController {
     @Autowired
     private CustomerService customerService;
+    @Autowired
+    private StatusService statusService;
 
 
     @RequestMapping(value="/search",method = RequestMethod.POST )
@@ -31,10 +35,10 @@ public class SearchController {
                 = authentication.getAuthorities();
         for (GrantedAuthority grantedAuthority : authorities) {
             if (grantedAuthority.getAuthority().equals("ROLE_SELLER")) {
-               modelAndView.setViewName("list-custom");
+               modelAndView.setViewName("list-custom-search");
                 break;
             } else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
-                 modelAndView.setViewName("list-custom-manage");
+                 modelAndView.setViewName("list-custom-manage-search");
                 break;
             }
 
@@ -67,5 +71,24 @@ public class SearchController {
         modelAndView.addObject("key" , search);
         return modelAndView;
     }
+    @RequestMapping(value="/search-block",method = RequestMethod.POST )
+    public ModelAndView searchblock( ModelAndView modelAndView ,@RequestParam(value = "search" ) String search, @RequestParam(value ="thongtin") String thongtin , Model model,Authentication authentication){
+        Status status = statusService.findById(5);
+        List<Customer> customers = customerService.checkOptionBlock(thongtin,search, status);
+        Collection<? extends GrantedAuthority> authorities
+                = authentication.getAuthorities();
+        for (GrantedAuthority grantedAuthority : authorities) {
+            if (grantedAuthority.getAuthority().equals("ROLE_SELLER")) {
+                modelAndView.setViewName("block-search-for-seller");
+                break;
+            } else if (grantedAuthority.getAuthority().equals("ROLE_MANAGER")) {
+                modelAndView.setViewName("block-search-for-manager");
+                break;
+            }
 
+        }
+        modelAndView.addObject("itemsBlock",customers);
+        modelAndView.addObject("key" , search);
+        return modelAndView;
+    }
 }

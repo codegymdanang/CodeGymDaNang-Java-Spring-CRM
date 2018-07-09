@@ -1,10 +1,20 @@
+var setItemStatus = 0;
+var setItemProducType = 0;
+var setItemMenu = 0;
 window.onload = function () {
     var saveItemStatus = sessionStorage.getItem("SelItemStatus");
-    var setItemStatus = saveItemStatus!=null? saveItemStatus : 0;
+    setItemStatus = saveItemStatus!=null? saveItemStatus : 0;
     $('#select-filters-status').val(setItemStatus);
     var saveItemProductType = sessionStorage.getItem("SelItemProductType");
-    var setItemProducType = saveItemProductType!=null? saveItemProductType : 0;
+    setItemProducType = saveItemProductType!=null? saveItemProductType : 0;
     $('#select-filters-product').val(setItemProducType);
+
+    $('.p-3').removeClass('active');
+    var saveMenuElement = sessionStorage.getItem("menu-element");
+    if(saveMenuElement!=null){
+        setItemMenu = saveMenuElement;
+    }
+    $('.p-3:eq('+setItemMenu+')').addClass('active');
 }
 
 function listCustomerByFilters() {
@@ -57,3 +67,16 @@ function listCusByFilters() {
 
     window.location.href = window.location.pathname + "?statusId=" + selValStatus + "&productType=" + selValProductType;
 }
+function redirectPage(page) {
+    var pageNum = page.getAttribute("data-page");
+    if(pageNum>0){
+        window.location.href = window.location.pathname + "?statusId="
+            + setItemStatus + "&productType=" + setItemProducType + "&pageNum="+ pageNum;
+    }
+}
+function changeActiveLi(element) {
+    var saveElement = element.getAttribute("data-li")
+   sessionStorage.setItem("menu-element", saveElement);
+}
+
+
