@@ -30,4 +30,9 @@ public class StatusServiceImpl implements StatusService {
     public Status findById(Integer id) {
         return statusRepository.findOne(id);
     }
+
+    @Override
+    public Status findByid(Integer id) {
+        return statusRepository.findOne(id);
+    }
 }
