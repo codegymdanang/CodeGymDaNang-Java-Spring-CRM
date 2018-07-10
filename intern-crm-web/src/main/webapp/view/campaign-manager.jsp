@@ -58,7 +58,7 @@
             <tbody>
 
             <c:forEach var="c" items="${campaigns}">
-                <c:url var="listCustomersLink" value="${pageContext.request.contextPath}/manager_crm/campaign-customer">
+                <c:url var="listCustomersLink" value="/manager_crm/campaign-customer">
                     <c:param name="campaignId" value="${c.id}"></c:param>
                 </c:url>
                 <tr>
