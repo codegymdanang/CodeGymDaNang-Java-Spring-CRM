@@ -90,10 +90,9 @@ public class CampainController {
         campaign.setDateStart(from);
         campaign.setDateEnd(to);
         campaignService.save(campaign);
-        customerCompaignService.save(excelUtil.read(path),campaign);
         List<CustomerCampaign> customerCampaigns = excelUtil.read(path);
         error.setCustomerCampaigns(customerCampaigns);
-        customerCompaignService.save(customerCampaigns);
+        customerCompaignService.save(excelUtil.read(path),campaign);
         return error;
     }
 
