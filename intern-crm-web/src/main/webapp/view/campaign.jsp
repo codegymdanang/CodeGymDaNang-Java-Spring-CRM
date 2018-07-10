@@ -8,7 +8,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-<script src="/resource/scripts/dropzone.js" type="text/javascript"></script>
 <div>
     <c:url var="uploadURL" value="/manager_crm/upload"/>
     <h5 class="h2 text-center font-weight-bold m-4 text-muted">Create New Campain</h5>
@@ -49,7 +48,7 @@
                 </div>
             </div>
             <span id="error-file"></span>
-            <button type="button" class="btn btn-primary btn-block" value="Accept" id="btnSubmit">Accept</button>
+            <button type="button" class="btn btn-primary btn-block" value="Accept" id="btnSubmit" data-path="${pageContext.request.contextPath}">Accept</button>
         </div>
     </form>
 
@@ -64,18 +63,11 @@
                 <th>Email</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th>Mark</th>
-                <td>Smart Dev</td>
-                <td>24</td>
-                <td>0993113105</td>
-                <td>email@domain</td>
-            </tr>
+            <tbody id="table-body">
 
             </tbody>
         </table>
 
     </div>
 </div>
-<script src="/resource/scripts/campain.js" type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/resource/scripts/campain.js" type="text/javascript"></script>

@@ -21,16 +21,27 @@ function prepareData() {
 }
 
 function submit() {
+    var path = this.getAttribute("data-path");
     var data = prepareData();
     console.log(data);
     $.ajax({
         type: "post",
         contentType: "application/json",
-        url: "/manager_crm/upload",
+        url: path+"/manager_crm/upload",
         data: JSON.stringify(data),
         dataType: "json",
         timeout: 600000,
         success: function (resp) {
+            console.log(resp);
+            if(resp.customerCampaigns != null) {
+                if (typeof resp.customerCampaigns !== 'undefined' && resp.customerCampaigns.length > 0) {
+                    append(resp.customerCampaigns);
+                    resetForm();
+                    return;
+                }
+            }
+
+            console.log("ERROR");
             showErrors(resp)
         },
         error: function () {
@@ -38,7 +49,13 @@ function submit() {
         }
     });
 }
-
+function resetForm() {
+    $('#error-name').remove();
+    $('#error-description').remove();
+    $('#error-from').remove();
+    $('#error-to').remove();
+    $('#error-file').remove();
+}
 function getFileFromInput() {
     var inputFiles = document.getElementById("file");
     console.log("in get file: " + inputFiles.files);
@@ -74,4 +91,15 @@ function showErrors(data) {
         $('#error-to').text(data.toError);
         $('#error-file').text(data.fileError);
     }
+}
+function append(customers) {
+    var html = "";
+    for (var i = 0; i < customers.length; ++i) {
+        html += "<tr><td>" + customers[i].name + "</td><td>"+customers[i].company +
+            "</td><td>" +customers[i].age+ "</td><td>" +customers[i].phone + "</td><td>"+customers[i].mail+"</td></tr>";
+    }
+
+    $('#table-body').html(html);
+
+
 }

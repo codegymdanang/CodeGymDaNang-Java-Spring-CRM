@@ -22,6 +22,8 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/manager_crm")
@@ -89,6 +91,9 @@ public class CampainController {
         campaign.setDateEnd(to);
         campaignService.save(campaign);
         customerCompaignService.save(excelUtil.read(path),campaign);
+        List<CustomerCampaign> customerCampaigns = excelUtil.read(path);
+        error.setCustomerCampaigns(customerCampaigns);
+        customerCompaignService.save(customerCampaigns);
         return error;
     }
 
