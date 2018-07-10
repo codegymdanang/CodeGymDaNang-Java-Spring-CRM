@@ -9,4 +9,5 @@ public interface CampaignService {
     List<Campaign> findByNameContaining(String key);
    List<Campaign> findByDateEnd_MonthOrAndDateStart_Month(int x, int y);
     List<Campaign> findByDateMonAndName(int month , int month1 , String key);
+    Campaign save(Campaign campaign);
 }

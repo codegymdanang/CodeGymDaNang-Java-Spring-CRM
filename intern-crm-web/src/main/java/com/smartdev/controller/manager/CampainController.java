@@ -1,6 +1,9 @@
 package com.smartdev.controller.manager;
 
+import com.smartdev.crm.service.CampaignService;
 import com.smartdev.crm.service.CustomerCompaignService;
+import com.smartdev.crm.service.helper.ConverDateTime;
+import com.smartdev.user.entity.Campaign;
 import com.smartdev.user.entity.CustomerCampaign;
 import com.smartdev.user.model.CompainError;
 import com.smartdev.user.model.CompainVO;
@@ -15,6 +18,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.sql.Timestamp;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,6 +31,9 @@ public class CampainController {
 
     @Autowired
     CustomerCompaignService customerCompaignService;
+
+    @Autowired
+    CampaignService campaignService;
 
     @RequestMapping(value = "/campain", method = RequestMethod.GET)
     public String getCampain(){
@@ -72,6 +82,15 @@ public class CampainController {
         ExcelUtil excelUtil = new ExcelUtil();
         String base64 = compainVO.getFile();
         excelUtil.writeExcel(base64);
+        Campaign campaign = new Campaign();
+        campaign.setName(compainVO.getCompain());
+        campaign.setDescription(compainVO.getDescription());
+        Timestamp from = ConverDateTime.convertDateToTimestamp(compainVO.getFrom());
+        Timestamp to = ConverDateTime.convertDateToTimestamp(compainVO.getTo());
+        campaign.setDateStart(from);
+        campaign.setDateEnd(to);
+        campaignService.save(campaign);
+        customerCompaignService.save(excelUtil.read(path),campaign);
         List<CustomerCampaign> customerCampaigns = excelUtil.read(path);
         error.setCustomerCampaigns(customerCampaigns);
         customerCompaignService.save(customerCampaigns);

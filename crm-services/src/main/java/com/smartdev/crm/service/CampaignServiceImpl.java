@@ -30,4 +30,9 @@ public class CampaignServiceImpl implements CampaignService {
     public List<Campaign> findByDateMonAndName(int month, int month1, String key) {
         return campaignRepository.findByDateMonAndName(month,month1,key);
     }
+
+    @Override
+    public Campaign save(Campaign campaign) {
+        return campaignRepository.save(campaign);
+    }
 }
