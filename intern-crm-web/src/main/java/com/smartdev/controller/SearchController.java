@@ -1,8 +1,10 @@
 package com.smartdev.controller;
 
 import com.smartdev.crm.service.CustomerService;
+import com.smartdev.crm.service.HistoryAdvisoryService;
 import com.smartdev.crm.service.StatusService;
 import com.smartdev.user.entity.Customer;
+import com.smartdev.user.entity.HistoryAdvisory;
 import com.smartdev.user.entity.Status;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -18,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.List;
 
 @Controller
@@ -26,7 +29,8 @@ public class SearchController {
     private CustomerService customerService;
     @Autowired
     private StatusService statusService;
-
+    @Autowired
+    private HistoryAdvisoryService historyAdvisoryService;
 
     @RequestMapping(value="/search",method = RequestMethod.POST )
     public ModelAndView search( ModelAndView modelAndView ,@RequestParam(value = "search" ) String search, @RequestParam(value ="thongtin") String thongtin , Model model,Authentication authentication){
@@ -61,18 +65,23 @@ public class SearchController {
         }
         List<Customer> customers = customerService.checkOption(thongtin,search);
         List<Customer> customersl = new ArrayList<Customer>();
+        HashMap<Customer,HistoryAdvisory> map = new HashMap<>();
         for (Customer c: customers) {
             if((username).equals(c.getUserBySeller().getUserName())){
                 customersl.add(c);
+                List<HistoryAdvisory> historyAdvisoryList = historyAdvisoryService.getHistoryAdvisoriesByCustomer(c);
+                HistoryAdvisory historyAdvisory = historyAdvisoryList.get(0);
+                map.put(c,historyAdvisory);
             }
         }
         ModelAndView modelAndView = new ModelAndView("list-custom-seller");
         modelAndView.addObject("customers",customersl);
         modelAndView.addObject("key" , search);
+        modelAndView.addObject("map",map);
         return modelAndView;
     }
     @RequestMapping(value="/search-block",method = RequestMethod.POST )
-    public ModelAndView searchblock( ModelAndView modelAndView ,@RequestParam(value = "search" ) String search, @RequestParam(value ="thongtin") String thongtin , Model model,Authentication authentication){
+    public ModelAndView searchBlock( ModelAndView modelAndView ,@RequestParam(value = "search" ) String search, @RequestParam(value ="thongtin") String thongtin , Model model,Authentication authentication){
         Status status = statusService.findById(5);
         List<Customer> customers = customerService.checkOptionBlock(thongtin,search, status);
         Collection<? extends GrantedAuthority> authorities

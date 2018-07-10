@@ -8,5 +8,4 @@ public interface StatusService {
     List<Status> findAll();
     Status findByName(String name);
     Status findById(Integer id);
-    Status findByid(Integer id);
 }
