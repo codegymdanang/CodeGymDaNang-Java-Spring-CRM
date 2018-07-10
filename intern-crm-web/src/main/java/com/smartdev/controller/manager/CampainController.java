@@ -1,6 +1,7 @@
 package com.smartdev.controller.manager;
 
 import com.smartdev.crm.service.CustomerCompaignService;
+import com.smartdev.user.entity.CustomerCampaign;
 import com.smartdev.user.model.CompainError;
 import com.smartdev.user.model.CompainVO;
 import com.smartdev.util.ExcelUtil;
@@ -14,6 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 @RequestMapping("/manager_crm")
@@ -69,7 +72,9 @@ public class CampainController {
         ExcelUtil excelUtil = new ExcelUtil();
         String base64 = compainVO.getFile();
         excelUtil.writeExcel(base64);
-        customerCompaignService.save(excelUtil.read(path));
+        List<CustomerCampaign> customerCampaigns = excelUtil.read(path);
+        error.setCustomerCampaigns(customerCampaigns);
+        customerCompaignService.save(customerCampaigns);
         return error;
     }
 

@@ -64,14 +64,7 @@
                 <th>Email</th>
             </tr>
             </thead>
-            <tbody>
-            <tr>
-                <th>Mark</th>
-                <td>Smart Dev</td>
-                <td>24</td>
-                <td>0993113105</td>
-                <td>email@domain</td>
-            </tr>
+            <tbody id="table-body">
 
             </tbody>
         </table>

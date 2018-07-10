@@ -1,11 +1,24 @@
 package com.smartdev.user.model;
 
+import com.smartdev.user.entity.CustomerCampaign;
+
+import java.util.List;
+
 public class CompainError {
     private String nameError;
     private String descriptionError;
     private String fromError;
     private String toError;
     private String fileError;
+    private List<CustomerCampaign> customerCampaigns;
+
+    public List<CustomerCampaign> getCustomerCampaigns() {
+        return customerCampaigns;
+    }
+
+    public void setCustomerCampaigns(List<CustomerCampaign> customerCampaigns) {
+        this.customerCampaigns = customerCampaigns;
+    }
 
     public CompainError() {}
 
