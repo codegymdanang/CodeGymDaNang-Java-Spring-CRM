@@ -25,9 +25,9 @@ public class BlocklistController {
     @Autowired
     StatusService statusService;
     @RequestMapping(value = "/blocklist",method = RequestMethod.GET)
-    public ModelAndView blocklist(ModelAndView modelAndView,@RequestParam(defaultValue = "1") Integer pageNum, Authentication authentication){
+    public ModelAndView blockList(ModelAndView modelAndView,@RequestParam(defaultValue = "1") Integer pageNum, Authentication authentication){
         Pageable pageable = new PageRequest(pageNum-1, 1);
-        Status status = statusService.findByid(5);
+        Status status = statusService.findById(5);
         Page<Customer> customerListblock = customerService.findCustomersByStatusId(status,pageable);
 //        ModelAndView modelAndView = new ModelAndView("blocklist");
         modelAndView.addObject("itemsBlock",customerListblock);

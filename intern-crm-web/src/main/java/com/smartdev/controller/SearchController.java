@@ -81,7 +81,7 @@ public class SearchController {
         return modelAndView;
     }
     @RequestMapping(value="/search-block",method = RequestMethod.POST )
-    public ModelAndView searchblock( ModelAndView modelAndView ,@RequestParam(value = "search" ) String search, @RequestParam(value ="thongtin") String thongtin , Model model,Authentication authentication){
+    public ModelAndView searchBlock( ModelAndView modelAndView ,@RequestParam(value = "search" ) String search, @RequestParam(value ="thongtin") String thongtin , Model model,Authentication authentication){
         Status status = statusService.findById(5);
         List<Customer> customers = customerService.checkOptionBlock(thongtin,search, status);
         Collection<? extends GrantedAuthority> authorities
