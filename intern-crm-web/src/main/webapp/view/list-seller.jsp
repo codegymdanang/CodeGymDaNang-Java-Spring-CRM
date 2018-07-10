@@ -8,6 +8,11 @@
         <h2 class="text-muted text-center my-5 h1 font-weight-light">Seller Manager</h2>
     </div>
 
+    <div class="parent">
+        <a class="btn btn-success mx-5 my-3 " href="${pageContext.request.contextPath}/manager_crm/create-seller-form">
+            <i class="fa fa-plus-circle"></i> Create Seller</a>
+
+    </div>
 
     <!-- Table list seller -->
 
