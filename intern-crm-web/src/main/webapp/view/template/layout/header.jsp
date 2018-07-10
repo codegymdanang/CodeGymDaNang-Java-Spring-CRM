@@ -18,7 +18,7 @@
                         </div>
 
                         <div class="account d-flex align-items-center ">
-                                <a href="/edit-user" class="btn p-0">
+                                <a href="${pageContext.request.contextPath}/edit-user" class="btn p-0">
                                         <i class="fa fa-user-circle text-warning fa-2x"></i></a>
 
                                     <form id="logoutForm" method="POST" action="../logout">

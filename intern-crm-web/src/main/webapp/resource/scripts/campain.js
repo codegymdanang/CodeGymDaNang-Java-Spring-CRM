@@ -21,12 +21,13 @@ function prepareData() {
 }
 
 function submit() {
+    var path = this.getAttribute("data-path");
     var data = prepareData();
     console.log(data);
     $.ajax({
         type: "post",
         contentType: "application/json",
-        url: "/manager_crm/upload",
+        url: path+"/manager_crm/upload",
         data: JSON.stringify(data),
         dataType: "json",
         timeout: 600000,
@@ -34,9 +35,8 @@ function submit() {
             console.log(resp);
             if(resp.customerCampaigns != null) {
                 if (typeof resp.customerCampaigns !== 'undefined' && resp.customerCampaigns.length > 0) {
-                    console.log("SUCCESS");
-                    console.log(resp.customerCampaigns);
                     append(resp.customerCampaigns);
+                    resetForm();
                     return;
                 }
             }
@@ -49,7 +49,13 @@ function submit() {
         }
     });
 }
-
+function resetForm() {
+    $('#error-name').remove();
+    $('#error-description').remove();
+    $('#error-from').remove();
+    $('#error-to').remove();
+    $('#error-file').remove();
+}
 function getFileFromInput() {
     var inputFiles = document.getElementById("file");
     console.log("in get file: " + inputFiles.files);
