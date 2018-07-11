@@ -74,6 +74,12 @@ function redirectPage(page) {
             + setItemStatus + "&productType=" + setItemProducType + "&pageNum="+ pageNum;
     }
 }
+function customerForSellerPage(page) {
+    var pageNum = page.getAttribute("data-page")
+    if (pageNum>0) {
+        window.location.href = window.location.pathname + "?pageNum="+ pageNum
+    }
+}
 function changeActiveLi(element) {
     var saveElement = element.getAttribute("data-li")
    sessionStorage.setItem("menu-element", saveElement);

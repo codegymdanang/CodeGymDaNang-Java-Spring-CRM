@@ -47,7 +47,7 @@
     </div>
     <!-- Table list seller -->
     <c:choose>
-    <c:when test="${customers.size()==0}">
+    <c:when test="${customers.totalElements ==0}">
         <p class="text-danger text-center">Không có kết quả tìm kiếm</p>
     </c:when>
     <c:otherwise>
@@ -68,7 +68,7 @@
             </thead>
             <tbody>
 
-            <c:forEach items="${customers}" var="c">
+            <c:forEach items="${customers.content}" var="c">
                 <c:url var="upDateLink" value="/seller/advisory">
                     <c:param name="customer" value="${c.id}"/>
                 </c:url>
@@ -92,7 +92,37 @@
             </c:forEach>
             </tbody>
         </table>
-
+        <%--paging--%>
+        <div class="nav-pagination">
+            <nav aria-label="pagination">
+                <ul class="pagination">
+                    <li class="page-item ${customers.hasPreviousPage()==true?"":"disabled"}"
+                        data-page="${customers.number}" onclick="customerForSellerPage(this)">
+                        <p class="page-link">Previous</p>
+                    </li>
+                    <c:forEach var="page" begin="1" end="${customers.totalPages}">
+                        <c:choose>
+                            <c:when test="${customers.number+1 == page}">
+                                <li class="page-item active" data-page="-1" onclick="customerForSellerPage(this)">
+                                    <p class="page-link" >${page} <span class="sr-only">(current)</span></p>
+                                </li>
+                            </c:when>
+                            <c:otherwise>
+                                <li class="page-item" data-page="${page}" onclick="customerForSellerPage(this)">
+                                    <p class="page-link">${page}</p>
+                                </li>
+                            </c:otherwise>
+                        </c:choose>
+                        </li>
+                    </c:forEach>
+                    <li class="page-item ${customers.hasNextPage()?"":"disabled"}"
+                        data-page="${customers.number+2}" onclick="${customers.hasNextPage()?"customerForSellerPage(this)":""}" >
+                        <p class="page-link">Next</p>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
     </div>
     </c:otherwise>
     </c:choose>

@@ -21,8 +21,8 @@ public interface CustomerService {
 
     Page<Customer> findByProductTypeAndStatusByStatusId(Integer productType, Status statusId, Pageable pageable);
 
-    List<Customer> findByUserBySellerAndIsDelete(User user,Integer isDelete);
-  
+    Page<Customer> findByUserBySellerAndIsDelete(User user,Pageable pageable);
+
     List<Customer> findByNameContaining(String name,Integer isDelete);
   
     List<Customer> findByCompanyContaining (String company,Integer isDelete);
@@ -37,4 +37,5 @@ public interface CustomerService {
 
     Page<Customer> listCustomerWithFilter(Integer statusId, Integer productType, Integer pageNum);
     List<Customer> checkOptionBlock(String option , String search, Status status);
+    Page<Customer> listCustomerForSeller(User user,Integer pageNum);
 }

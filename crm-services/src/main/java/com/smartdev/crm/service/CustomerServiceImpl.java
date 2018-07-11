@@ -72,10 +72,6 @@ public class CustomerServiceImpl implements CustomerService {
         return customerRepository.findOne(id);
     }
 
-    @Override
-    public List<Customer> findByUserBySellerAndIsDelete(User user, Integer isDelete) {
-        return customerRepository.findByUserBySellerAndIsDelete(user, isDelete);
-    }
 
     @Override
     public Page<Customer> findCustomersByStatusId(Status status, Pageable pageable) {
@@ -140,6 +136,17 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
+    public Page<Customer> findByUserBySellerAndIsDelete(User user,Pageable pageNum) {
+        return customerRepository.findByUserBySellerAndIsDelete(user, 0,pageNum);
+    }
+
+    @Override
+    public Page<Customer> listCustomerForSeller(User user, Integer pageNum) {
+        Pageable pageable = new PageRequest(pageNum-1, 10);
+        return findByUserBySellerAndIsDelete(user,pageable);
+    }
+
+    @Override
     public Page<Customer> listAllCustomer(Pageable pageable) {
         return customerRepository.findByIsDelete(0, pageable);
     }
@@ -183,4 +190,5 @@ public class CustomerServiceImpl implements CustomerService {
         }
         return customersbl;
     }
+
 }
