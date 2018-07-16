@@ -13,6 +13,7 @@ import com.smartdev.user.entity.User;
 import com.smartdev.user.model.UserSellerDetails;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Required;
+import org.springframework.data.domain.Page;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Controller;
@@ -47,17 +48,16 @@ public class HomePageSellerController {
     HistoryAdvisoryService historyAdvisoryService;
 
   	@RequestMapping(value = "/list-custom-seller", method = RequestMethod.GET)
-public String listCustomSeller(Principal principal, Model model){
+public String listCustomSeller(Principal principal, Model model,@RequestParam(defaultValue = "1") Integer pageNum){
 		String username = principal.getName();
 		User user =userService.getUserByUserName(username);
-		List<Customer> customers = customerService.findByUserBySellerAndIsDelete(user,0);
+		Page<Customer> customers = customerService.listCustomerForSeller(user,pageNum);
         HashMap<Customer,HistoryAdvisory> map = new HashMap<>();
         for (Customer c:customers) {
             List<HistoryAdvisory> historyAdvisoryList = historyAdvisoryService.getHistoryAdvisoriesByCustomer(c);
             HistoryAdvisory historyAdvisory = historyAdvisoryList.get(0);
             map.put(c,historyAdvisory);
         }
-        map.get(customers.get(0)).getDate();
 	model.addAttribute("customers",customers);
 	model.addAttribute("map",map);
 	return "list-custom-seller";
