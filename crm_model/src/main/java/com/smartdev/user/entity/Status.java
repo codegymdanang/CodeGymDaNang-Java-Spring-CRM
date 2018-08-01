@@ -1,5 +1,7 @@
 package com.smartdev.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Collection;
 
@@ -28,18 +30,19 @@ public class Status {
         this.name = name;
     }
 
+//    @OneToMany(mappedBy = "statusByStatusId")
+//    private Collection<Customer> customersById;
+//
+//    public Collection<Customer> getCustomersById() {
+//        return customersById;
+//    }
+//
+//    public void setCustomersById(Collection<Customer> customersById) {
+//        this.customersById = customersById;
+//    }
+
     @OneToMany(mappedBy = "statusByStatusId")
-    private Collection<Customer> customersById;
-
-    public Collection<Customer> getCustomersById() {
-        return customersById;
-    }
-
-    public void setCustomersById(Collection<Customer> customersById) {
-        this.customersById = customersById;
-    }
-
-    @OneToMany(mappedBy = "statusByStatusId")
+    @JsonIgnore
     private Collection<HistoryAdvisory> historyAdvisoriesById;
 
     public Collection<HistoryAdvisory> getHistoryAdvisoriesById() {

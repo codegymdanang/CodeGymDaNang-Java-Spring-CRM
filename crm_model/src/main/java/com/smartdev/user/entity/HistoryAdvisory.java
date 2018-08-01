@@ -1,5 +1,7 @@
 package com.smartdev.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.sql.Timestamp;
 
@@ -9,6 +11,7 @@ public class HistoryAdvisory {
     private Integer id;
     private Timestamp date;
     private String comment;
+    @JsonIgnore
     private Customer customerByCustomerId;
     private Status statusByStatusId;
 
@@ -75,7 +78,7 @@ public class HistoryAdvisory {
         this.customerByCustomerId = customerByCustomerId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     public Status getStatusByStatusId() {
         return statusByStatusId;
