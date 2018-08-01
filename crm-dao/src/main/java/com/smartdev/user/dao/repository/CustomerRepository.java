@@ -34,6 +34,8 @@ public interface CustomerRepository extends JpaRepository<Customer, Integer> {
     //List<Customer> findByUserBySellerAndIsDelete(User user, Integer isDelete);
     List<Customer> findByNameContainingAndIsDelete(String name, Integer isDelete);
 
+    Page<Customer> findByNameContainingAndIsDelete(String name, Integer isDelete, Pageable pageable);
+
     List<Customer> findByCompanyContainingAndIsDelete(String company, Integer isDelete);
 
     List<Customer> findByMailContainingAndIsDelete(String mail, Integer isDelete);

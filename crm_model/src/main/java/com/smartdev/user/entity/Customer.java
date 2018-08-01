@@ -1,5 +1,6 @@
 package com.smartdev.user.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -31,6 +32,7 @@ public class Customer {
     private String company;
     private Integer isDelete;
     private Status statusByStatusId;
+    @JsonIgnore
     private User userBySeller;
     private Collection<HistoryAdvisory> historyAdvisoriesById;
 
@@ -125,60 +127,7 @@ public class Customer {
         this.isDelete = isDelete;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-
-        Customer customer = (Customer) o;
-
-        if (id != null ? !id.equals(customer.id) : customer.id != null) return false;
-        if (name != null ? !name.equals(customer.name) : customer.name != null) return false;
-        if (age != null ? !age.equals(customer.age) : customer.age != null) return false;
-        if (phone != null ? !phone.equals(customer.phone) : customer.phone != null) return false;
-        if (mail != null ? !mail.equals(customer.mail) : customer.mail != null) return false;
-        if (facebook != null ? !facebook.equals(customer.facebook) : customer.facebook != null) return false;
-        if (productType != null ? !productType.equals(customer.productType) : customer.productType != null)
-            return false;
-        if (company != null ? !company.equals(customer.company) : customer.company != null) return false;
-        if (isDelete != null ? !isDelete.equals(customer.isDelete) : customer.isDelete != null) return false;
-
-        return true;
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id != null ? id.hashCode() : 0;
-        result = 31 * result + (name != null ? name.hashCode() : 0);
-        result = 31 * result + (age != null ? age.hashCode() : 0);
-        result = 31 * result + (phone != null ? phone.hashCode() : 0);
-        result = 31 * result + (mail != null ? mail.hashCode() : 0);
-        result = 31 * result + (facebook != null ? facebook.hashCode() : 0);
-        result = 31 * result + (productType != null ? productType.hashCode() : 0);
-        result = 31 * result + (company != null ? company.hashCode() : 0);
-        result = 31 * result + (isDelete != null ? isDelete.hashCode() : 0);
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Customer{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", age=" + age +
-                ", phone=" + phone +
-                ", mail='" + mail + '\'' +
-                ", facebook='" + facebook + '\'' +
-                ", productType=" + productType +
-                ", company='" + company + '\'' +
-                ", isDelete=" + isDelete +
-                ", statusByStatusId=" + statusByStatusId +
-                ", userBySeller=" + userBySeller +
-                ", historyAdvisoriesById=" + historyAdvisoriesById +
-                '}';
-    }
-
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "status_id", referencedColumnName = "id")
     public Status getStatusByStatusId() {
         return statusByStatusId;
@@ -188,7 +137,7 @@ public class Customer {
         this.statusByStatusId = statusByStatusId;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "seller", referencedColumnName = "user_name")
     public User getUserBySeller() {
         return userBySeller;
@@ -198,7 +147,7 @@ public class Customer {
         this.userBySeller = userBySeller;
     }
 
-    @OneToMany(mappedBy = "customerByCustomerId")
+    @OneToMany(mappedBy = "customerByCustomerId", fetch = FetchType.EAGER)
     public Collection<HistoryAdvisory> getHistoryAdvisoriesById(Integer id) {
         return historyAdvisoriesById;
     }
